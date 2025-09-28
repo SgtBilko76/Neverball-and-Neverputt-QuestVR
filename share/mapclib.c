@@ -61,6 +61,142 @@
 
 /*---------------------------------------------------------------------------*/
 
+/* Ohhhh... arbitrary! */
+
+#define MAXM    1024
+#define MAXV    65536
+#define MAXE    131072
+#define MAXS    65536
+#define MAXT    131072
+#define MAXO    262144
+#define MAXG    65536
+#define MAXL    4096
+#define MAXN    2048
+#define MAXP    2048
+#define MAXB    1024
+#define MAXH    2048
+#define MAXZ    1024
+#define MAXJ    1024
+#define MAXX    1024
+#define MAXR    2048
+#define MAXU    1024
+#define MAXW    1024
+#define MAXD    1024
+#define MAXA    16384
+#define MAXI    262144
+
+/*
+ * The following is a small  symbol table data structure.  Symbols and
+ * their integer  values are collected  in symv and  valv.  References
+ * and pointers  to their unsatisfied integer values  are collected in
+ * refv and pntv.  The resolve procedure matches references to symbols
+ * and fills waiting ints with the proper values.
+ */
+
+#define MAXSYM 2048
+
+enum
+{
+    SYM_NONE = 0,
+
+    SYM_PATH,
+    SYM_TARG,
+
+    SYM_MAX
+};
+
+struct sym
+{
+    int  type;
+    char name[MAXSTR];
+    int  val;
+};
+
+struct ref
+{
+    int  type;
+    char name[MAXSTR];
+    int *ptr;
+};
+
+struct _imagedata
+{
+    char *s;
+    int w, h;
+};
+
+enum mapc_jmp
+{
+    MAPC_SUCCESS = 0,
+    MAPC_ERROR,
+};
+
+#if ENABLE_RADIANT_CONSOLE
+#define MAX_BCAST_MSG 512
+#endif
+
+/*
+ * Context structure to hold all global state.
+ */
+struct mapc_context
+{
+    const char *opt_file;
+    const char *opt_data;
+    int opt_debug;
+    int opt_csv;
+
+    struct strbuf src_path;
+    struct strbuf dst_path;
+
+    struct strbuf full_dst_path;
+
+#if ENABLE_RADIANT_CONSOLE
+    TCPsocket bcast_socket;
+    unsigned char bcast_msg[MAX_BCAST_MSG];
+    size_t bcast_msg_len;
+#endif
+
+    struct sym syms[MAXSYM];
+    struct ref refs[MAXSYM];
+    int symc;
+    int refc;
+
+    float targ_p[MAXW][3];
+    int targ_wi[MAXW];
+    int targ_ji[MAXW];
+    int targ_n;
+
+    struct _imagedata *imagedata;
+    int image_n;
+    int image_alloc;
+
+    float plane_d[MAXS];
+    float plane_n[MAXS][3];
+    float plane_p[MAXS][3];
+    float plane_u[MAXS][3];
+    float plane_v[MAXS][3];
+    int plane_f[MAXS];
+    int plane_m[MAXS];
+
+    int read_dict_entries;
+
+    int mtrl_swaps[MAXM];
+    int vert_swaps[MAXV];
+    int edge_swaps[MAXE];
+    int side_swaps[MAXS];
+    int texc_swaps[MAXT];
+    int offs_swaps[MAXO];
+    int geom_swaps[MAXG];
+
+    struct s_base file;
+
+    jmp_buf jmpbuf;
+
+    double compile_time;
+};
+
+/*---------------------------------------------------------------------------*/
+
 #if ENABLE_RADIANT_CONSOLE
 
 /*
@@ -69,8 +205,6 @@
 #define BCAST_STD 1
 #define BCAST_WRN 2
 #define BCAST_ERR 3
-
-#define MAX_BCAST_MSG 512
 
 static void bcast_quit(struct mapc_context *ctx);
 
@@ -181,168 +315,38 @@ static void bcast_quit(struct mapc_context *ctx)
     SDLNet_Quit();
 }
 
-#define MESSAGE(str) do {                       \
-        bcast_send_msg(BCAST_STD, (str));       \
+#define MESSAGE(ctx, str) do {                       \
+        bcast_send_msg(ctx, BCAST_STD, (str));       \
         fprintf(stdout, "%s", str);             \
     } while (0)
 
-#define WARNING(str) do {                       \
-        bcast_send_msg(BCAST_WRN, (str));       \
+#define WARNING(ctx, str) do {                       \
+        bcast_send_msg(ctx, BCAST_WRN, (str));       \
         fprintf(stderr, "%s", str);             \
     } while (0)
 
-#define ERROR(str) do {                         \
-        bcast_send_msg(BCAST_ERR, (str));       \
+#define ERROR(ctx, str) do {                         \
+        bcast_send_msg(ctx, BCAST_ERR, (str));       \
         fprintf(stderr, "%s", str);             \
     } while (0)
 
 #else /* ENABLE_RADIANT_CONSOLE */
 
-#define MESSAGE(str) do {                       \
+#define MESSAGE(ctx, str) do {                       \
         fprintf(stdout, "%s", str);             \
     } while (0)
 
-#define WARNING(str) do {                       \
+#define WARNING(ctx, str) do {                       \
         fprintf(stderr, "%s", str);             \
     } while (0)
 
-#define ERROR(str) do {                         \
+#define ERROR(ctx, str) do {                         \
         fprintf(stderr, "%s", str);             \
     } while (0)
 
 #endif /* ENABLE_RADIANT_CONSOLE */
 
 /*---------------------------------------------------------------------------*/
-
-/* Ohhhh... arbitrary! */
-
-#define MAXM    1024
-#define MAXV    65536
-#define MAXE    131072
-#define MAXS    65536
-#define MAXT    131072
-#define MAXO    262144
-#define MAXG    65536
-#define MAXL    4096
-#define MAXN    2048
-#define MAXP    2048
-#define MAXB    1024
-#define MAXH    2048
-#define MAXZ    1024
-#define MAXJ    1024
-#define MAXX    1024
-#define MAXR    2048
-#define MAXU    1024
-#define MAXW    1024
-#define MAXD    1024
-#define MAXA    16384
-#define MAXI    262144
-
-/*
- * The following is a small  symbol table data structure.  Symbols and
- * their integer  values are collected  in symv and  valv.  References
- * and pointers  to their unsatisfied integer values  are collected in
- * refv and pntv.  The resolve procedure matches references to symbols
- * and fills waiting ints with the proper values.
- */
-
-#define MAXSYM 2048
-
-enum
-{
-    SYM_NONE = 0,
-
-    SYM_PATH,
-    SYM_TARG,
-
-    SYM_MAX
-};
-
-struct sym
-{
-    int  type;
-    char name[MAXSTR];
-    int  val;
-};
-
-struct ref
-{
-    int  type;
-    char name[MAXSTR];
-    int *ptr;
-};
-
-struct _imagedata
-{
-    char *s;
-    int w, h;
-};
-
-enum mapc_jmp
-{
-    MAPC_SUCCESS = 0,
-    MAPC_ERROR,
-};
-
-/*
- * Context structure to hold all global state.
- */
-struct mapc_context
-{
-    const char *opt_file;
-    const char *opt_data;
-    int opt_debug;
-    int opt_csv;
-
-    struct strbuf src_path;
-    struct strbuf dst_path;
-
-    struct strbuf full_dst_path;
-
-#if ENABLE_RADIANT_CONSOLE
-    TCPsocket bcast_socket;
-    unsigned char bcast_msg[MAX_BCAST_MSG];
-    size_t bcast_msg_len;
-#endif
-
-    struct sym syms[MAXSYM];
-    struct ref refs[MAXSYM];
-    int symc;
-    int refc;
-
-    float targ_p[MAXW][3];
-    int targ_wi[MAXW];
-    int targ_ji[MAXW];
-    int targ_n;
-
-    struct _imagedata *imagedata;
-    int image_n;
-    int image_alloc;
-
-    float plane_d[MAXS];
-    float plane_n[MAXS][3];
-    float plane_p[MAXS][3];
-    float plane_u[MAXS][3];
-    float plane_v[MAXS][3];
-    int plane_f[MAXS];
-    int plane_m[MAXS];
-
-    int read_dict_entries;
-
-    int mtrl_swaps[MAXM];
-    int vert_swaps[MAXV];
-    int edge_swaps[MAXE];
-    int side_swaps[MAXS];
-    int texc_swaps[MAXT];
-    int offs_swaps[MAXO];
-    int geom_swaps[MAXG];
-
-    struct s_base file;
-
-    jmp_buf jmpbuf;
-
-    double compile_time;
-};
 
 static void init_file(struct s_base *fp);
 
@@ -426,7 +430,7 @@ static int overflow(struct mapc_context *ctx, const char s[64u - sizeof (" overf
 {
     char buf[64];
     sprintf(buf, "%s overflow\n", s);
-    ERROR(buf);
+    ERROR(ctx, buf);
     longjmp(ctx->jmpbuf, MAPC_ERROR);
     return 0;
 }
@@ -767,7 +771,7 @@ static int read_mtrl(struct mapc_context *ctx, const char *name)
         SAFECAT(buf, ": unknown material \"");
         SAFECAT(buf, name);
         SAFECAT(buf, "\"\n");
-        WARNING(buf);
+        WARNING(ctx, buf);
     }
 
     return mi;
@@ -1997,7 +2001,7 @@ static void clip_geom(struct mapc_context *ctx,
 
             if (++n >= ARRAYSIZE(m))
             {
-                ERROR("Over 256 vertices on one side, skipping the rest\n");
+                ERROR(ctx, "Over 256 vertices on one side, skipping the rest\n");
                 break;
             }
         }
@@ -3255,7 +3259,7 @@ static void mapc_compile_internal(struct mapc_context *ctx)
         }
         else
         {
-            ERROR("Failure to open file\n");
+            ERROR(ctx, "Failure to open file\n");
             longjmp(ctx->jmpbuf, MAPC_ERROR);
             return;
         }
