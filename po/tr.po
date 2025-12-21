@@ -1434,7 +1434,7 @@ msgstr "La tour de verre.\\Çıkış yolunu bul."
 
 #: data/map-mym/hard.map
 msgid "La maîtrise de Neverball.\\You still think Neverball is too easy?"
-msgstr "La maîtrise de Neverball.\\Sizce Neverball hâlâ kolay mı?"
+msgstr "La maîtrise de Neverball.\\Hâlâ Neverball'un çok kolay olduğunu mu düşünüyorsun?"
 
 #: data/map-mym/loop1.map
 msgid "Les boucles renversantes.\\Upside down!"
