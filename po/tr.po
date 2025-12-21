@@ -247,7 +247,7 @@ msgstr "Kayıt Silinsin mi?"
 
 #: ball/st_demo.c:769 ball/st_level.c:179
 msgid "Warning!"
-msgstr "Uyarı !"
+msgstr "Uyarı!"
 
 #: ball/st_demo.c:771
 msgid ""
