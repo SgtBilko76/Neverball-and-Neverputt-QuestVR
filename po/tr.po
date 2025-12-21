@@ -323,7 +323,7 @@ msgstr "Kurallar"
 msgid ""
 "Move the mouse or joystick\\or use keyboard arrows to\\tilt the floor "
 "causing the\\ball to roll.\\"
-msgstr "Fare, oyun kolu veya klavyedeki\\yön tuşlarını kullanıp zemini eğerek topu\\yuvarlayın.\\"
+msgstr "Fareyi, oyun kolunu veya\\klavyedeki yön tuşlarını\\kullanıp zemini oynatarak \\topu yuvarlayın.\\"
 
 #: ball/st_help.c:121
 msgid ""
