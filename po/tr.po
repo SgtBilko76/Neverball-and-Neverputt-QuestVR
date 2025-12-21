@@ -1319,7 +1319,7 @@ msgstr "Prisonnier de la boule.\\Bir kürenin içindesin.\\Bütün mavi altınla
 
 #: data/map-misc/billiard.map
 msgid "Try to grab all of the blue coins...\\it won't be easy!"
-msgstr "Bütün mavi coinleri toplamayı deneyin..\\işte bu kolay olmayacak!"
+msgstr "Bütün mavi altınları toplamayı dene...\\İşte bu kolay olmayacak!"
 
 #: data/map-misc/blockers.map
 msgid "Block around the clock."
