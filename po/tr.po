@@ -1685,7 +1685,7 @@ msgstr "Sörf zamanı!!"
 #. Desktop entry comment
 #: dist/neverball.desktop.in
 msgid "A 3D arcade game with a ball"
-msgstr "Üç Boyutlu Arcade Oyunu "
+msgstr "Bir Üç-Boyutlu Arcade Oyunu "
 
 #. Desktop entry comment
 #: dist/neverputt.desktop.in
