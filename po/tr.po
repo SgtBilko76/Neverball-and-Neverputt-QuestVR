@@ -1626,7 +1626,7 @@ msgstr "Zirveye doğru ilerle."
 msgid ""
 "Collect 45 coins to unlock the goal.\\You can use the teleporter to gain "
 "enough speed\\for the jump."
-msgstr "Hedefi açmak için 45 coin toplayın.\\Yeterli hıza ulaştığınızda,\\zıplamak için ışınlayıcıyı kullanabilirsiniz. "
+msgstr "Hedefi açmak için 45 altın topla.\\Yeterli hıza ulaşmak için ışınlayıcıyı kullan. "
 
 #: data/map-tones/easyone.map
 msgid "Control your speed\\to avoid a bumpy ride."
