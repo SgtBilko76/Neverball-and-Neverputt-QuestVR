@@ -1608,7 +1608,7 @@ msgstr "Buraların patronu kim?!"
 
 #: data/map-tones/canals.map
 msgid "You might have to get wet\\if you want all the coins."
-msgstr "Bütün coinleri istiyorsan\\sanırım biraz ıslanacaksın."
+msgstr "Bütün altınları istiyorsan\\sanırım biraz ıslanacaksın."
 
 #: data/map-tones/check.map
 msgid "Keep your eye on the sky!\\but don't run out of time...\\"
