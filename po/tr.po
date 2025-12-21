@@ -339,7 +339,7 @@ msgstr "Farenin sol ve sağ tuşlarıyla görüntüyü döndürün.\\Daha hızl�
 
 #: ball/st_help.c:180
 msgid "Exit / Pause"
-msgstr "Çık / Durdur"
+msgstr "Çık/Durdur"
 
 #: ball/st_help.c:184
 msgid "Restart Level"
