@@ -1083,7 +1083,7 @@ msgstr "Burada ilerleme kaydetmek için kenarlara\\hızlıca çarpmanız ve zıp
 msgid ""
 "Thus Neverball is a puzzle game?\\Remove the red to unlock the goal.\\Each "
 "trigger switches colors in direct contact."
-msgstr "Neverball bu bölüm yüzünden dolayı bir bulmaca oyunu mu?\\Hedefi açmak için kırmızı zeminleri yeşile çevirin.\\Her bir anahtar temas ettiği renkleri değiştirir."
+msgstr "Ne yani, Neverball bir bulmaca oyunu mu?\\Hedefi açmak için kırmızı zeminleri yeşile çevir.\\Her bir anahtar çevresindeki diğer zeminlerin renklerini değiştirir."
 
 #: data/map-hard/frogger.map
 msgid "Ribbit!\\"
