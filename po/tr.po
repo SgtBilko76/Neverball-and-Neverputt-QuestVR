@@ -704,7 +704,7 @@ msgstr "Son Sayı"
 
 #: data/set-easy.txt
 msgid "Neverball Easy"
-msgstr "Neverball Kolay"
+msgstr "Neverball Kolay Seviye"
 
 #: data/set-easy.txt
 msgid ""
