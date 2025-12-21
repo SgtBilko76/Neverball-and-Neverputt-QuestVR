@@ -774,7 +774,7 @@ msgstr "Zorluk: Orta Seviyeden İleri Seviyeye.\\\\Hazırlayan: Ian Walker\\\\"
 
 #: data/set-misc.txt
 msgid "Neverball Misc"
-msgstr "Çeşitli Bölümler"
+msgstr "Neverball Ek Bölümler"
 
 #: data/set-misc.txt
 msgid "Unsorted levels\\For testing purposes\\\\\\\\"
