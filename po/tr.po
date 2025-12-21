@@ -1215,7 +1215,7 @@ msgstr "Zıplayan bir topun kontrolüne yardım etmek için\\gölgeyi takip edeb
 
 #: data/map-medium/easytele.map
 msgid "Use teleporters to go\\where you otherwise couldn't.\\"
-msgstr "Gidecek bir yer bulamadığınızda\\ışınlayıcıları kullanın.\\"
+msgstr "Gidecek yer kalmadığında ışınlayıcıları kullan."
 
 #: data/map-medium/four.map
 msgid "Balance risk versus reward.\\"
