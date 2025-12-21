@@ -647,11 +647,11 @@ msgstr "Berabere"
 
 #: putt/hole.c:162 putt/st_all.c:99 putt/st_all.c:160
 msgid "P1"
-msgstr "P1"
+msgstr "Oyuncu 1"
 
 #: putt/hole.c:163 putt/st_all.c:100 putt/st_all.c:161
 msgid "P2"
-msgstr "P2"
+msgstr "Oyuncu 2"
 
 #: putt/hole.c:164 putt/st_all.c:101 putt/st_all.c:162
 msgid "P3"
