@@ -1646,7 +1646,7 @@ msgstr "Sıçramadan önce kontrol et..."
 
 #: data/map-tones/marble.map
 msgid "Mind your footing!"
-msgstr "Fikirler senin temellerin!"
+msgstr "Adımlarını gözden geçir!"
 
 #: data/map-tones/marble.map
 msgid "Watch your footing..."
