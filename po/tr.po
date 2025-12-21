@@ -1181,7 +1181,7 @@ msgid ""
 "The ball must be entirely within a teleporter\\in order to trigger "
 "it.\\Remember that the ball carries its momentum\\through a teleporter, so "
 "plan ahead.\\"
-msgstr "Işınlayıcıların tetiklenmesi için topun\\tamamı ışınlayıcının içinde olmalıdır.\\Kazandığın ivmenin de ışınlandığını unutma,\\planını buna göre yap."
+msgstr "Işınlayıcıların tetiklenmesi için topun\\tamamı ışınlayıcının içinde olmalıdır.\\Kazandığın ivmeyi de beraberinde getirdiğini\\unutma, planını buna göre yap."
 
 #: data/map-hard/tilt.map
 msgid "The floor is as flat as you make it.\\"
