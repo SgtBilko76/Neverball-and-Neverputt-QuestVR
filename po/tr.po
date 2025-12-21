@@ -329,7 +329,7 @@ msgstr "Fareyi, oyun kolunu veya\\klavyedeki yön tuşlarını\\kullanıp zemini
 msgid ""
 "Roll over coins to collect\\them.  Collect coins to\\unlock the goal and "
 "finish\\the level.\\"
-msgstr "Coinlerin üzerinden yuvarlanarak\\onları toplayın. Hedefe\\ ulaşıp bölümü bitirmek\\ için coinleri toplayın.\\"
+msgstr "Altınları üzerlerinden geçerek\\toplayın. Hedefe ulaşıp\\bölümü tamamlamak için\\altınları biriktirin.\\"
 
 #: ball/st_help.c:178
 msgid ""
