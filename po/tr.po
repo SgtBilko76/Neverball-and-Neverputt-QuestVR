@@ -1281,7 +1281,7 @@ msgstr "Topu kenarlardan uzak tutmak için yavaş git.\\Ya da gitme.\\Sen bilirs
 
 #: data/map-medium/spiralup.map
 msgid "Just as before, but moving up instead of down.\\No cheating this time.\\"
-msgstr "Tıpkı daha önceki gibi bir bölüm\\ama bu sefer hareket\\yukarıdan aşağı yerine aşağıdan yukarıya.\\Bu kez hile yok.\\"
+msgstr "Tıpkı az önceki bölüm gibi,\\ama bu sefer hareket aşağıdan yukarıya.\\Bu kez hile yapamazsın.\\"
 
 #: data/map-medium/stairs.map
 msgid ""
