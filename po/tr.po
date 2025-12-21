@@ -1154,7 +1154,7 @@ msgstr "\"Bence yapabilirim.\"\\\"Bence yapabilirim.\""
 
 #: data/map-hard/ring.map
 msgid "So close, yet so very far.\\"
-msgstr "Çok yakın, henüz çok uzak.\\"
+msgstr "Çok yakın, ama bir o kadar uzak...\\"
 
 #: data/map-hard/risers.map data/map-misc/edge-test.map
 msgid ""
