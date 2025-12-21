@@ -1604,7 +1604,7 @@ msgstr "Dikkatlice yürü...\\ve oyalanma!\\"
 
 #: data/map-tones/bumperoo.map
 msgid "Who's the boss around here anyway?"
-msgstr "Buraların patronu kim?"
+msgstr "Buraların patronu kim?!"
 
 #: data/map-tones/canals.map
 msgid "You might have to get wet\\if you want all the coins."
