@@ -956,7 +956,7 @@ msgstr "Asansördeyken ufak ayarlamalarla topu sabit tut.\\Topu tek bir yerde tu
 msgid ""
 "There is only one path to reach the goal,\\but lots of paths for collecting "
 "coins.\\Make sure you collect enough\\to unlock the goal."
-msgstr "Hedefe ulaşmak için yalnızca bir yol var\\ama coin toplamak için birçok yol var.\\Hedefi açmak için yeterince coin\\topladığınızdan emin olun."
+msgstr "Hedefe giden yalnızca bir yol var,\\ama altın toplamak için bir çok farklı yol mevcut.\\Hedefi açmak için yeterince altın topladığından emin ol."
 
 #: data/map-easy/slalom.map
 msgid ""
