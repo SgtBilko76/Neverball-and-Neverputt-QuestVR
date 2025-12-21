@@ -1238,7 +1238,7 @@ msgstr "Eğer topu küçültmenin bir yolu olsaydı küçük deliklere sığabil
 
 #: data/map-medium/locks.map
 msgid "Hit the switches to move the barriers.\\"
-msgstr "Hücreler arasında hareket etmek için butonları aktive et.\\"
+msgstr "Bariyerleri kaldırmak için anahtarları aktive et."
 
 #: data/map-medium/multicurves.map
 msgid ""
