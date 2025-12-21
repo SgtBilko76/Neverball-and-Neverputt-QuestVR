@@ -891,7 +891,7 @@ msgstr "Burada 100 coin var.\\Yanlışlıkla hedefe girmediğin sürece\\çok da
 msgid ""
 "Tilt the floor as little as possible.\\Less tilt means lower speed.\\Lower "
 "speed means better control.\\Watch the clock and use the time wisely.\\"
-msgstr "Zemini mümkün olduğunca az eğin.\\Daha az eğmek daha az hız demek.\\Daha az hız daha iyi kontrol demek.\\Süreyi izleyin ve zamanı akıllıca kulanın.\\"
+msgstr "Topu mümkün olduğunca az oynatmaya çalış.\\Daha az hareket daha az hız demek.\\Daha az hız ise daha iyi kontrol demek.\\Zamanını akıllıca kullan.\\"
 
 #: data/map-easy/greed.map
 msgid ""
