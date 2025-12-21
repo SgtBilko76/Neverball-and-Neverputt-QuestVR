@@ -1035,7 +1035,7 @@ msgstr "=Raylar=\\Dengeni kaybetme."
 
 #: data/map-fwp/ramps.map
 msgid "=Ramps=\\Can you make it to the top?"
-msgstr "=Yokuşlar=\\Zirveye çıkabilir misin?"
+msgstr "=Rampalar=\\Zirveye çıkabilir misin?"
 
 #: data/map-fwp/rings.map
 msgid "=Rings=\\Roll your way through this trap."
