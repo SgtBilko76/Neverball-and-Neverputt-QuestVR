@@ -859,7 +859,7 @@ msgid ""
 "As before, but without the training wheels.\\Keep the ball on a level "
 "floor\\and maintain precise control.\\Build some momentum to reach the "
 "corners.\\"
-msgstr "Daha önce olduğu gibi ama bu sefer eğitim\\ korkulukları yok. Hassas\\kontrolü sağlayın ve topu\\düz bir zemin üzerinde tutun. Köşelere ulaşmak\\için biraz hız kazanmalısınız.\\"
+msgstr "Daha önce olduğu gibi, ama bu sefer eğitim korkulukları yok.\\Hassas biçimde kontrolü sağla ve topu zeminde tutmaya çalış.\\Köşelere ulaşmak için biraz hızlanmayı dene.\\"
 
 #: data/map-easy/easy.map data/map-misc/centrifuge.map
 #: data/map-misc/texture-debug.map data/map-misc/timer-test.map
