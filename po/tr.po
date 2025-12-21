@@ -804,7 +804,7 @@ msgstr "Alfabeyi izleyen 26-delikli bir kurs\\\\Zorluk: Zor Seviye\\Hazırlayan:
 
 #: data/holes-slippi.txt
 msgid "Crazy Golf\\ \\\\Difficulty: Easy to Medium\\Author: slippifishi\\"
-msgstr "Çılgın Golf\\ \\\\Zorluk: Kolay-Orta\\Bölüm yapımcısı: slippifishi\\"
+msgstr "Çılgın Golf!\\ \\\\Zorluk: Başlangıçtan Orta Seviyeye\\Hazırlayan: slippifishi\\"
 
 #: data/holes-kk.txt
 msgid ""
