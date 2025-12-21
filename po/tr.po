@@ -468,11 +468,11 @@ msgstr "Hile Modu"
 
 #: ball/st_title.c:150 ball/st_title.c:182 putt/st_all.c:229
 msgid "menu^Play"
-msgstr "menu^Oyna"
+msgstr "Başla"
 
 #: ball/st_title.c:185
 msgid "menu^Replay"
-msgstr "menu^Oynat"
+msgstr "Kayıtlar"
 
 #: ball/st_title.c:186
 msgid "menu^Help"
