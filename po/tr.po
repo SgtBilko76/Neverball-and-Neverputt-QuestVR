@@ -885,7 +885,7 @@ msgstr "\"Zemin\" görecelidir. Zeminde sabit bir açıyla ilerlemeyi öğren,\\
 msgid ""
 "There are 100 coins here.\\This one shouldn't be too difficult,\\if you "
 "don't accidentally make a goal first.\\"
-msgstr "Burada 100 coin var.\\Yanlışlıkla hedefe girmediğin sürece\\çok da zor değil.\\"
+msgstr "Burada tamı tamına 100 altın var!\\Çok da zor değil gibi, hedefe yanlışlıkla girmediğin sürece.\\"
 
 #: data/map-easy/goslow.map
 msgid ""
