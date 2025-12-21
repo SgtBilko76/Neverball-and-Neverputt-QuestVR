@@ -1438,7 +1438,7 @@ msgstr "La maîtrise de Neverball.\\Hâlâ Neverball'un çok kolay olduğunu mu 
 
 #: data/map-mym/loop1.map
 msgid "Les boucles renversantes.\\Upside down!"
-msgstr "Les boucles renversantes.\\Aşağıdan yukarıya!"
+msgstr "Les boucles renversantes.\\Baş aşağı!"
 
 #: data/map-mym/loop2.map
 msgid ""
