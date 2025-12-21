@@ -289,7 +289,7 @@ msgstr "Tekrar Dene"
 
 #: ball/st_fail.c:107 ball/st_goal.c:221
 msgid "Save Replay"
-msgstr "Tekrarı Kaydet"
+msgstr "Kaydet"
 
 #: ball/st_goal.c:96
 msgid "New Record"
