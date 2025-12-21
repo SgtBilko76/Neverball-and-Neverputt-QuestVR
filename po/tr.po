@@ -1522,7 +1522,7 @@ msgid ""
 "This level is full of challenges:\\understand the level's "
 "functioning,\\learn to fly and to survive,\\grab half of all coins to open "
 "the goal,\\find and reach the goal,\\and more..."
-msgstr "Bu bölüm zor parçalardan oluşuyor:\\bölüm işlevlerini anlamak,\\uçmayı ve hayatta kalmayı öğrenmek\\hedefi açmak için coinlerin yarısını toplamak\\hedefi bulmak ona ulaşmak\\ve daha fazlası..."
+msgstr "Bu bölüm zorluklarla dolu:\\Bölümün mantığını kavra,\\havada süzülmeyi ve hayatta kalmayı öğren.\\Hedefi açmak için tüm altınların yarısını topla.\\Hedefi ara, yerini bul ve ulaşmaya çalış.\\Hepsi ve daha fazlası..."
 
 #: data/map-mym2/grinder.map
 msgid "Le petit moulin.\\The good timing to go in the cabin."
