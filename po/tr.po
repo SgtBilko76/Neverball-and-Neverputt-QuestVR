@@ -1690,7 +1690,7 @@ msgstr "Bir Üç-Boyutlu Arcade Oyunu "
 #. Desktop entry comment
 #: dist/neverputt.desktop.in
 msgid "A 3D mini golf game"
-msgstr "Bir üç-boyutlu mini golf oyunu"
+msgstr "Bir Üç-Boyutlu Mini Golf Oyunu"
 
 #. Translators,
 #. Listed here are the Neverball materials (relative to the data directory)
