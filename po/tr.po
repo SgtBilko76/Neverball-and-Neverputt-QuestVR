@@ -1596,7 +1596,7 @@ msgstr "Les toiles attirantes.\\Ağlardan kurtulmaya çalış."
 
 #: data/map-tones/bigtube.map
 msgid "Speed is the name of the game."
-msgstr "Hız bu bölümün adıdır.\\Tabiki şaka yapıyorum."
+msgstr "İşte hız diye buna derim!"
 
 #: data/map-tones/blue.map
 msgid "Tread carefully...\\and keep moving!\\"
