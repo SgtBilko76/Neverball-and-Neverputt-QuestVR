@@ -396,7 +396,7 @@ msgstr "Bağımsız Bölüm"
 msgid ""
 "A replay file could not be opened for writing.\\This game will not be "
 "recorded.\\"
-msgstr "Yeniden oynatma dosyası yazmak için açılamıyor.\\Bu oyun kaydedilemez.\\"
+msgstr "Yeniden oynatma dosyası hazırlanamadı.\\Bu oyun kaydedilemeyecek.\\"
 
 #: ball/st_name.c:112
 msgid "OK"
