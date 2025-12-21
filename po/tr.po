@@ -659,7 +659,7 @@ msgstr "Oyuncu 3"
 
 #: putt/hole.c:165 putt/st_all.c:102 putt/st_all.c:163
 msgid "P4"
-msgstr "P4"
+msgstr "Oyuncu 4"
 
 #: putt/st_all.c:66
 msgid "O"
