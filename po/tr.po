@@ -995,7 +995,7 @@ msgstr "=Avlu=\\Kolonlardaki altınları toplamaya çalış."
 
 #: data/map-fwp/buoys.map
 msgid "=Buoys=\\He who controls the timers, controls the gates."
-msgstr "=Şamandıralar=\\Zamanlayıcıları kim kontrol ederse,\\kapıları da o kontrol eder."
+msgstr "=Şamandıralar=\\\"Zamana hâkim olan, kapılara da hâkim olur\"."
 
 #: data/map-fwp/cargo.map
 msgid "=Cargo=\\Let yourself be carried away."
