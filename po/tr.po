@@ -911,7 +911,7 @@ msgid ""
 "Stay away from the edges!\\When approaching a drop, begin slowing "
 "down\\early. You need just as much room to slow\\down as you did to speed "
 "up.\\"
-msgstr "Kenarlardan uzak durun!\\Kenarlara yaklaştığınızda yavaşlamaya başlayın.\\ Hızınızı azaltmak için alana ihtiyacın olduğu gibi\\hızınızı arttırmak için de daha fazla alana ihtiyacınız var."
+msgstr "Kenarlardan uzak dur!\\Kenarlara yaklaştığınızda yavaşlamaya başla.\\Hızını azaltmak için önünde yeterince boşluk olmalı,\\hızını arttırmak için ise daha da fazla."
 
 #: data/map-easy/lollipop.map
 msgid ""
