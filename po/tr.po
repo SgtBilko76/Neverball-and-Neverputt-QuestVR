@@ -1630,7 +1630,7 @@ msgstr "Hedefi açmak için 45 altın topla.\\Yeterli hıza ulaşmak için ış�
 
 #: data/map-tones/easyone.map
 msgid "Control your speed\\to avoid a bumpy ride."
-msgstr "Sarsıntılı bir sürüşten kaçınmak için\\hızınızı kontrol edin."
+msgstr "Sarsıntılı bir yolculuktan kaçınmak için\\hızını kontrol et."
 
 #: data/map-tones/hotwheels.map
 msgid "Learn the course and stick to the rails!"
