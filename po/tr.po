@@ -1339,7 +1339,7 @@ msgstr "Okları takip et."
 msgid ""
 "It's a real game of checkers, but no one wins...\\You have to bounce to "
 "reach the blue coins."
-msgstr "Gerçek bir dama oyunu, fakat kazanan yok...\\Mavi coinlere ulaşmak için sıçramalısınız."
+msgstr "Gerçek bir dama oyunu, fakat kazananı yok...\\Mavi altınlara ulaşmak için taşların üzerinden sıçra."
 
 #: data/map-misc/elevator.map
 msgid "Calm and meditation may bring you to the Nirvana."
