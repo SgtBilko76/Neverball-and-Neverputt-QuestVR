@@ -1526,7 +1526,7 @@ msgstr "Bu bölüm zorluklarla dolu:\\Bölümün mantığını kavra,\\havada s�
 
 #: data/map-mym2/grinder.map
 msgid "Le petit moulin.\\The good timing to go in the cabin."
-msgstr "Le petit moulin.\\Kabine gitmek için zamanlama önemli."
+msgstr "Le petit moulin.\\Kabine girmek için zamanlama önemli."
 
 #: data/map-mym2/littlecones.map
 msgid "Ne pas se laisser emporter dans le néant.\\Don't go too low."
