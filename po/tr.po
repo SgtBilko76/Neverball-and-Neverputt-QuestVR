@@ -746,7 +746,7 @@ msgstr "Zorluk: İleri Seviyeden İnsanüstülüğe\\\\Daha da zorlayıcı 25 fa
 
 #: data/set-mym2.txt
 msgid "Retour de force"
-msgstr "Retour de force"
+msgstr "Retour de Force"
 
 #: data/set-mym2.txt
 msgid ""
