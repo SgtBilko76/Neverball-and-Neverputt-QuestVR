@@ -762,7 +762,7 @@ msgstr "Nevermania"
 msgid ""
 "Difficulty: Expert through Impossible\\\\Assorted levels for advanced "
 "players.\\Author: Florian Priester\\\\"
-msgstr "Zorluk: Uzmanlıktan İmkansıza\\\\Üst düzey oyuncular için çeşitli bölümler.\\Yapımcı: Florian Priester\\\\"
+msgstr "Zorluk: İleri Seviyeden İmkansızlığa\\\\Üst düzey oyuncular için çeşitli bölümler.\\Hazırlayanı: Florian Priester\\\\"
 
 #: data/set-tones.txt
 msgid "Tones Levels"
