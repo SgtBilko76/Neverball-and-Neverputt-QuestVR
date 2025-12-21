@@ -464,7 +464,7 @@ msgstr "Tamamlanmış Bölümlerdeki Hedefler"
 
 #: ball/st_title.c:144 ball/st_title.c:179
 msgid "menu^Cheat"
-msgstr "menu^Hile"
+msgstr "Hile Modu"
 
 #: ball/st_title.c:150 ball/st_title.c:182 putt/st_all.c:229
 msgid "menu^Play"
