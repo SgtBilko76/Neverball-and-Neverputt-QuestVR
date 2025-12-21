@@ -215,7 +215,7 @@ msgstr "Tekrar Yok"
 
 #: ball/st_demo.c:616
 msgid "Replay Paused"
-msgstr "Tekrar Durduruldu"
+msgstr "Durduruldu"
 
 #: ball/st_demo.c:618
 msgid "Replay Ends"
