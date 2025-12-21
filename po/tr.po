@@ -420,7 +420,7 @@ msgstr "Sıfırla"
 
 #: ball/st_play.c:100
 msgid "Ready?"
-msgstr "Hazır !"
+msgstr "Hazır!"
 
 #: ball/st_play.c:184
 msgid "Set?"
