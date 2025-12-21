@@ -516,7 +516,7 @@ msgstr "En Hızlı Hedef Açma"
 
 #: ball/util.c:205
 msgid "Change Name"
-msgstr "İsim Değiştirme"
+msgstr "İsmini Değiştir"
 
 #: ball/util.c:332
 msgid "caps"
