@@ -1252,7 +1252,7 @@ msgstr "Ağır ol."
 
 #: data/map-medium/qbert.map
 msgid "You can never go home again..."
-msgstr "Eve asla geri dönemezsin..."
+msgstr "Başladığın noktaya geri dönemezsin..."
 
 #: data/map-medium/rampdn.map
 msgid ""
