@@ -822,7 +822,7 @@ msgstr "Golf Jambalaya\\\\Vidski'nin adı kötüye çıkmış parkuru.\\Zorluk: 
 msgid ""
 "Reshaun's iPutt Course\\\\\\Difficulty: Easy through Hard\\Author: Reshaun "
 "Francis"
-msgstr "Reshaun'un iPutt Kursu\\\\\\Zorluk: Kolaydan Zora\\Yapımcı: Reshaun Francis"
+msgstr "Reshaun'un iPutt Parkuru\\\\\\Zorluk: Başlangıçtan İleri Seviyeye\\Hazırlayan: Reshaun Francis"
 
 #: data/gui/title.map data/map-medium/title.map
 msgid "Neverball\\\\http://neverball.org\\\\Created by Robert Kooima\\"
