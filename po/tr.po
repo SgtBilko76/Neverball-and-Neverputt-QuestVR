@@ -710,11 +710,11 @@ msgstr "Neverball Kolay Seviye"
 msgid ""
 "Difficulty: Beginner through Intermediate\\\\25 levels with a smooth "
 "learning curve.\\Read level introductions for gameplay tips.\\ \\"
-msgstr "Zorluk: Başlangıçtan Orta Seviyeye\\\\Düzenli bir zorluk artışıyla 25 bölüm.\\İpuçları için bölüm açıklamalarını okuyun.\\ \\"
+msgstr "Zorluk: Başlangıçtan Orta Seviyeye\\\\Düzenli bir zorluk artışıyla 25 bölüm.\\İpuçları için bölüm açıklamalarını oku.\\ \\"
 
 #: data/set-medium.txt
 msgid "Neverball Medium"
-msgstr "Neverball Orta Düzey"
+msgstr "Neverball Orta Seviye"
 
 #: data/set-medium.txt
 msgid ""
