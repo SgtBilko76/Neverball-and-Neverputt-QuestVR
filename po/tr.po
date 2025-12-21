@@ -1448,7 +1448,7 @@ msgstr "Le contrôle des courbes.\\Dönmek, sıçramak ve yere inmek için\\en d
 
 #: data/map-mym/maze1.map
 msgid "Le chemin dissimulé.\\Test your memory."
-msgstr "Le chemin dissimulé.\\Hafızanızı test edin."
+msgstr "Le chemin dissimulé.\\Hafıza testi."
 
 #: data/map-mym/maze2.map
 msgid ""
