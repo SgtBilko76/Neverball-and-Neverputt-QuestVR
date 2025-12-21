@@ -1107,7 +1107,7 @@ msgstr "Hızını ve zıplamanı kontrol et.\\Işınlayıcılar seni daima daha 
 
 #: data/map-hard/hump.map
 msgid "Momentum may work against you.\\"
-msgstr "Eğim aleyhinize olabilir."
+msgstr "İvme her zaman senden yana olmayabilir."
 
 #: data/map-hard/invis.map
 msgid ""
