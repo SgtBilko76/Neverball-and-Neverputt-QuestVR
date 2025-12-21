@@ -1650,7 +1650,7 @@ msgstr "Adımlarını gözden geçir!"
 
 #: data/map-tones/marble.map
 msgid "Watch your footing..."
-msgstr "Yeri izle..."
+msgstr "Adımlarına dikkat et!"
 
 #: data/map-tones/runner.map
 msgid "Walk the plank.\\After the teleport, go for speed!"
