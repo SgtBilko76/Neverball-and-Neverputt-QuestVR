@@ -1023,7 +1023,7 @@ msgstr "=Dağlar=\\İniş ve çıkışlar hayatın bir parçasıdır."
 
 #: data/map-fwp/museum.map
 msgid "=Museum=\\Please do not touch the exhibits."
-msgstr "=Müze=\\Lütfen sergilenenlere dokunmayın."
+msgstr "=Müze=\\Lütfen sergilenen eşyalara dokunmayın."
 
 #: data/map-fwp/oddities.map
 msgid "=Oddities=\\Something is not quite right here..."
