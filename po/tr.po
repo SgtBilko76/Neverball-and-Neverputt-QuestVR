@@ -1007,7 +1007,7 @@ msgstr "=Konfetiler=\\Yardım et! Bu karmaşanın kurtulmanın bir yolu olmalı!
 
 #: data/map-fwp/discs.map
 msgid "=Discs=\\Used correctly, the platforms will take you to the goal."
-msgstr "=Diskler=\\Doğru kullandığınızda, diskler sizi hedefe götürür."
+msgstr "=Diskler=\\Diskler seni hedefe götürebilir.\\Tabii doğru kullanıldıkları takdirde."
 
 #: data/map-fwp/inferno.map
 msgid "=Inferno=\\The fire thwomps will try to foil your mission."
