@@ -1043,7 +1043,7 @@ msgstr "=Çemberler=\\Tuzakları yuvarlanarak alt et."
 
 #: data/map-fwp/slope.map
 msgid "=Slope=\\Try not to become a modern-day Sisyphus."
-msgstr "=Yokuş=\\Günümüzün Sisifos'u olmayı denemeyin."
+msgstr "=Yokuş=\\Günümüzün Sisifos'una dönüşmemeye çalış."
 
 #: data/map-fwp/spacetime.map
 msgid "=Spacetime=\\Not much space, not much time."
