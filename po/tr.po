@@ -852,7 +852,7 @@ msgstr "Bu kez hedefi açmak için 50 altın toplamalısın.\\Kırmızı altınl
 msgid ""
 "Here are some more opportunities for you to\\fall off into the void. Hit the"
 " bump hard to\\grab some big coins and score a short time.\\"
-msgstr "Burada boşluğa düşmek için biraz daha fazla\\etken var. Kısa sürede puan kazanmak\\ve bazı büyük coinleri toplamak için\\korkuluğa hızlıca çarpın.\\"
+msgstr "Burada boşluğa düşmek birazcık daha kolay.\\Kısa sürede bölümü tamamlamak ve\\değerli altınları toplamak için kenardaki\\korkuluğa hızlıca çarpmayı dene.\\"
 
 #: data/map-easy/curved.map
 msgid ""
