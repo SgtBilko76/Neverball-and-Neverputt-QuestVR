@@ -1136,7 +1136,7 @@ msgstr "\"Bu bir boru değildir.\""
 
 #: data/map-hard/poker.map
 msgid "Slow and steady.\\"
-msgstr "Yavaş ve sürekli.\\"
+msgstr "Yavaşça ve sakince.\\"
 
 #: data/map-hard/pyramid.map
 msgid ""
