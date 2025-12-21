@@ -1055,7 +1055,7 @@ msgstr "=Üşüşenler=\\Uyarı: İzinsiz girenler atılacaktır."
 
 #: data/map-fwp/tennis.map
 msgid "=Tennis=\\There is plenty of prize money, and it's up for grabs."
-msgstr "=Tenis=\\Çok miktarda coin ödülü var, ve hepsi yakalamaya hazır."
+msgstr "=Tenis=\\Fazlasıyla altın var ve hepsi seni bekliyor."
 
 #: data/map-fwp/tree.map
 msgid "=Tree=\\Follow the spiral staircase to the goal."
