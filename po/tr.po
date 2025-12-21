@@ -987,7 +987,7 @@ msgstr "Bir başka altın madeni daha.\\Belki şimdiden aklında iyi bir plan va
 
 #: data/map-fwp/adventure.map
 msgid "=Adventure=\\Many things to do, coins to collect, risks to take."
-msgstr "=Macera=\\Yapacak çok şey, toplanacak coinler, alınacak riskler var."
+msgstr "=Macera=\\Toplanacak altınlar, alınacak riskler... Yapacak çok şey var!"
 
 #: data/map-fwp/atrium.map
 msgid "=Atrium=\\Remove the coins from their columns."
