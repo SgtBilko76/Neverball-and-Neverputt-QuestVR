@@ -832,7 +832,7 @@ msgstr "Neverball\\\\https://neverball.org\\\\Robert Kooima tarafından yapıld�
 msgid ""
 "Try to avoid being hit by moving objects.\\One bump can throw the "
 "ball\\completely out of control.\\"
-msgstr "Hareketli nesnelere vurmaktan kaçınmaya\\çalış. En ufak bir temas topu fırlatıp\\kontrolden çıkarabilir.\\"
+msgstr "Hareketli nesnelere vurmaktan kaçınmaya\\çalış. En ufak bir temas topu elinden kaydırıp\\kontrolden çıkarabilir.\\"
 
 #: data/map-easy/bumps.map
 msgid ""
