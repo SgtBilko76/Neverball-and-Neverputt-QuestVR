@@ -1117,7 +1117,7 @@ msgstr "Bırak açgözlülüğün sana rehberlik etsin!\\Ek bir macera için bü
 
 #: data/map-hard/movers.map
 msgid "Go for a ride.\\"
-msgstr "Gezintiye çıkın.\\"
+msgstr "Biraz yürüyelim mi?"
 
 #: data/map-hard/nostairs.map
 msgid ""
