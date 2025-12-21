@@ -1174,7 +1174,7 @@ msgstr "Endişelenme.\\Yeşil platform hiçbir yere gitmiyor.\\"
 msgid ""
 "Use the switches to set the platforms\\in motion.  Time it so they "
 "come\\together in the middle.\\"
-msgstr "Düzlemleri hareket ettirmek için anahtarları\\kullanın. Zamanı geldiğinde düzlemler ortada bir araya\\ gelecekler.\\"
+msgstr "Düzlemleri hareket ettirmek için anahtarları kullan.\\Zamanı geldiğinde ortada bir araya gelecekler.\\"
 
 #: data/map-hard/teleport.map
 msgid ""
