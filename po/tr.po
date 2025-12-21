@@ -1363,7 +1363,7 @@ msgstr "Haydi yüzmeye gidelim...\\Bütün altınlar suyun içinde.\\"
 
 #: data/map-misc/stairs.map
 msgid "Fall down stairs.\\Ough!\\It hurts."
-msgstr "Merdivenlerden düşüm.\\Aaah!\\Acıtıyor."
+msgstr "Merdivenlerden düşüyorum.\\Aaah!\\Bu acıttı işte!."
 
 #: data/map-misc/thwomp1.map
 msgid "Just let it happen...\\then start to worry!"
