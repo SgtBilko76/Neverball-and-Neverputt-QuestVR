@@ -484,7 +484,7 @@ msgstr "Ayarlar"
 
 #: ball/st_title.c:188 putt/st_all.c:231
 msgid "menu^Exit"
-msgstr "menu^Çıkış"
+msgstr "Çıkış"
 
 #: ball/util.c:28
 msgid "Hard"
