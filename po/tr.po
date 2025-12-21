@@ -1477,7 +1477,7 @@ msgstr "La descente rafraîchissante.\\O kadar hızlı değil, o kadar da hızl�
 
 #: data/map-mym/trust.map
 msgid "Le chemin de la foi.\\Self-confidence."
-msgstr "Le chemin de la foi.\\Özgüven."
+msgstr "Le chemin de la foi.\\Özgüven testi."
 
 #: data/map-mym/turn.map
 msgid "Le sens trigonométrique.\\Turn, wait and jump."
