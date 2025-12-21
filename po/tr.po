@@ -1654,7 +1654,7 @@ msgstr "Adımlarına dikkat et!"
 
 #: data/map-tones/runner.map
 msgid "Walk the plank.\\After the teleport, go for speed!"
-msgstr "Tahtanın üstünde yavaş gidin.\\Işınlayıcıdan sonra hızlanın!"
+msgstr "Güvertenin üzerinde yavaşça ilerle.\\Işınlayıcıdan ardından hızlan!"
 
 #: data/map-tones/skiball.map
 msgid "Ski Ball!\\\\Work your way from 10 to 100\\in sequence or you'll fall out."
