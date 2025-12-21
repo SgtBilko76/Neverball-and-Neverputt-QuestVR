@@ -1355,7 +1355,7 @@ msgstr "Topun büyüklüğünü değiştirmek için yeni altınları kullan!\\Um
 
 #: data/map-misc/groweasy.map
 msgid "There are special coins which can make your\\ball larger or smaller."
-msgstr "Topunuzu büyültecek ya da küçültecek farklı coinler var."
+msgstr "Burada topunu büyütebilecek ya da\\küçültebilecek farklı altınlar mevcut."
 
 #: data/map-misc/ocean.map
 msgid "Let's go for a swim...\\all the coins are fully submerged.\\"
