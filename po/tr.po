@@ -1293,7 +1293,7 @@ msgstr "Bir başka kontrol testi.\\Merdivenlerden hızlı inmek tehlikeli olabil
 msgid ""
 "This maze has no walls.\\But that doesn't make the solution\\any easier to "
 "find.\\"
-msgstr "Bu labirentte duvar yok.\\Ama bu daha kolay bir çözüm bulacağınız anlamına gelmiyor."
+msgstr "Bu labirentin duvarları yok.\\Ama bu daha kolay olduğu anlamına gelmiyor."
 
 #: data/map-medium/timer.map
 msgid ""
