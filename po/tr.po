@@ -1185,7 +1185,7 @@ msgstr "Işınlayıcıların tetiklenmesi için topun\\tamamı ışınlayıcın�
 
 #: data/map-hard/tilt.map
 msgid "The floor is as flat as you make it.\\"
-msgstr "Zemin, onu düz yaptığınız kadar düzdür.\\"
+msgstr "Zemin sen ne kadar karşı koyarsan o kadar düzdür."
 
 #: data/map-medium/accordian.map
 msgid "Stairway to heaven"
