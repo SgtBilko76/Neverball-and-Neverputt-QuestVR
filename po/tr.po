@@ -872,7 +872,7 @@ msgstr "Fareyi kullanarak topu oynatmaya çalış.\\Şimdilik 10 altınla başla
 msgid ""
 "Half-pipes can be fun,\\but they make it easy to fall out.\\Don't over "
 "accelerate and you will\\be able to stay in control."
-msgstr "Yarım boru eğlenceli olabilir\\ama kolayca düşebilirsiniz.\\Hızlanmadığınızda kontrol edebileceksiniz."
+msgstr "Yarım bir boru üzerine hareket etmek eğlenceli olabilir\\ama kolayca düşebilirsin de.\\Aşırı hızlanmadığın sürece kontrolü elinde tutabilirsin."
 
 #: data/map-easy/fence.map
 msgid ""
