@@ -444,7 +444,7 @@ msgstr "Üzerine Yazılsın mı?"
 
 #: ball/st_save.c:223
 msgid "Overwrite"
-msgstr "Overwrite"
+msgstr "Üzerine Yaz"
 
 #: ball/st_set.c:302
 msgid "Level Set"
