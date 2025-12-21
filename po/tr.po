@@ -1164,7 +1164,7 @@ msgstr "Yukarı çıkmak için asansörleri kullan.\\Epey hızlılar, fazla oyal
 
 #: data/map-hard/spiralin.map
 msgid "Have fun picking up those\\red and blue coins.\\"
-msgstr "Kırmızı ve mavi coinleri\\toplayarak eğlenin.\\"
+msgstr "Kırmızı ve mavi altınları toplarken iyi eğlenceler."
 
 #: data/map-hard/spread.map
 msgid "Don't worry.\\The green part isn't going anywhere.\\"
