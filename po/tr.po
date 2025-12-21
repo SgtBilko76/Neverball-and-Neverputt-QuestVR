@@ -692,7 +692,7 @@ msgstr "İçeride!"
 
 #: putt/st_all.c:1214
 msgid "1 Stroke Penalty"
-msgstr "1 Penaltı Vuruşu"
+msgstr "Bir Penaltı Vuruşu"
 
 #: putt/st_all.c:1292
 msgid "Scores"
