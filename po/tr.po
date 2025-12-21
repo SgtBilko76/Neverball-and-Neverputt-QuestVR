@@ -1103,7 +1103,7 @@ msgstr "Evet, top o küçük deliklere\\oldukça güzel oturuyor."
 msgid ""
 "Control your speed and your bounces.\\Teleporters will always bring "
 "you\\back somewhere in the level."
-msgstr "Hızınızı ve zıplmayı kontrol edin.\\Işınlayıcılar sizi daima bölümün gerisinde\\bir yere getirecektir."
+msgstr "Hızını ve zıplamanı kontrol et.\\Işınlayıcılar seni daima daha geriye götürecek."
 
 #: data/map-hard/hump.map
 msgid "Momentum may work against you.\\"
