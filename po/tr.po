@@ -48,7 +48,7 @@ msgstr "Sabit Kamera"
 
 #: ball/game_common.c:45 ball/st_help.c:182
 msgid "Lazy Camera"
-msgstr "Ağır kamera"
+msgstr "Ağır Kamera"
 
 #: ball/game_common.c:46 ball/st_help.c:181
 msgid "Chase Camera"
