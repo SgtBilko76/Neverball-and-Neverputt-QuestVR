@@ -725,7 +725,7 @@ msgstr "Zorluk: Başlangıçtan İleri Seviyeye\\\\25 bölüm boyunca düzenli b
 
 #: data/set-hard.txt
 msgid "Neverball Hard"
-msgstr "Neverball Zor"
+msgstr "Neverball Zor Seviye"
 
 #: data/set-hard.txt
 msgid ""
