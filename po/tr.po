@@ -567,7 +567,7 @@ msgstr "HMD"
 
 #: share/st_common.c:371
 msgid "V-Sync"
-msgstr "Dikey Senkronizasyon"
+msgstr "V-Sync"
 
 #: share/st_common.c:373
 msgid "Antialiasing"
