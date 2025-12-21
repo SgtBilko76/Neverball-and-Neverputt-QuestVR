@@ -897,7 +897,7 @@ msgstr "Topu mümkün olduğunca az oynatmaya çalış.\\Daha az hareket daha az
 msgid ""
 "Each bridge is narrower than the one before.\\But each pays better than the "
 "last as well!\\You get to decide how far you go on this one.\\"
-msgstr "Her bir köprü bir öncekinden daha da dar.\\Ama her biri bir öncekinden daha kazançlı!\\Ne kadar ilerleyeceğine kendin karar ver.\\"
+msgstr "Her bir köprü bir öncekinden daha da dar.\\Ama bir o kadar daha kazançlı!\\Ne kadar ilerleyeceğine kendin karar ver.\\"
 
 #: data/map-easy/groundbreak.map
 msgid ""
