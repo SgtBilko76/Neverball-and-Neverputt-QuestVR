@@ -424,11 +424,11 @@ msgstr "Yerini Al!"
 
 #: ball/st_play.c:184
 msgid "Set?"
-msgstr "Yerini Al !"
+msgstr "Hazırlan!"
 
 #: ball/st_play.c:325
 msgid "GO!"
-msgstr "Başla !"
+msgstr "Başla!"
 
 #: ball/st_save.c:100
 msgid "Replay Name"
