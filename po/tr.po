@@ -1343,7 +1343,7 @@ msgstr "Gerçek bir dama oyunu, fakat kazananı yok...\\Mavi altınlara ulaşmak
 
 #: data/map-misc/elevator.map
 msgid "Calm and meditation may bring you to the Nirvana."
-msgstr "Sakinlik ve meditasyon sizi Nirvana'ya ulaştırabilir."
+msgstr "Sükûnet ve meditasyon seni Nirvana'ya ulaştırabilir."
 
 #: data/map-misc/freefall-old.map
 msgid "Savoir chuter.\\Follow the blue markers."
