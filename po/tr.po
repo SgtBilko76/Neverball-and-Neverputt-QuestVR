@@ -1097,7 +1097,7 @@ msgstr "Platformların hareketini eşlemek için anahtarları dikkatlice zamanla
 
 #: data/map-hard/grid.map
 msgid "Yes, the ball does fit quite nicely through\\those little holes.\\"
-msgstr "Evet, top deliklerden geçmek için\\oldukça uygun bir boyuta sahip.\\"
+msgstr "Evet, top o küçük deliklere\\oldukça güzel oturuyor."
 
 #: data/map-hard/hallways.map
 msgid ""
