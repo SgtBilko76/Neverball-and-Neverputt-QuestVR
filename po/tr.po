@@ -105,7 +105,7 @@ msgstr "Kalan Top"
 
 #: ball/hud.c:90 ball/st_goal.c:155 putt/hud.c:45
 msgid "Score"
-msgstr "Sayı"
+msgstr "Skor"
 
 #: ball/progress.c:413 ball/st_help.c:267
 msgid "Challenge Mode"
