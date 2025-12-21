@@ -1271,7 +1271,7 @@ msgstr "Bu düğün pastası oldukça dolgun görünüyor.\\Ama bir kattan ötek
 msgid ""
 "Bump the logs at speed to change lanes.\\Try to reach the top for an extra "
 "challenge!"
-msgstr "Şerit değiştirmek için kütüklere hızlıca çarpın.\\Daha fazla zorluk için üste ulaşmaya çalışın!"
+msgstr "Hat değiştirmek için aradaki bariyerlere hızla çarp.\\Ekstra zorluk için en üst kata ulaşmaya çalış!"
 
 #: data/map-medium/spiraldn.map
 msgid ""
