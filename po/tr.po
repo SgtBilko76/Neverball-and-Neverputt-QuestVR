@@ -770,7 +770,7 @@ msgstr "Tones Levelleri"
 
 #: data/set-tones.txt
 msgid "Difficulty: Moderate to Difficult.\\\\Author: Ian Walker\\\\"
-msgstr "Zorluk: Ortadan Zora.\\\\Yapımcı: Ian Walker\\\\"
+msgstr "Zorluk: Orta Seviyeden İleri Seviyeye.\\\\Hazırlayan: Ian Walker\\\\"
 
 #: data/set-misc.txt
 msgid "Neverball Misc"
