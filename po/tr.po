@@ -1077,7 +1077,7 @@ msgstr "Burada yeterince yer yok.\\Umarım senin için sorun değildir.\\"
 msgid ""
 "To make progress here you'll need to hit the\\edges hard and control your "
 "bouncing.\\It's often easiest to hit the curb at a corner.\\"
-msgstr "Burada ilerleme kaydetmek için kenarlara\\hızlıca çarpmanız ve zıplamayı kontrol\\etmeniz gerek.Genellikle köşelere çarparak\\kaldırma çıkmak daha kolaydır.\\"
+msgstr "Burada ilerleme kaydetmek için kenarlara sert bir\\şekilde vurman ve ivmeni kontrol etmen gerekiyor.\\Bir köşedeki kaldırıma vurmak genellikle\\en basit yoldur.\\"
 
 #: data/map-hard/flip.map
 msgid ""
