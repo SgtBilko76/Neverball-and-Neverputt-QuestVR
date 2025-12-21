@@ -1265,7 +1265,7 @@ msgstr "Burada görünümü biraz kontrol etmen gerekiyor.\\Otomatik döndümeyi
 msgid ""
 "This wedding cake is plenty rich,\\but be careful as you go\\to each lower "
 "layer."
-msgstr "Bu düğün pastası oldukça zengin.\\Alt katlara geçerken dikkatli olun."
+msgstr "Bu düğün pastası oldukça dolgun görünüyor.\\Ama bir kattan ötekine geçerken dikkatli ol."
 
 #: data/map-medium/sparselines.map
 msgid ""
