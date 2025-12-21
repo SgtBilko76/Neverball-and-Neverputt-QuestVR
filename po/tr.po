@@ -1195,7 +1195,7 @@ msgstr "\"Cennete doğru bir merdiven...\""
 msgid ""
 "Those bridges are angled.\\Each is narrower and steeper than the last.\\Take"
 " the easy cash or\\go all the way for a big payoff.\\"
-msgstr "Bu köprüler meyilli.\\Her biri öncekine göre daha dar ve daha dik.\\İster kolay coinleri alın\\isterseniz büyük kazanç için her köprüden geçin.\\"
+msgstr "Bu köprüler eğimli.\\Her biri bir öncekine göre daha dar ve daha dik.\\İster kolay altınları alıp devam et, \\ister daha büyük oyna ve her köprüden geç.\\"
 
 #: data/map-medium/coneskeleton.map
 msgid "Plenty of coins for the taking.\\Can you take them all?"
