@@ -1497,7 +1497,7 @@ msgstr "Sokak Neverball'u\\Takımını seç ve üç sayı yap."
 
 #: data/map-mym2/bigball.map
 msgid "La machine à circonvolutions.\\Easy, the goal is just above you."
-msgstr "La machine à circonvolutions.\\Kolay, hedef hemen altında."
+msgstr "La machine à circonvolutions.\\Çok kolay, hedef hemen üzerinde."
 
 #: data/map-mym2/bigcone.map
 msgid "Le grand cône.\\Living in a cone."
