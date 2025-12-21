@@ -983,7 +983,7 @@ msgstr "Bütün altınları topla...\\Ama hareketli nesnelere kabadayılık yapm
 msgid ""
 "Here's another coin grab.\\Perhaps you already know a good "
 "route.\\Teleportation might come in handy.\\"
-msgstr "Başka bir coin toplama alanı.\\Önceden de iyi bir rota biliyor olabilirsiniz.\\Işınlanma kullanışlı olabilir.\\"
+msgstr "Bir başka altın madeni daha.\\Belki şimdiden aklında iyi bir plan vardır.\\Işınlanma kullanışlı olabilir.\\"
 
 #: data/map-fwp/adventure.map
 msgid "=Adventure=\\Many things to do, coins to collect, risks to take."
