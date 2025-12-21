@@ -1287,7 +1287,7 @@ msgstr "Tıpkı az önceki bölüm gibi,\\ama bu sefer hareket aşağıdan yukar
 msgid ""
 "Here's yet another test of your ability\\to control bouncing.  Moving down "
 "the\\stairs too quickly can be hazardous.\\"
-msgstr "Bir başka zıplayan top kontrol yeteneği testi.\\Merdivenlerden hızlı inmek\\tehlikeli olabilir.\\"
+msgstr "Bir başka kontrol testi.\\Merdivenlerden hızlı inmek tehlikeli olabilir.\\"
 
 #: data/map-medium/telemaze.map
 msgid ""
