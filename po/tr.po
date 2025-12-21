@@ -235,7 +235,7 @@ msgstr "Sil"
 
 #: ball/st_demo.c:633 ball/st_pause.c:91 putt/st_all.c:641
 msgid "Continue"
-msgstr "Devam et"
+msgstr "Devam Et"
 
 #: ball/st_demo.c:635
 msgid "Repeat"
@@ -243,7 +243,7 @@ msgstr "Tekrarla"
 
 #: ball/st_demo.c:715
 msgid "Delete Replay?"
-msgstr "Kayıt Silinsin mi ?"
+msgstr "Kayıt Silinsin mi?"
 
 #: ball/st_demo.c:769 ball/st_level.c:179
 msgid "Warning!"
