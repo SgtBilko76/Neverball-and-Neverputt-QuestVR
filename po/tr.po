@@ -1027,7 +1027,7 @@ msgstr "=Müze=\\Lütfen sergilenen eşyalara dokunmayın."
 
 #: data/map-fwp/oddities.map
 msgid "=Oddities=\\Something is not quite right here..."
-msgstr "=Gariplikler=\\Burada bir şeyler yanlış gidiyor..."
+msgstr "=Tuhaflıklar=\\Sanki burada bir şeyler yanlış gidiyor gibi..."
 
 #: data/map-fwp/rails.map
 msgid "=Rails=\\Do not lose your balance."
