@@ -1515,7 +1515,7 @@ msgstr "Les sauts du célèbre plombier.\\Altınları takip et."
 msgid ""
 "Savoir rebondir pour aller plus haut.\\The Neverball Arena.\\Use the 2 "
 "teleports to unlock and reach the goal."
-msgstr "Savoir rebondir pour aller plus haut.\\Neverball Arena.\\2 ışınlayıcıyı da hedefi açmak ve\\hedefe ulaşmak için kullanın."
+msgstr "Savoir rebondir pour aller plus haut.\\Neverball Arena.\\İki ışınlayıcıyı da hedefi açmak ve\\ona ulaşmak için kullan."
 
 #: data/map-mym2/freefall.map
 msgid ""
