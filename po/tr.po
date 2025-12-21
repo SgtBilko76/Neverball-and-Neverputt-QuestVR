@@ -1600,7 +1600,7 @@ msgstr "İşte hız diye buna derim!"
 
 #: data/map-tones/blue.map
 msgid "Tread carefully...\\and keep moving!\\"
-msgstr "Dikkatlice yürüyün...\\ve devam edin!\\"
+msgstr "Dikkatlice yürü...\\ve oyalanma!\\"
 
 #: data/map-tones/bumperoo.map
 msgid "Who's the boss around here anyway?"
