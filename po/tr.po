@@ -977,7 +977,7 @@ msgstr "Top hareketli bir platformdayken\\hareket yönünde sürüklenecektir.\\
 
 #: data/map-easy/thwomp2.map
 msgid "Grab all the coins...\\but don't get bullied!"
-msgstr "Bütün altınları toplayın...\\Ama hareketli nesnelere kabadayılık yapmayın!"
+msgstr "Bütün altınları topla...\\Ama hareketli nesnelere kabadayılık yapma!"
 
 #: data/map-easy/wakka.map
 msgid ""
