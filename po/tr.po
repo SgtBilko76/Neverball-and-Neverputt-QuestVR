@@ -924,7 +924,7 @@ msgstr "Sarı yolu takip et!\\Mavi altınları toplamak zor olabilir,\\ama biraz
 msgid ""
 "The ball wants to rebound uncontrollably\\in a narrow passage. Keep it slow "
 "and\\off the walls. All the coins are collectable\\in the given time.\\"
-msgstr "Top dar geçitlerde kontrolsüz bir şekilde seker.\\Yavaş gidin ve duvarlara değmeyin.\\Bütün coinler verilen süre içinde toplanabilir."
+msgstr "Dar bir geçitte topu kontrol etmek daha da zorlaşır.\\Yavaşça ilerle ve duvarlardan kontrolsüzce sekmemeye çalış.\\Elindeki süre tüm altınları toplamak için yeterli."
 
 #: data/map-easy/mazebump.map
 msgid ""
