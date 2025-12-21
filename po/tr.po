@@ -962,7 +962,7 @@ msgstr "Hedefe giden yalnızca bir yol var,\\ama altın toplamak için bir çok 
 msgid ""
 "Follow the trail of coins to reach the goal.\\If you hit a post while moving"
 " quickly,\\you will bounce far off course."
-msgstr "Hedefe ulaşmak için coinleri takip edin.\\Eğer hızlı giderken bir sütuna çarparsanız\\rotanın dışına çıkarsınız."
+msgstr "Hedefe ulaşmak için altınları takip et.\\Eğer hızla giderken bir sütuna çarparsan\\rotanın dışına çıkabilirsin."
 
 #: data/map-easy/slightcurve.map
 msgid "Hills require more speed to get over.\\Be careful not to go too fast!"
