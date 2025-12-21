@@ -512,7 +512,7 @@ msgstr "En İyi Süre"
 
 #: ball/util.c:192 ball/util.c:236
 msgid "Fast Unlock"
-msgstr "En Hızlı Varış"
+msgstr "En Hızlı Hedef Açma"
 
 #: ball/util.c:205
 msgid "Change Name"
