@@ -1019,7 +1019,7 @@ msgstr "=Uğurböcekleri=\\Vızıltılarının seni rahatsız etmesine izin verm
 
 #: data/map-fwp/mountains.map
 msgid "=Mountains=\\Ups and downs are a part of life."
-msgstr "=Dağlar=\\İnişler ve çıkışlar hayatın bir parçasıdır."
+msgstr "=Dağlar=\\İniş ve çıkışlar hayatın bir parçasıdır."
 
 #: data/map-fwp/museum.map
 msgid "=Museum=\\Please do not touch the exhibits."
