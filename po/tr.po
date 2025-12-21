@@ -1189,7 +1189,7 @@ msgstr "Zemin sen ne kadar karşı koyarsan o kadar düzdür."
 
 #: data/map-medium/accordian.map
 msgid "Stairway to heaven"
-msgstr "Göğe doğru bir merdiven"
+msgstr "\"Cennete doğru bir merdiven...\""
 
 #: data/map-medium/angle.map
 msgid ""
