@@ -1329,7 +1329,7 @@ msgstr "Bir saat ve çevresinde bloklar."
 msgid ""
 "Follow the blue coins...\\and learn to control your bounce!\\Hint: Use the "
 "'chase' camera mode."
-msgstr "Mavi coinleri takip et...\\ve kontrollü bir şekilde sekmeye çalış!\\İpucu: \"Takip\" kamerasını kullanmayı dene."
+msgstr "Mavi altınları takip et...\\ve kontrollü kaybetmeden sekmeye çalış!\\İpucu: Takip kamerasını kullanmayı dene."
 
 #: data/map-misc/bounce2.map
 msgid "Follow the arrows."
