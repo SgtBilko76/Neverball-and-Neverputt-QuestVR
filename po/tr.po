@@ -1556,7 +1556,7 @@ msgstr "Hé, on pousse pas!\\Ne çok hızlı, ne de çok yavaş."
 
 #: data/map-mym2/rainbow.map
 msgid "Rainbow Road.\\Do 3 laps to open the goal."
-msgstr "Gökkuşağı Yolu.\\Hedefi açmak için 3 tur atın."
+msgstr "Gökkuşağı Yolu.\\Hedefi açmak için üç tur at."
 
 #: data/map-mym2/rodeo.map
 msgid "Le rodéo de Neverball.\\You'll fall quickly."
