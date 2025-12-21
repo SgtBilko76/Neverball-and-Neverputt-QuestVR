@@ -1473,7 +1473,7 @@ msgstr "Le petit cross.\\Haydi yarışalım!\\Hızını ayarlamak için yüzeyde
 
 #: data/map-mym/snow.map
 msgid "La descente rafraîchissante.\\Not so fast, not so fast."
-msgstr "La descente rafraîchissante.\\Çok hızlı gitmeyin."
+msgstr "La descente rafraîchissante.\\O kadar hızlı değil, o kadar da hızlı değil."
 
 #: data/map-mym/trust.map
 msgid "Le chemin de la foi.\\Self-confidence."
