@@ -1003,7 +1003,7 @@ msgstr "=Kargo=\\Kendinizi kaptırın."
 
 #: data/map-fwp/confetti.map
 msgid "=Confetti=\\Help! There has got to be a way through this mess."
-msgstr "=Konfeti=\\Yardım edin! Bu karmaşanın içinde bir yol olmalı."
+msgstr "=Konfetiler=\\Yardım et! Bu karmaşanın kurtulmanın bir yolu olmalı!"
 
 #: data/map-fwp/discs.map
 msgid "=Discs=\\Used correctly, the platforms will take you to the goal."
