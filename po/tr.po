@@ -826,7 +826,7 @@ msgstr "Reshaun'un iPutt Parkuru\\\\\\Zorluk: Başlangıçtan İleri Seviyeye\\H
 
 #: data/gui/title.map data/map-medium/title.map
 msgid "Neverball\\\\http://neverball.org\\\\Created by Robert Kooima\\"
-msgstr "Neverball\\\\https://neverball.org\\\\\\Robert Kooima tarafından yapıldı\\"
+msgstr "Neverball\\\\https://neverball.org\\\\Robert Kooima tarafından yapıldı.\\"
 
 #: data/map-easy/bumper.map
 msgid ""
