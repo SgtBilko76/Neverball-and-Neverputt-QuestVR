@@ -101,7 +101,7 @@ msgstr "Hedef"
 
 #: ball/hud.c:89 ball/st_goal.c:149
 msgid "Balls"
-msgstr "Toplar"
+msgstr "Kalan Top"
 
 #: ball/hud.c:90 ball/st_goal.c:155 putt/hud.c:45
 msgid "Score"
