@@ -1672,7 +1672,7 @@ msgstr "Her çıkışın bir inişi vardır!"
 msgid ""
 "Make sure you are\\safely on a purple platform\\before 20 seconds have "
 "elapsed!"
-msgstr "20 saniye dolmadan\\güvenli pembe düzlemlere\\ulaştığınızdan emin olun!"
+msgstr "20 saniye içerisinde mor bir platformun/üzerinde olduğundan emin ol!"
 
 #: data/map-tones/twisted.map
 msgid "Afraid of heights?\\Try not to get dizzy."
