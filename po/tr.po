@@ -1309,7 +1309,7 @@ msgstr "Labirentten çıkmak için altınları takip et."
 msgid ""
 "There are plenty of coins here if you're\\willing to take the time to grab "
 "them.\\"
-msgstr "Burada yeterince coin var.\\Tabi eğer onları toplamaya istekliyseniz.\\"
+msgstr "Burada yeterince altın var.\\Tabii eğer onları toplamak istiyorsan.\\"
 
 #: data/map-misc/bigball-old.map
 msgid ""
