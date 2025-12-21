@@ -1015,7 +1015,7 @@ msgstr "=Cehennem=\\Ateş sihirbazları görevinizi yapamamanız\\için elllerin
 
 #: data/map-fwp/ladybirds.map
 msgid "=Ladybirds=\\Don't let them bug you."
-msgstr "=Uğurböcekleri=\\Seni rahatsız etmelerine izin verme."
+msgstr "=Uğurböcekleri=\\Vızıltılarının seni rahatsız etmesine izin verme."
 
 #: data/map-fwp/mountains.map
 msgid "=Mountains=\\Ups and downs are a part of life."
