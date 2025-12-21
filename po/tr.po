@@ -784,7 +784,7 @@ msgstr "Uyarı: Henüz sıralanmamış bölümler.\\Test amaçlı.\\\\\\\\"
 msgid ""
 "The original 18-hole Neverputt course.\\With a gentle learning curve.\\ "
 "\\Difficulty: Easy to Medium\\Author: rlk\\"
-msgstr "Orijinal 18 delikli Neverputt bölümleri.\\Hafif bir zorluk artışı.\\ \\Zorluk: Kolaydan Ortaya\\Yapımcı: rlk\\"
+msgstr "Orijinal 18-delikli Neverputt parkuru.\\Adil bir zorluk artışı.\\ \\Zorluk: Başlangıçtan Orta Seviyeye\\Hazırlayan: rlk\\"
 
 #: data/holes-paxed.txt
 msgid "Another 18-hole course\\ \\ \\Difficulty: Medium\\Author: paxed\\"
