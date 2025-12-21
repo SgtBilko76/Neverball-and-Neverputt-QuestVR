@@ -1199,7 +1199,7 @@ msgstr "Bu köprüler eğimli.\\Her biri bir öncekine göre daha dar ve daha di
 
 #: data/map-medium/coneskeleton.map
 msgid "Plenty of coins for the taking.\\Can you take them all?"
-msgstr "Toplanacak çok coin var.\\Hepsini toplayabilir misin?"
+msgstr "Toplanacak fazlasıyla altın var.\\Hepsini toplayabilir misin?"
 
 #: data/map-medium/cross.map
 msgid ""
