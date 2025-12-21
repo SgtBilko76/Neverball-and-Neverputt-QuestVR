@@ -269,11 +269,11 @@ msgstr "Bölüm Seç"
 
 #: ball/st_fail.c:82
 msgid "Fall-out!"
-msgstr "Düştün!"
+msgstr "Hay Aksi!"
 
 #: ball/st_fail.c:84
 msgid "Time's Up!"
-msgstr "Süre Bitti !"
+msgstr "Süre Bitti!"
 
 #: ball/st_fail.c:98
 msgid "Exit"
