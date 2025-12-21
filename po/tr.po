@@ -846,7 +846,7 @@ msgid ""
 "This time you must get 50 coins to unlock the goal.\\Red coins are worth 5, "
 "blue coins are worth 10.\\Get to the goal before time expires!\\\\Click to "
 "begin.\\"
-msgstr "Bu kez hedefin kilidini açmak için 50 coin toplamalısınız.\\Kırmızı coinlerin değeri 5,\\mavi coinlerin değeri 10 coindir.\\Süre dolmadan hedefe ulaşın!\\\\Başlamak için tıklayın.\\"
+msgstr "Bu kez hedefi açmak için 50 altın toplamalısın.\\Kırmızı altınların değeri 5,\\mavi altınların değeri ise 10 altın.\\Süre dolmadan hedefe ulaş!\\\\Başlamak için tıkla.\\"
 
 #: data/map-easy/corners.map
 msgid ""
