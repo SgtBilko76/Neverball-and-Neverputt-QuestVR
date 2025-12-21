@@ -343,11 +343,11 @@ msgstr "Çık/Durdur"
 
 #: ball/st_help.c:184
 msgid "Restart Level"
-msgstr "Bölümü Yeniden Başlat"
+msgstr "Yeniden Başlat"
 
 #: ball/st_help.c:185
 msgid "Screenshot"
-msgstr "Ekran Görüntüsü"
+msgstr "Ekran Görüntüsü Al"
 
 #: ball/st_help.c:256
 msgid ""
