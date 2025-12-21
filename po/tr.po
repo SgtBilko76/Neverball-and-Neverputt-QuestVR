@@ -1168,7 +1168,7 @@ msgstr "Kırmızı ve mavi altınları toplarken iyi eğlenceler."
 
 #: data/map-hard/spread.map
 msgid "Don't worry.\\The green part isn't going anywhere.\\"
-msgstr "Endişelenmeyin.\\Yeşil parça hiçbir yere gitmiyor.\\"
+msgstr "Endişelenme.\\Yeşil platform hiçbir yere gitmiyor.\\"
 
 #: data/map-hard/sync.map
 msgid ""
