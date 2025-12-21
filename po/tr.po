@@ -1493,7 +1493,7 @@ msgstr "Un va-et-vient frustrant.\\Etkinleştirme sırasını hatırla."
 
 #: data/map-mym2/basket.map
 msgid "Street Neverball\\Choose your party and score 3 points."
-msgstr "Sokak Neverball'u\\Takımını seç ve 3 sayı yap."
+msgstr "Sokak Neverball'u\\Takımını seç ve üç sayı yap."
 
 #: data/map-mym2/bigball.map
 msgid "La machine à circonvolutions.\\Easy, the goal is just above you."
