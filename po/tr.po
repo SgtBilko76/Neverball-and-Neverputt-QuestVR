@@ -752,7 +752,7 @@ msgstr "Retour de Force"
 msgid ""
 "Difficulty: A little bit harder than my first set.\\\\More challenge, "
 "particularly for grabbing coins.\\Author: Mehdi Yousfi-Monod (mym)\\ \\"
-msgstr "Zorluk: İlk bölüm setimden biraz daha zor.\\\\Daha fazla bölüm, daha fazla coin.\\Yapımcı: Mehdi Yousfi-Monod (mym)\\ \\"
+msgstr "Zorluk: Bir önceki setimden biraz daha zor.\\\\Daha fazla bölüm, daha fazla altın.\\Yapımcı: Mehdi Yousfi-Monod (mym)\\ \\"
 
 #: data/set-fwp.txt
 msgid "Nevermania"
