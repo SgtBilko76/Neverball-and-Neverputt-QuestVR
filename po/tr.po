@@ -991,7 +991,7 @@ msgstr "=Macera=\\Toplanacak altınlar, alınacak riskler... Yapacak çok şey v
 
 #: data/map-fwp/atrium.map
 msgid "=Atrium=\\Remove the coins from their columns."
-msgstr "=Avlu=\\Kolonlardaki coinleri toplamaya çalış."
+msgstr "=Avlu=\\Kolonlardaki altınları toplamaya çalış."
 
 #: data/map-fwp/buoys.map
 msgid "=Buoys=\\He who controls the timers, controls the gates."
