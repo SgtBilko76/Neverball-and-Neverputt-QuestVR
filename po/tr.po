@@ -1402,7 +1402,7 @@ msgid ""
 "La ballade dansante.\\Let's dance on the moving platform!\\Tip: After "
 "activating the last moving platform,\\ turn around the Thwomp until the goal"
 " is reachable."
-msgstr "La ballade dansante.\\Hareketli düzlem üzerinde dans edin!\\İpucu: Son hareketli düzlemi etkinleştirdikten sonra,\\hedef ulaşılablir olana kadar Thwomp'un etrafında dönün."
+msgstr "La ballade dansante.\\Hareketli düzlem üzerinde dans et!\\\\İpucu: Son hareketli platformu etkinleştirdikten sonra,\\hedef ulaşılabilir olana kadar Thwomp'un etrafında dön."
 
 #: data/map-mym/descent.map
 msgid "La descente infernale.\\Easy enough to start?"
