@@ -1146,7 +1146,7 @@ msgstr "Her basamak için yaklaşık 15 saniyen var, gecikmemeye çalış.\\Alt�
 
 #: data/map-hard/quads.map
 msgid "Don't get bullied.\\"
-msgstr "Kabadayılık yapma.\\"
+msgstr "Boyun eğme."
 
 #: data/map-hard/rampup.map
 msgid "I think I can.\\I think I can.\\"
