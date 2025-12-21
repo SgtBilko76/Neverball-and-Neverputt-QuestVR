@@ -1211,7 +1211,7 @@ msgstr "Yukardaki platformlara ulaşmak için hızlan,\\ama güvenli bir iniş i
 msgid ""
 "Remember to keep an eye on the shadow to\\help control a bouncing ball.  And"
 " don't\\forget to use the mouse buttons to keep the\\ball in view.\\"
-msgstr "Zıplayan bir topun kontrolüne yardım etmek için\\gölgenin takip edildiğini hatırlayın. Ve topu\\görüş alanında tutmak için farenin tuşlarının\\kullanıldığını unutmayın.\\"
+msgstr "Zıplayan bir topun kontrolüne yardım etmek için\\gölgeyi takip edebileceğini hatırla.\\Topu görüş alanında tutmak için farenin tuşlarının\\kullanıldığını unutma."
 
 #: data/map-medium/easytele.map
 msgid "Use teleporters to go\\where you otherwise couldn't.\\"
