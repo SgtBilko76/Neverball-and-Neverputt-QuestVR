@@ -879,7 +879,7 @@ msgid ""
 "''Flat'' is relative.\\Learn to hold the floor at an angle\\so that a slope "
 "remains level.\\This way, you maintain full control of the ball.\\Use "
 "momentum to get up to the big coins.\\"
-msgstr "\"Zemin\" görecelidir. Zemini bir açıyla tutmayı öğrenin\\böylece meyil belli bir seviyede\\kalır. Bu şekilde topu tamamıyla kontrol edersiniz.\\Büyük coinleri almak için hızlanın.\\"
+msgstr "\"Zemin\" görecelidir. Zeminde sabit bir açıyla ilerlemeyi öğren,\\böylece eğim belirli bir seviyede kalır.\\Bu şekilde topu tamamen kontrol edebilirsin.\\Değerli altınları toplamak için hızlan.\\"
 
 #: data/map-easy/goals.map
 msgid ""
