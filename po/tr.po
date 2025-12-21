@@ -359,7 +359,7 @@ msgstr "Süre bitmeden önce bölümü tamamla.\\Hedefe giden yolu açmak için 
 msgid ""
 "Start playing from the first level of the set.\\You start with only three "
 "balls, do not lose them.\\Earn an extra ball for each 100 coins collected."
-msgstr "Setin ilk bölümünden oynamaya başlayın.\\Yalnızca üç topla başlayacaksınız, onları kaybetmeyin.\\100 coin topladığınızda bir top daha kazanırsınız."
+msgstr "Setin ilk bölümünden oynamaya başla.\\Yalnızca üç top hakkın var, onları kaybetme.\\Her 100 altın topladığınızda birer top daha kazanırsınız."
 
 #: ball/st_help.c:283
 msgid ""
