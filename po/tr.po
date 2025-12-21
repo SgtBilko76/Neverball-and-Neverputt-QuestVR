@@ -1634,7 +1634,7 @@ msgstr "Sarsıntılı bir yolculuktan kaçınmak için\\hızını kontrol et."
 
 #: data/map-tones/hotwheels.map
 msgid "Learn the course and stick to the rails!"
-msgstr "Parkuru ve korkuluklara yapışmayı öğrenin!"
+msgstr "Kemerlerini bağla! Yolu öğren ve Korkuluklara güven!"
 
 #: data/map-tones/hurdles.map
 msgid "Let's start with an easy warm-up.\\Build speed and leap to the goal."
