@@ -930,7 +930,7 @@ msgstr "Dar bir geçitte topu kontrol etmek daha da zorlaşır.\\Yavaşça ilerl
 msgid ""
 "Puzzling but profitable.\\\\Take time to observe the motions\\of the bumpers"
 " - it will help you\\to reach the goal."
-msgstr "Kafa karıştırıcı ama kazançlı.\\\\Hareketli cisimleri gözlemlemek için\\zaman ayırmanız hedefe ulaşmakta\\size yardımcı olacaktır."
+msgstr "Kafa karıştırıcı, ama bir o kadar cazip.\\Hareketli cisimleri gözlemlemek için zaman ayır.\\Hedefe giden yolda sana yardımcı olacak."
 
 #: data/map-easy/mover.map
 msgid ""
