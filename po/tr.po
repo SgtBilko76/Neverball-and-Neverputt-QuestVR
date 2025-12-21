@@ -1638,7 +1638,7 @@ msgstr "Kemerlerini bağla! Yolu öğren ve korkuluklara güven!"
 
 #: data/map-tones/hurdles.map
 msgid "Let's start with an easy warm-up.\\Build speed and leap to the goal."
-msgstr "Kolay bir ısınma turuyla başlayalım.\\Hızınızı ayarlayın ve hedefe sıçrayın."
+msgstr "Kolay bir ısınma turuyla başlayalım.\\Hızını ayarla ve doğruca hedefe sıçra."
 
 #: data/map-tones/leaps.map
 msgid "Look before you leap..."
