@@ -1616,11 +1616,11 @@ msgstr "Gözlerini gökten ayırma!\\Ama süreyi kontrol etmeyi de unutma...\\"
 
 #: data/map-tones/city.map
 msgid "Stepping stones."
-msgstr "Basamak taşları."
+msgstr "Kaldırımlar."
 
 #: data/map-tones/discs.map
 msgid "Work your way to the top."
-msgstr "Zirveye doğru ilerleyin."
+msgstr "Zirveye doğru ilerle."
 
 #: data/map-tones/easyian.map
 msgid ""
