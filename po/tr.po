@@ -1333,7 +1333,7 @@ msgstr "Mavi altınları takip et...\\ve kontrollü kaybetmeden sekmeye çalış
 
 #: data/map-misc/bounce2.map
 msgid "Follow the arrows."
-msgstr "Okları takip edin."
+msgstr "Okları takip et."
 
 #: data/map-misc/checkers.map
 msgid ""
