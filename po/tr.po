@@ -1124,7 +1124,7 @@ msgid ""
 "There are two goals here.\\You can complete this level\\the easy way or the "
 "hard way.\\Of course, by going the easy way\\you can forget about all\\those"
 " red and blue coins."
-msgstr "Burada iki hedef var.\\Bölümü kolay ya da zor yoldan\\tamamlayabilirsiniz.\\Kolay yoldan gittiğinizde\\bütün kırmızı ve mavi coinleri unutun."
+msgstr "İki farklı hedef var.\\Bölümü kolay ya da zor yoldan da tamamlayabilirsin.\\Tabii, kolay yoldan gittiğinde\\bütün kırmızı ve mavi altınları unut."
 
 #: data/map-hard/paths.map
 msgid "So many different paths to take...\\have you tried all of them?"
