@@ -365,7 +365,7 @@ msgstr "Setin ilk bölümünden itibaren oynamaya başla.\\Yalnızca üç top ha
 msgid ""
 "Corners can be used to jump.\\Get rolling and take aim\\at the angle. You "
 "may be able\\to reach new places.\\"
-msgstr "Köşeler zıplamak için kullanılabilir.\\Yuvarlanın ve açılı nişan alın.\\Böylece bölümün farklı noktalarına ulaşabilirsiniz.\\"
+msgstr "Köşeleri zıplamak için kullanabilirsin.\\Hızlan ve köşeyi hedefle. Bu\\sayede bölümün erişmesi zor\\noktalarına ulaşabilirsin.\\"
 
 #: ball/st_help.c:288
 msgid ""
