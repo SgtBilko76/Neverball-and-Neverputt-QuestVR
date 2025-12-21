@@ -504,7 +504,7 @@ msgstr "Kullanılamaz"
 
 #: ball/util.c:178 ball/util.c:228
 msgid "Most Coins"
-msgstr "En Fazla Coin"
+msgstr "En Çok Altın"
 
 #: ball/util.c:185 ball/util.c:232
 msgid "Best Times"
