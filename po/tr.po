@@ -1093,7 +1093,7 @@ msgstr "Vrak!\\"
 msgid ""
 "Time the switches carefully to synchronize\\the motion of the "
 "platforms.\\Move quickly across the gaps.\\"
-msgstr "Düzlemlerin hareketini eşlemek\\için anahtarları zamanlayın.\\Karşıya geçerken hızlı olun.\\"
+msgstr "Platformların hareketini eşlemek için anahtarları dikkatlice zamanla.\\Karşıya geçerken hızlı ol.\\"
 
 #: data/map-hard/grid.map
 msgid "Yes, the ball does fit quite nicely through\\those little holes.\\"
