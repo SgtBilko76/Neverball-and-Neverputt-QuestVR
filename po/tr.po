@@ -93,7 +93,7 @@ msgstr "snd/over.ogg"
 
 #: ball/hud.c:68 ball/st_demo.c:203 ball/st_goal.c:161
 msgid "Coins"
-msgstr "Coinler"
+msgstr "Altın"
 
 #: ball/hud.c:69
 msgid "Goal"
