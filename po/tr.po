@@ -742,7 +742,7 @@ msgstr "Tour de Force"
 msgid ""
 "Difficulty: Expert through Insane\\\\25 levels with even greater "
 "challenge.\\Author: Mehdi Yousfi-Monod (mym)\\ \\"
-msgstr "Difficulty: Uzmanlıktan İnsanüstülüğe\\\\Daha da zor 25 bölüm.\\Yapımcı: Mehdi Yousfi-Monod (mym)\\ \\"
+msgstr "Zorluk: İleri Seviyeden İnsanüstülüğe\\\\Daha da zorlayıcı 25 farklı bölüm.\\Hazırlayan: Mehdi Yousfi-Monod (mym)\\ \\"
 
 #: data/set-mym2.txt
 msgid "Retour de force"
