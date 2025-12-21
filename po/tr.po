@@ -721,7 +721,7 @@ msgid ""
 "Difficulty: Beginner through Expert\\\\25 levels which provide a "
 "balanced\\challenge for players. Try to claim\\some of the records "
 "provided.\\"
-msgstr "Zorluk: Başlangıçtan Uzmanlığa\\\\25 bölüm oyuncular için düzenli bir zorluk sağlar.\\Bazı rekorları kırmaya çalışın.\\"
+msgstr "Zorluk: Başlangıçtan İleri Seviyeye\\\\25 bölüm boyunca düzenli bir zorluk seviyesi.\\Bazı rekorları kırmaya çalış.\\"
 
 #: data/set-hard.txt
 msgid "Neverball Hard"
