@@ -1666,7 +1666,7 @@ msgstr "Zamanlama her şeydir."
 
 #: data/map-tones/swoop.map
 msgid "What goes down must come up!\\"
-msgstr "Aşağı inen yukarı çıkmalı!\\"
+msgstr "Her çıkışın bir inişi vardır!"
 
 #: data/map-tones/tonesmaze.map
 msgid ""
