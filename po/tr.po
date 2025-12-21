@@ -943,7 +943,7 @@ msgstr "Hareketli bir platform aldatıcı olabilir.\\Hedefe ulaşmak için denge
 msgid ""
 "Mouse buttons rotate the view.\\Press Escape to pause or quit.\\\\\\\\Click "
 "to begin.\\"
-msgstr "Farenin tuşları ekranı döndürür.\\Durdurmak veya çıkmak için Esc tuşuna basın.\\\\\\\\ Başlamak için tıklayın.\\"
+msgstr "Farenin tuşları kamera açısını döndürür.\\Durdurmak veya çıkmak için ESC tuşuna bas.\\\\Başlamak için tıkla.\\"
 
 #: data/map-easy/roundcoins.map
 msgid ""
