@@ -1128,7 +1128,7 @@ msgstr "İki farklı hedef var.\\Bölümü kolay ya da zor yoldan da\\tamamlayab
 
 #: data/map-hard/paths.map
 msgid "So many different paths to take...\\have you tried all of them?"
-msgstr "Gidecek bir çok yol var...\\Hepsini denedin mi?"
+msgstr "Gidecek birçok farklı yol var...\\Hepsini denedin mi?"
 
 #: data/map-hard/pipe.map
 msgid "Ceci n'est pas une pipe.\\"
