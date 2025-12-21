@@ -732,11 +732,11 @@ msgid ""
 "Difficulty: Intermediate through Expert\\\\25 levels with more of a "
 "challenge for\\the experienced player. Try to claim\\Best Times, Most Coins,"
 " and Fast Unlock records.\\"
-msgstr "Zorluk: Orta Seviyeden Uzmanlığa\\\\Deneyimli oyuncular için oldukça zor 25 bölüm.\\\"En İyi Zamanlama\", \"En Fazla Coin\",\\ve \"En Hızlı Varış\" rekorlarını kırmayı deneyin.\\"
+msgstr "Zorluk: Orta Seviyeden İleri Seviyeye\\\\Deneyimli oyuncular için oldukça zor 25 bölüm.\\\"En İyi Süre\", \"En Çok Altın\",\\ve \"En Hızlı Hedef Açma\" rekorlarını kırmayı dene.\\"
 
 #: data/set-mym.txt
 msgid "Tour de force"
-msgstr "Tour de force"
+msgstr "Tour de Force"
 
 #: data/set-mym.txt
 msgid ""
