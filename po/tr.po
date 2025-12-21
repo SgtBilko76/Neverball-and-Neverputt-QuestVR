@@ -778,7 +778,7 @@ msgstr "Çeşitli Bölümler"
 
 #: data/set-misc.txt
 msgid "Unsorted levels\\For testing purposes\\\\\\\\"
-msgstr "Uyarı\\Henüz sıralanmamış bölümler\\Test amaçlı\\\\\\\\"
+msgstr "Uyarı: Henüz sıralanmamış bölümler.\\Test amaçlı.\\\\\\\\"
 
 #: data/holes-putt.txt
 msgid ""
