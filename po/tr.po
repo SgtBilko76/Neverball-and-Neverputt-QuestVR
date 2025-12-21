@@ -1227,7 +1227,7 @@ msgstr "Hedefe ulaşmak için yokuş yukarı çık.\\(Söylemesi yapmaktan kolay
 
 #: data/map-medium/islands.map
 msgid "Catch the train before it leaves the station.\\"
-msgstr "Tren istasyondan ayrılmadan onu yakalayın.\\"
+msgstr "Tren istasyondan ayrılmadan yakala.\\"
 
 #: data/map-medium/learngrow.map
 msgid ""
