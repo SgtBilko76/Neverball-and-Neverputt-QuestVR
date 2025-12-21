@@ -675,7 +675,7 @@ msgstr "I"
 
 #: putt/st_all.c:352
 msgid "Select Course"
-msgstr "Rotanı Belirle"
+msgstr "Parkur Belirle"
 
 #: putt/st_all.c:520
 msgid "Players?"
