@@ -1087,7 +1087,7 @@ msgstr "Ne yani, Neverball bir bulmaca oyunu mu?\\Hedefi açmak için kırmızı
 
 #: data/map-hard/frogger.map
 msgid "Ribbit!\\"
-msgstr "Vırak!\\"
+msgstr "Vrak!\\"
 
 #: data/map-hard/gaps.map
 msgid ""
