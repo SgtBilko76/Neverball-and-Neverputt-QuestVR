@@ -1680,7 +1680,7 @@ msgstr "Yüksekten mi korkuyorsun?\\Umarım başın dönmez."
 
 #: data/map-tones/waves.map
 msgid "Surf's Up !!"
-msgstr "Sörf zamanı !!"
+msgstr "Sörf zamanı!!"
 
 #. Desktop entry comment
 #: dist/neverball.desktop.in
