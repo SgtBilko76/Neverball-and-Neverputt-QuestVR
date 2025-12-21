@@ -999,7 +999,7 @@ msgstr "=Şamandıralar=\\\"Zamana hâkim olan, kapılara da hâkim olur\"."
 
 #: data/map-fwp/cargo.map
 msgid "=Cargo=\\Let yourself be carried away."
-msgstr "=Kargo=\\Kendinizi taşıtın."
+msgstr "=Kargo=\\Kendinizi kaptırın."
 
 #: data/map-fwp/confetti.map
 msgid "=Confetti=\\Help! There has got to be a way through this mess."
