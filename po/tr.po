@@ -113,7 +113,7 @@ msgstr "Düello Modu"
 
 #: ball/progress.c:413 ball/st_start.c:208
 msgid "Challenge"
-msgstr "Düello Modu"
+msgstr "Düello"
 
 #: ball/progress.c:414 ball/st_help.c:254
 msgid "Normal Mode"
