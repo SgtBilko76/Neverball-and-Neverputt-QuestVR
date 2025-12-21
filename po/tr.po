@@ -1248,7 +1248,7 @@ msgstr "Acele giden ecele gider.\\Hızlı gitmek felaketin olabilir.\\Sonraki te
 
 #: data/map-medium/plinko.map
 msgid "Take it slowly.\\"
-msgstr "Yavaş gidin.\\"
+msgstr "Ağır ol."
 
 #: data/map-medium/qbert.map
 msgid "You can never go home again..."
