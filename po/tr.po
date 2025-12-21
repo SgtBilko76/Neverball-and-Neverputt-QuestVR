@@ -353,7 +353,7 @@ msgstr "Ekran Görüntüsü Al"
 msgid ""
 "Finish a level before the time runs out.\\You need to collect coins in order"
 " to open the goal."
-msgstr "Süre bitmeden önce bölümü bitirin.\\Hedefi açmak için coinleri toplamanız gerekiyor."
+msgstr "Süre bitmeden önce bölümü tamamla.\\Hedefi açmak için altınları biriktirmen gerekiyor."
 
 #: ball/st_help.c:269
 msgid ""
