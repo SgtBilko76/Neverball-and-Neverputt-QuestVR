@@ -1244,7 +1244,7 @@ msgstr "Bariyerleri kaldırmak için anahtarları aktive et."
 msgid ""
 "The temptation to move quickly\\could prove your undoing.\\\\Then again, "
 "maybe not..."
-msgstr "Hızlı gitmek felaketiniz olabilir.\\ Sonraki tekrarda belki de olmaz..."
+msgstr "Acele giden ecele gider.\\Hızlı gitmek felaketin olabilir.\\Sonraki tekrarda belki de olmaz..."
 
 #: data/map-medium/plinko.map
 msgid "Take it slowly.\\"
