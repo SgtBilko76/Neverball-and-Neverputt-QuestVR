@@ -5,6 +5,7 @@
 # Translators:
 # Alperen Erdoğan <pokepe-e@hotmail.com>, 2016-2017
 # Berkant Ak <iberexe@gmail.com>, 2019
+# Berkay Aktepe, 2025
 # Mehmet, 2016-2017
 # Mehmet, 2022
 msgid ""
@@ -12,9 +13,9 @@ msgstr ""
 "Project-Id-Version: Neverball\n"
 "Report-Msgid-Bugs-To: robert.kooima@gmail.com\n"
 "POT-Creation-Date: 2021-12-09 22:48+0200\n"
-"PO-Revision-Date: 2022-02-14 01:00+0000\n"
-"Last-Translator: Mehmet\n"
-"Language-Team: Turkish (http://www.transifex.com/neverball/neverball/language/tr/)\n"
+"PO-Revision-Date: 2013-11-30 10:21+0000\n"
+"Last-Translator: Berkay Aktepe, 2025\n"
+"Language-Team: Turkish (http://app.transifex.com/neverball/neverball/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +44,7 @@ msgstr "Bilinmeyen"
 
 #: ball/game_common.c:44 ball/st_help.c:183
 msgid "Manual Camera"
-msgstr "Manuel Kamera"
+msgstr "Sabit Kamera"
 
 #: ball/game_common.c:45 ball/st_help.c:182
 msgid "Lazy Camera"
