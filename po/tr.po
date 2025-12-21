@@ -1234,7 +1234,7 @@ msgid ""
 "The ball will fit in those small holes,\\if you can just find something to "
 "make it smaller.\\Other places may require a bigger ball.\\One thing is "
 "certain - you'll want a plan!"
-msgstr "Eğer topu küçültmek için bir şeyler\\bulabilirseniz top küçük deliklere sığabilir.\\Bazı yerler de daha büyük bir top gerektirebilir.\\Kesin olan tek bir şey var. Plan yapmak isteyeceksin!"
+msgstr "Eğer topu küçültmenin bir yolu olsaydı küçük deliklere sığabilirdi...\\Bazı yerler için de daha büyük bir top lazım.\\Kesin olan tek bir şey var. Planla!"
 
 #: data/map-medium/locks.map
 msgid "Hit the switches to move the barriers.\\"
