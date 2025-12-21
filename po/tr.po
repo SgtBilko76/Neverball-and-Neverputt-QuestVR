@@ -966,7 +966,7 @@ msgstr "Hedefe ulaşmak için altınları takip et.\\Eğer hızla giderken bir s
 
 #: data/map-easy/slightcurve.map
 msgid "Hills require more speed to get over.\\Be careful not to go too fast!"
-msgstr "Tepeleri aşmak daha fazla hız gerektirir.\\Ama çok hızlı gitmekten de sakının!"
+msgstr "Tepeleri aşmak için daha fazla hız lazım.\\Fakat aşırı hızlı gitmekten de sakın!"
 
 #: data/map-easy/speedbumps.map
 msgid ""
