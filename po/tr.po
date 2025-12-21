@@ -1612,7 +1612,7 @@ msgstr "Bütün altınları istiyorsan\\sanırım biraz ıslanacaksın."
 
 #: data/map-tones/check.map
 msgid "Keep your eye on the sky!\\but don't run out of time...\\"
-msgstr "Gözlerinizi gökten ayırmayın!\\Ama süreyi kontrol etmeyi de unutmayın...\\"
+msgstr "Gözlerini gökten ayırma!\\Ama süreyi kontrol etmeyi de unutma...\\"
 
 #: data/map-tones/city.map
 msgid "Stepping stones."
