@@ -583,7 +583,7 @@ msgstr "Arkaplan"
 
 #: share/st_common.c:383
 msgid "Shadow"
-msgstr "Gölge"
+msgstr "Gölgelendirme"
 
 #: share/st_common.c:782
 msgid "Button A"
