@@ -1323,7 +1323,7 @@ msgstr "Bütün mavi altınları toplamayı dene...\\İşte bu kolay olmayacak!"
 
 #: data/map-misc/blockers.map
 msgid "Block around the clock."
-msgstr "Bir saat ve çevresinde bloklar."
+msgstr "Bir zamanlayıcı ve çevresinde bloklar."
 
 #: data/map-misc/bounce.map
 msgid ""
