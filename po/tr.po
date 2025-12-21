@@ -796,11 +796,11 @@ msgstr "Bir diğer 18-delikli kurs\\ \\ \\Zorluk: Orta\\Bölüm yapımcısı: pa
 
 #: data/holes-paxed3.txt
 msgid "Even More Holes\\ \\ \\Difficulty: Medium\\Author: paxed\\"
-msgstr "Daha Fazla Bölüm!\\ \\ \\Zorluk: Orta Seviye\\Bölüm yapımcısı: paxed\\"
+msgstr "Daha Fazla Bölüm!\\ \\ \\Zorluk: Orta Seviye\\Hazırlayan: paxed\\"
 
 #: data/holes-abc.txt
 msgid "A 26-hole course\\following the alphabet\\\\Difficulty: Hard\\Author: paxed\\"
-msgstr "Alfabeyi izleyen\\ 26-delikli bir kurs\\\\Zorluk: Zor\\Bölüm yapımcısı: paxed\\"
+msgstr "Alfabeyi izleyen 26-delikli bir kurs\\\\Zorluk: Zor Seviye\\Hazırlayan: paxed\\"
 
 #: data/holes-slippi.txt
 msgid "Crazy Golf\\ \\\\Difficulty: Easy to Medium\\Author: slippifishi\\"
