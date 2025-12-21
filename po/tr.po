@@ -788,7 +788,7 @@ msgstr "Orijinal 18-delikli Neverputt parkuru.\\Adil bir zorluk artışı.\\ \\Z
 
 #: data/holes-paxed.txt
 msgid "Another 18-hole course\\ \\ \\Difficulty: Medium\\Author: paxed\\"
-msgstr "Diğer 18-delikli kurs\\ \\ \\Zorluk: Orta\\Bölüm yapımcısı: paxed\\"
+msgstr "Bir diğer 18-delikli parkur\\ \\ \\Zorluk: Orta Seviye\\Hazırlayanı: paxed\\"
 
 #: data/holes-paxed2.txt
 msgid "Yet Another 18-hole course\\ \\ \\Difficulty: Medium\\Author: paxed\\"
