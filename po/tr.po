@@ -1299,7 +1299,7 @@ msgstr "Bu labirentin duvarları yok.\\Ama bu daha kolay olduğu anlamına gelmi
 msgid ""
 "That one switch controls all five barriers.\\Be quick, because the switch is"
 " on a timer.\\When it expires, the barriers will rise.\\"
-msgstr "Yalnızca bir anahtar beş bariyeri de kontrol ediyor.\\Çabuk olun, çünkü anahtarın süresi var.\\Süre dolduğunda bariyerler yükselecek.\\"
+msgstr "Yalnızca bir anahtar beş bariyeri de kontrol ediyor.\\Çabuk ol, çünkü anahtarın belirli bir süresi var.\\Süre dolduğunda bariyerler tekrar yükselecek.\\"
 
 #: data/map-medium/woodmaze.map
 msgid "Follow the trail of coins\\to make it through the labyrinth."
