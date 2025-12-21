@@ -1367,7 +1367,7 @@ msgstr "Merdivenlerden düşüyorum.\\Aaah!\\Bu acıttı işte!."
 
 #: data/map-misc/thwomp1.map
 msgid "Just let it happen...\\then start to worry!"
-msgstr "Olmasına izin verin...\\sonra endişe etmeye başlarsınız!"
+msgstr "Bırak çarpsın sana...\\Sonra endişe etmeye başlarsın!"
 
 #: data/map-misc/timer-test_2.map
 msgid "Another test for timer accuracy."
