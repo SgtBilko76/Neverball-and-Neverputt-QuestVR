@@ -1150,7 +1150,7 @@ msgstr "Boyun eğme."
 
 #: data/map-hard/rampup.map
 msgid "I think I can.\\I think I can.\\"
-msgstr "Bence yapabilirim.\\Bence yapabilirim.\\"
+msgstr "\"Bence yapabilirim.\"\\\"Bence yapabilirim.\""
 
 #: data/map-hard/ring.map
 msgid "So close, yet so very far.\\"
