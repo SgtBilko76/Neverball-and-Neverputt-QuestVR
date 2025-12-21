@@ -1259,7 +1259,7 @@ msgid ""
 "You'll need to exert some control over your\\view here.  Press 3 to stop the"
 " auto-rotation.\\Use the mouse buttons to rotate it manually.\\Press 1 to "
 "return to the auto-rotating view.\\"
-msgstr "Burada görünümü biraz kontrol etmeniz\\gerekecek. Otomatik döndümeyi kapatmak için\\3 tuşuna basın. Görünümü elle döndürmek için\\farenin tuşlarını kullanın. Yeniden otomatik döndürmeye\\geçmek için 1 tuşuna basın.\\"
+msgstr "Burada görünümü biraz kontrol etmen gerekiyor.\\Otomatik döndümeyi kapatmak için 3 tuşuna bas.\\Görünümü elle döndürmek için farenin tuşlarını kullan.\\Yeniden otomatik döndürmeye geçmek için 1 tuşuna basın.\\"
 
 #: data/map-medium/roundfloors.map
 msgid ""
