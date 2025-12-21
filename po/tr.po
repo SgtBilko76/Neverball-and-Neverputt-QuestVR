@@ -1039,7 +1039,7 @@ msgstr "=Rampalar=\\Zirveye çıkabilir misin?"
 
 #: data/map-fwp/rings.map
 msgid "=Rings=\\Roll your way through this trap."
-msgstr "=Yüzükler=\\Bu tuzaktan yuvarlanarak geçin."
+msgstr "=Çemberler=\\Tuzakları yuvarlanarak alt et."
 
 #: data/map-fwp/slope.map
 msgid "=Slope=\\Try not to become a modern-day Sisyphus."
