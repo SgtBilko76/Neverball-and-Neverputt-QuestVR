@@ -1481,7 +1481,7 @@ msgstr "Le chemin de la foi.\\Özgüven testi."
 
 #: data/map-mym/turn.map
 msgid "Le sens trigonométrique.\\Turn, wait and jump."
-msgstr "Le sens trigonométrique.\\Dönün, bekleyin ve zıplayın."
+msgstr "Le sens trigonométrique.\\Dön, bekle ve sıçra!"
 
 #: data/map-mym/up.map
 msgid "L'ascension pressée.\\Only one piece of advice: don't stop!"
