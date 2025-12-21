@@ -1658,7 +1658,7 @@ msgstr "Güvertenin üzerinde yavaşça ilerle.\\Işınlayıcıdan ardından hı
 
 #: data/map-tones/skiball.map
 msgid "Ski Ball!\\\\Work your way from 10 to 100\\in sequence or you'll fall out."
-msgstr "Kayan Top!\\\\Yolu 10'dan 100'e doğru sırayla açın ya da düşersiniz."
+msgstr "Ski-Ball!\\\\10 ile 100 arasında bir noktayı hedeflediğinden emin ol./Yoksa düşersin."
 
 #: data/map-tones/swish.map
 msgid "Timing is everything."
