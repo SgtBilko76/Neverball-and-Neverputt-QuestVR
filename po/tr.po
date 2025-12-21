@@ -335,7 +335,7 @@ msgstr "Altınları üzerlerinden geçerek\\toplayın. Hedefe ulaşıp\\bölüm�
 msgid ""
 "Left and right mouse buttons rotate the view.\\Hold Shift for faster view "
 "rotation."
-msgstr "Farenin sol ve sağ tuşlarıyla görüntüyü döndürür.\\Shift tuşuna basıldığında görüntü daha hızlı döner."
+msgstr "Farenin sol ve sağ tuşlarıyla görüntüyü döndürün.\\Daha hızlı döndürmek için Shift tuşuna basılı tutun.\\"
 
 #: ball/st_help.c:180
 msgid "Exit / Pause"
