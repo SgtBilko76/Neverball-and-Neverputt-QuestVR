@@ -904,7 +904,7 @@ msgid ""
 "Getting to the goal\\shouldn't be a problem,\\but getting all of the coins "
 "will\\require some planning.\\\\Hint: often it is faster to avoid\\a hole "
 "instead of falling into it."
-msgstr "Hedefe ulaşmak sorun değil\\ama bütün coinleri toplamak için\\plan yapmanız gerek.\\\\İpucu: bir deliğe düşmek yerine\\delikten kaçmak çoğunlukla zaman kazandırır."
+msgstr "Hedefe ulaşmak çok büyük bir sorun değil,\\ama bütün altınları toplamak için bir plan yapman gerek.\\\\İpucu: Zaman kazanmak için bir deliğe düşüp beklemek yerine delikten kaçınmaya çalış."
 
 #: data/map-easy/hole.map
 msgid ""
