@@ -1277,7 +1277,7 @@ msgstr "Hat değiştirmek için aradaki bariyerlere hızla çarp.\\Ekstra zorluk
 msgid ""
 "Take it slow to keep it away from the edge.\\Or, don't.\\Either way might "
 "work.\\"
-msgstr "Topu kenarlardan uzak tutmak için yavaş gidin.\\Ya da gitmeyin.\\Her iki yol da işe yarayabilir.\\"
+msgstr "Topu kenarlardan uzak tutmak için yavaş git.\\Ya da gitme.\\Sen bilirsin."
 
 #: data/map-medium/spiralup.map
 msgid "Just as before, but moving up instead of down.\\No cheating this time.\\"
