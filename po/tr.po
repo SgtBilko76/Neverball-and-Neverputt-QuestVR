@@ -1351,7 +1351,7 @@ msgstr "Savoir chuter.\\Mavi işaretleri takip et."
 
 #: data/map-misc/grow_demo.map
 msgid "Use the new coins to change ball size!\\I hope you like it!\\-Dave"
-msgstr "Topun büyüklüğünü değiştirmek için yeni coinleri kullanın!\\Beğeneceğinizi umuyorum!\\-Dave"
+msgstr "Topun büyüklüğünü değiştirmek için yeni altınları kullan!\\Umarım beğenirsin!\\- Dave"
 
 #: data/map-misc/groweasy.map
 msgid "There are special coins which can make your\\ball larger or smaller."
