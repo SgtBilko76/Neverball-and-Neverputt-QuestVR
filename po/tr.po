@@ -1485,7 +1485,7 @@ msgstr "Le sens trigonométrique.\\Dön, bekle ve sıçra!"
 
 #: data/map-mym/up.map
 msgid "L'ascension pressée.\\Only one piece of advice: don't stop!"
-msgstr "L'ascension pressée.\\Yalnızca bir öneri kırıntısı: durma!"
+msgstr "L'ascension pressée.\\Tek bir tavsiyem var: Asla durma!"
 
 #: data/map-mym2/backforth.map
 msgid "Un va-et-vient frustrant.\\Remember the activation order."
