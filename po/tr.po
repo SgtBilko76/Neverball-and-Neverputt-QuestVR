@@ -1642,7 +1642,7 @@ msgstr "Kolay bir ısınma turuyla başlayalım.\\Hızını ayarla ve doğruca h
 
 #: data/map-tones/leaps.map
 msgid "Look before you leap..."
-msgstr "Sıçramadan önce bakın..."
+msgstr "Sıçramadan önce kontrol et..."
 
 #: data/map-tones/marble.map
 msgid "Mind your footing!"
