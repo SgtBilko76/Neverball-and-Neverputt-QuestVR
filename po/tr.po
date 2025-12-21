@@ -1359,7 +1359,7 @@ msgstr "Burada topunu büyütebilecek ya da\\küçültebilecek farklı altınlar
 
 #: data/map-misc/ocean.map
 msgid "Let's go for a swim...\\all the coins are fully submerged.\\"
-msgstr "Hadi yüzmeye gidelim...\\bütün coinler suyun içinde.\\"
+msgstr "Haydi yüzmeye gidelim...\\Bütün altınlar suyun içinde.\\"
 
 #: data/map-misc/stairs.map
 msgid "Fall down stairs.\\Ough!\\It hurts."
