@@ -1303,7 +1303,7 @@ msgstr "Yalnızca bir anahtar beş bariyeri de kontrol ediyor.\\Çabuk ol, çün
 
 #: data/map-medium/woodmaze.map
 msgid "Follow the trail of coins\\to make it through the labyrinth."
-msgstr "Labirentten çıkmak için\\coinlerin yolunu takip et."
+msgstr "Labirentten çıkmak için altınları takip et."
 
 #: data/map-medium/zigzag.map
 msgid ""
