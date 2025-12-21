@@ -1142,7 +1142,7 @@ msgstr "Yavaşça ve sakince.\\"
 msgid ""
 "You'll only get about 15 seconds at each step,\\so don't delay.  Get the "
 "coins and\\get to the next switch.\\"
-msgstr "Her basamak için yaklaşık 15 saniyeniz var,\\gecikmeyin. Coinleri toplayın ve\\bir sonraki anahtara gidin.\\"
+msgstr "Her basamak için yaklaşık 15 saniyen var, gecikmemeye çalış.\\Altınları topla ve bir sonraki anahtara geç.\\"
 
 #: data/map-hard/quads.map
 msgid "Don't get bullied.\\"
