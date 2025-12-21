@@ -460,7 +460,7 @@ msgstr "Kilitli"
 
 #: ball/st_start.c:239
 msgid "Goal State in Completed Levels"
-msgstr "Tamamlanmış Bölümlerdeki Hedeflerin Durumu"
+msgstr "Tamamlanmış Bölümlerdeki Hedefler"
 
 #: ball/st_title.c:144 ball/st_title.c:179
 msgid "menu^Cheat"
