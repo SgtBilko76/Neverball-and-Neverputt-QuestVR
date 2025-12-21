@@ -1051,7 +1051,7 @@ msgstr "=Uzay-Zaman=\\Ne yeterince yer var, ne de yeterince zaman."
 
 #: data/map-fwp/swarm.map
 msgid "=Swarm=\\Warning: Trespassers will be thwomped."
-msgstr "=Üşüşenler=\\Uyarı: İzinsiz girenler atılacaktır."
+msgstr "=Arı Sürüsü=\\Uyarı: İzinsiz girenler atılacaktır!"
 
 #: data/map-fwp/tennis.map
 msgid "=Tennis=\\There is plenty of prize money, and it's up for grabs."
