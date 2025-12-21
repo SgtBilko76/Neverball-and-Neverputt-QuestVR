@@ -1047,7 +1047,7 @@ msgstr "=Yokuş=\\Günümüzün Sisifos'una dönüşmemeye çalış."
 
 #: data/map-fwp/spacetime.map
 msgid "=Spacetime=\\Not much space, not much time."
-msgstr "=Boş zaman=\\Yeterince boşluk ve yeterince zaman yok."
+msgstr "=Uzay-Zaman=\\Ne yeterince yer var, ne de yeterince zaman."
 
 #: data/map-fwp/swarm.map
 msgid "=Swarm=\\Warning: Trespassers will be thwomped."
