@@ -11,55 +11,128 @@ cmake_minimum_required(VERSION 3.22)
 project(neverball C)
 
 set(CMAKE_C_STANDARD 99)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-set(NEVERBALL_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../..")
+set(NB "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 set(DEPS "${CMAKE_CURRENT_SOURCE_DIR}/../deps")
 
-option(NEVERBALL_SPIKE "Build the M0 OpenXR/gl4es spike instead of the game" ON)
+option(NEVERBALL_SPIKE "Build the M0 OpenXR/gl4es spike instead of the game" OFF)
+
+# share/version.h is generated, and scripts/version.sh writes it as a side
+# effect of being run.
+execute_process(COMMAND sh scripts/version.sh
+                WORKING_DIRECTORY "${NB}"
+                OUTPUT_VARIABLE NB_VERSION
+                OUTPUT_STRIP_TRAILING_WHITESPACE)
+message(STATUS "Neverball ${NB_VERSION}")
 
 #------------------------------------------------------------------------------
-# SDL2
+# Third-party libraries
+#
+# The plain C libraries are built and installed by deps/build-deps.sh; they
+# find each other through find_package, which does not work if they are all
+# pulled into this tree as subprojects. Only SDL2 stays a subproject, because
+# SDLActivity loads it from the APK as a shared library.
+
+set(PREFIX "${DEPS}/install")
+
+if(NOT EXISTS "${PREFIX}/lib/libvorbisfile.a")
+    message(FATAL_ERROR
+        "Dependencies missing. Run android/deps/fetch-deps.sh, then "
+        "android/deps/build-deps.sh and android/deps/build-gl4es.sh.")
+endif()
 
 set(SDL_SHARED ON  CACHE BOOL "" FORCE)
 set(SDL_STATIC OFF CACHE BOOL "" FORCE)
 set(SDL_TEST   OFF CACHE BOOL "" FORCE)
-
 add_subdirectory("${DEPS}/src/SDL" "${CMAKE_CURRENT_BINARY_DIR}/SDL")
 
-#------------------------------------------------------------------------------
-# gl4es
-#
-# Prebuilt out-of-band by deps/build-gl4es.sh, because gl4es declares
-# cmake_minimum_required(VERSION 2.8.12), which modern CMake refuses.
+# SDL_ttf is a single translation unit. Building it here sidesteps its
+# find_package(SDL2) probe, which cannot see an in-tree SDL2.
+
+add_library(SDL2_ttf STATIC "${DEPS}/src/SDL_ttf/SDL_ttf.c")
+
+target_include_directories(SDL2_ttf PUBLIC "${DEPS}/src/SDL_ttf")
+target_include_directories(SDL2_ttf PRIVATE "${PREFIX}/include/freetype2")
+target_compile_definitions(SDL2_ttf PRIVATE TTF_USE_HARFBUZZ=0)
+target_link_libraries(SDL2_ttf PRIVATE SDL2::SDL2)
+
+# gl4es, prebuilt out of band by deps/build-gl4es.sh because it declares
+# cmake_minimum_required(VERSION 2.8.12), which current CMake refuses.
 
 add_library(gl4es STATIC IMPORTED)
-
 set_target_properties(gl4es PROPERTIES
     IMPORTED_LOCATION "${DEPS}/src/gl4es/lib/libGL.a"
     INTERFACE_INCLUDE_DIRECTORIES "${DEPS}/src/gl4es/include")
 
-#------------------------------------------------------------------------------
-# OpenXR loader, from the Khronos AAR via Gradle prefab.
-
 find_package(OpenXR REQUIRED CONFIG)
 
 #------------------------------------------------------------------------------
+# Neverball
+#
+# Mirrors emscripten/ball.mk's list, with the platform backends swapped:
+# SDL audio instead of the Web Audio shim, no libcurl, and an extra source
+# for mounting game data out of the APK.
+
+set(BALL_SRCS
+    ball/demo.c ball/demo_dir.c ball/game_client.c ball/game_common.c
+    ball/game_draw.c ball/game_proxy.c ball/game_server.c ball/hud.c
+    ball/level.c ball/main.c ball/progress.c ball/score.c ball/set.c
+    ball/st_ball.c ball/st_conf.c ball/st_demo.c ball/st_done.c
+    ball/st_fail.c ball/st_goal.c ball/st_help.c ball/st_level.c
+    ball/st_name.c ball/st_over.c ball/st_pause.c ball/st_play.c
+    ball/st_save.c ball/st_set.c ball/st_shared.c ball/st_start.c
+    ball/st_title.c ball/st_game_link.c ball/util.c
+
+    share/array.c share/audio.c share/ball.c share/base_config.c
+    share/base_image.c share/binary.c share/cmd.c share/common.c
+    share/config.c share/dir.c share/ease.c share/fetch_null.c
+    share/font.c share/fs_android.c share/fs_common.c share/fs_jpg.c
+    share/fs_ov.c share/fs_png.c share/fs_stdio.c share/geom.c
+    share/glext.c share/gui.c share/hmd_null.c share/image.c
+    share/joy.c share/lang.c share/list.c share/log.c share/mapclib.c
+    share/miniz.c share/mtrl.c share/package.c share/part.c
+    share/queue.c share/solid_all.c share/solid_base.c share/solid_draw.c
+    share/solid_sim_sol.c share/solid_vary.c share/st_common.c
+    share/st_package.c share/state.c share/text.c share/theme.c
+    share/tilt_null.c share/transition.c share/vec3.c share/video.c)
+
+list(TRANSFORM BALL_SRCS PREPEND "${NB}/")
 
 if(NEVERBALL_SPIKE)
-    add_library(neverball SHARED
-        "${CMAKE_CURRENT_SOURCE_DIR}/../spike/xr_spike.c")
-
-    target_include_directories(neverball PRIVATE "${NEVERBALL_ROOT}/share")
+    add_library(neverball SHARED "${CMAKE_CURRENT_SOURCE_DIR}/../spike/xr_spike.c")
+    target_include_directories(neverball PRIVATE "${NB}/share")
 else()
-    message(FATAL_ERROR "The game build lands in M1; configure with -DNEVERBALL_SPIKE=ON")
+    add_library(neverball SHARED ${BALL_SRCS})
+    target_include_directories(neverball PRIVATE "${NB}/share" "${NB}/ball")
 endif()
+
+target_compile_definitions(neverball PRIVATE
+    ENABLE_NLS=0
+    ENABLE_FETCH=0
+    ENABLE_OPENGLES=0
+    CONFIG_USER="Neverball"
+    CONFIG_DATA="./data"
+    CONFIG_LOCALE="./locale")
+
+target_compile_options(neverball PRIVATE -Wall -Wshadow)
+
+target_include_directories(neverball PRIVATE "${PREFIX}/include")
 
 target_link_libraries(neverball PRIVATE
     SDL2::SDL2
+    SDL2_ttf
     gl4es
     OpenXR::openxr_loader
+    "${PREFIX}/lib/libvorbisfile.a"
+    "${PREFIX}/lib/libvorbis.a"
+    "${PREFIX}/lib/libogg.a"
+    "${PREFIX}/lib/libpng16.a"
+    "${PREFIX}/lib/libjpeg.a"
+    "${PREFIX}/lib/libfreetype.a"
     EGL
     GLESv3
     android
     log
+    z
     m)
