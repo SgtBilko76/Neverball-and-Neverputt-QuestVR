@@ -14,6 +14,13 @@
 
 #include "fetch.h"
 
+/*
+ * Never equal to a registered SDL event type, so the dispatch in the main
+ * loop simply never matches.
+ */
+
+unsigned long FETCH_EVENT = (unsigned long) -1;
+
 void fetch_enable(int enable)
 {
 }
