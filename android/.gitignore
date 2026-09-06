@@ -1,6 +1,7 @@
 # Third-party sources and build output, fetched by deps/fetch-deps.sh.
 deps/src/
 deps/build/
+deps/install/
 
 # Generated asset packages.
 app/src/main/assets/*.zip

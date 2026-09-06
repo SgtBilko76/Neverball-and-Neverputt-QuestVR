@@ -16,6 +16,26 @@ SDL_TAG=release-2.32.4
 GL4ES_REPO=https://github.com/ptitSeb/gl4es.git
 GL4ES_COMMIT=c9895df34cd466c23bc60c2bd3db3d87e98fcbe7
 
+SDL_TTF_REPO=https://github.com/libsdl-org/SDL_ttf.git
+SDL_TTF_TAG=release-2.22.0
+
+# SDL_ttf keeps FreeType as a submodule; build it separately instead of
+# cloning submodules, and turn HarfBuzz off (Neverball does not shape text).
+FREETYPE_REPO=https://gitlab.freedesktop.org/freetype/freetype.git
+FREETYPE_TAG=VER-2-13-2
+
+PNG_REPO=https://github.com/pnggroup/libpng.git
+PNG_TAG=v1.6.43
+
+JPEG_REPO=https://github.com/libjpeg-turbo/libjpeg-turbo.git
+JPEG_TAG=3.0.3
+
+OGG_REPO=https://github.com/xiph/ogg.git
+OGG_TAG=v1.3.5
+
+VORBIS_REPO=https://github.com/xiph/vorbis.git
+VORBIS_TAG=v1.3.7
+
 # Shallow-clone a repo at a tag, or fetch a single commit.
 clone_at()
 {
@@ -41,7 +61,13 @@ clone_at()
 
 mkdir -p "$SRC_DIR"
 
-clone_at SDL   "$SDL_REPO"   "$SDL_TAG"
-clone_at gl4es "$GL4ES_REPO" "$GL4ES_COMMIT"
+clone_at SDL       "$SDL_REPO"      "$SDL_TAG"
+clone_at gl4es     "$GL4ES_REPO"    "$GL4ES_COMMIT"
+clone_at SDL_ttf   "$SDL_TTF_REPO"  "$SDL_TTF_TAG"
+clone_at freetype  "$FREETYPE_REPO" "$FREETYPE_TAG"
+clone_at libpng    "$PNG_REPO"      "$PNG_TAG"
+clone_at libjpeg   "$JPEG_REPO"     "$JPEG_TAG"
+clone_at ogg       "$OGG_REPO"      "$OGG_TAG"
+clone_at vorbis    "$VORBIS_REPO"   "$VORBIS_TAG"
 
 echo "deps: ok"
