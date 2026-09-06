@@ -28,6 +28,15 @@
 
 /* Named rendering pass indices. */
 
+/*
+ * Bionic's <limits.h> defines PASS_MAX as the maximum password length, so
+ * take the name back before declaring the enumeration.
+ */
+
+#ifdef PASS_MAX
+#undef PASS_MAX
+#endif
+
 enum
 {
     PASS_OPAQUE = 0,
