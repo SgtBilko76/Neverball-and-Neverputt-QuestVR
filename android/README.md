@@ -24,19 +24,24 @@ owns the display; SDL's window exists but is never presented to.
 
 ## Building
 
-Prerequisites: Android SDK with NDK 27.2, platform 34 and CMake 3.22.1;
-JDK 17+; Gradle 8.2+. A host toolchain with libpng and libjpeg is needed to
-compile the level data.
+Prerequisites: Android SDK with NDK 27.2, platform 34 and CMake 3.22.1; a
+full JDK (not just a JRE -- the Android Gradle plugin needs jlink). A host
+toolchain with libpng, libjpeg and zip is needed to compile and package the
+level data.
 
     # One-time: fetch and build third-party sources.
     android/deps/fetch-deps.sh
     android/deps/build-gl4es.sh
+    android/deps/build-deps.sh
 
     # Compile the 429 .map files to .sol using the host mapc.
     make -j sols
 
+    # Package the game data that ships inside the APK.
+    android/make-assets.sh
+
     # Build the APK.
-    cd android && gradle :app:assembleDebug
+    cd android && ./gradlew :app:assembleDebug
 
 The `.sol` compilation must run on the host: `mapc` is a build tool, and the
 root Makefile has no host/target split. This mirrors what CI already does for
@@ -50,7 +55,8 @@ the web build (`.github/workflows/web-deploy.yml`).
 
 ## Layout
 
-    deps/            fetch and build scripts for SDL2 and gl4es, all pinned
+    deps/            fetch and build scripts for the third-party sources, all pinned
+    make-assets.sh   packages the game data that ships in the APK
     app/CMakeLists.txt   standalone build description, in the spirit of
                          emscripten/ball.mk — it does not include the root Makefile
     spike/           throwaway M0 spike proving OpenXR + gl4es + SDL coexist
