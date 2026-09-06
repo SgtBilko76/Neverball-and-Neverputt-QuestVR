@@ -15,6 +15,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef __ANDROID__
+#include <android/log.h>
+#endif
+
 #include "log.h"
 #include "common.h"
 #include "fs.h"
@@ -41,8 +45,16 @@ void log_printf(const char *fmt, ...)
         vsnprintf(str, len, fmt, ap);
         va_end(ap);
 
+#ifdef __ANDROID__
+
+        /* Nothing reads stderr on Android; logcat does. */
+
+        __android_log_write(ANDROID_LOG_INFO, "Neverball", str);
+
+#else
         fputs(str, stderr);
         fflush(stderr);
+#endif
 
         if (log_fp)
         {
