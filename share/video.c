@@ -12,7 +12,7 @@
  * General Public License for more details.
  */
 
-#ifdef __EMSCRIPTEN__
+#if defined(__EMSCRIPTEN__) || defined(__ANDROID__)
 #include <gl4esinit.h>
 #endif
 
@@ -219,6 +219,22 @@ void video_quit(void)
     hmd_free();
 }
 
+#ifdef __ANDROID__
+
+/*
+ * gl4es built with NOEGL has no way to ask EGL how big the default
+ * framebuffer is, so tell it. Nothing is drawn there -- OpenXR swapchains
+ * are the real targets -- but gl4es still wants a sane answer.
+ */
+
+static void android_main_fb_size(int *w, int *h)
+{
+    *w = video.device_w > 0 ? video.device_w : 1024;
+    *h = video.device_h > 0 ? video.device_h : 1024;
+}
+
+#endif
+
 int video_mode(int f, int w, int h)
 {
     int stereo  = config_get_d(CONFIG_STEREO)      ? 1 : 0;
@@ -242,6 +258,17 @@ int video_mode(int f, int w, int h)
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+#endif
+
+#ifdef __ANDROID__
+    /*
+     * gl4es translates this renderer's GL 1.x calls to ES 2.0, so ask for
+     * the ES 3.x context OpenXR requires and let gl4es sit on top of it.
+     */
+
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 #endif
 
     SDL_GL_SetAttribute(SDL_GL_STEREO,             stereo);
@@ -281,6 +308,16 @@ int video_mode(int f, int w, int h)
             extern void *emscripten_GetProcAddress(const char *name);
             set_getprocaddress(emscripten_GetProcAddress);
 
+            initialize_gl4es();
+#endif
+#ifdef __ANDROID__
+            /*
+             * gl4es is built with NOEGL and no constructor, so it has to be
+             * pointed at the driver and started by hand before any GL call.
+             */
+
+            set_getprocaddress((void *(*)(const char *)) SDL_GL_GetProcAddress);
+            set_getmainfbsize(android_main_fb_size);
             initialize_gl4es();
 #endif
 
