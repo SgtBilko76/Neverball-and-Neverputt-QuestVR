@@ -1,0 +1,13 @@
+# Third-party sources and build output, fetched by deps/fetch-deps.sh.
+deps/src/
+deps/build/
+
+# Generated asset packages.
+app/src/main/assets/*.zip
+
+# Gradle.
+.gradle/
+build/
+app/build/
+app/.cxx/
+local.properties
