@@ -26,11 +26,19 @@
 #include <shlobj.h>
 #endif
 
+#ifdef __ANDROID__
+#include <SDL.h>
+#include <SDL_system.h>
+#endif
+
 /*---------------------------------------------------------------------------*/
 
 static const char *pick_data_path(const char *arg_data_path)
 {
-#ifdef __EMSCRIPTEN__
+#ifdef __ANDROID__
+    /* Data is mounted from ZIPs inside the APK; see fs_android.c. */
+    return NULL;
+#elif defined(__EMSCRIPTEN__)
     return "/data";
 #else
     static char dir[MAXSTR];
@@ -55,7 +63,10 @@ static const char *pick_data_path(const char *arg_data_path)
 
 static const char *pick_home_path(void)
 {
-#ifdef _WIN32
+#ifdef __ANDROID__
+    /* App-private storage; the only writable location we are guaranteed. */
+    return SDL_AndroidGetInternalStoragePath();
+#elif defined(_WIN32)
     static char path[MAX_PATH];
 
     if (SHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, 0, path) == S_OK)
@@ -95,13 +106,21 @@ void config_paths(const char *arg_data_path)
 
     data = pick_data_path(arg_data_path);
 
-    fs_add_path_with_archives(data);
+    if (data)
+        fs_add_path_with_archives(data);
+
+#ifdef __ANDROID__
+    fs_add_apk_assets();
+#endif
 
     /* User directory. */
 
     home = pick_home_path();
 
-#ifdef __EMSCRIPTEN__
+#ifdef __ANDROID__
+    /* Internal storage is already private to the app; do not nest further. */
+    user = strdup(home);
+#elif defined(__EMSCRIPTEN__)
     /* Force IndexedDB-backed location created during Module['preRun']. */
     user = strdup("/neverball");
 #else
