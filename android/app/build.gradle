@@ -1,0 +1,90 @@
+plugins {
+    id 'com.android.application'
+}
+
+// The gl4es static library is built out-of-band by deps/build-gl4es.sh,
+// because gl4es declares cmake_minimum_required(VERSION 2.8.12) and needs
+// the SDK's older CMake to configure at all.
+def gl4esLib = file("${rootDir}/deps/src/gl4es/lib/libGL.a")
+
+android {
+    namespace 'org.neverball'
+    compileSdk 34
+    ndkVersion '27.2.12479018'
+
+    defaultConfig {
+        applicationId 'org.neverball'
+
+        // Quest 2 runs Android 10; Horizon Store requires targetSdk 34.
+        minSdk 29
+        targetSdk 34
+
+        versionCode 1
+        versionName '1.6.0'
+
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+
+        externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_STL=c++_shared'
+                cppFlags ''
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path 'CMakeLists.txt'
+            version '3.22.1'
+        }
+    }
+
+    buildFeatures {
+        prefab true
+    }
+
+    // Asset ZIPs are mounted in place out of the APK, so they must be
+    // stored rather than deflated.
+    androidResources {
+        noCompress += ['zip']
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            jniDebuggable true
+        }
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += "${rootDir}/deps/src/SDL/android-project/app/src/main/java"
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.khronos.openxr:openxr_loader_for_android:1.1.62'
+}
+
+tasks.configureEach { task ->
+    if (task.name.startsWith('externalNativeBuild')) {
+        task.doFirst {
+            if (!gl4esLib.exists()) {
+                throw new GradleException(
+                    "gl4es not built: ${gl4esLib}\n" +
+                    "Run android/deps/fetch-deps.sh then android/deps/build-gl4es.sh.")
+            }
+        }
+    }
+}
