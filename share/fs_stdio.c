@@ -232,6 +232,68 @@ int fs_add_path(const char *path)
     return 0;
 }
 
+/*
+ * Mount a ZIP that is already in memory. Android APK assets are stored
+ * uncompressed and mapped in place, so they can be handed to miniz directly
+ * rather than extracted to storage first. The caller owns the buffer and
+ * must keep it alive for the lifetime of the mount.
+ */
+
+int fs_add_path_mem(const char *name, const void *data, size_t size)
+{
+    struct fs_path_item *path_item;
+    mz_zip_archive *zip;
+
+    List l;
+
+    if (!(name && *name && data && size))
+        return 0;
+
+    for (l = fs_path; l; l = l->next)
+    {
+        struct fs_path_item *test_item = l->data;
+
+        if (strcmp(name, test_item->path) == 0)
+            return 0;
+    }
+
+    if (!(path_item = create_path_item()))
+        return 0;
+
+    if ((zip = malloc(sizeof (*zip))))
+    {
+        mz_zip_zero_struct(zip);
+
+        if (mz_zip_reader_init_mem(zip, data, size, 0))
+        {
+            if (fs_logging)
+                log_printf("FS: reading from \"%s\" (zip in memory)\n", name);
+
+            path_item->type = FS_PATH_ZIP;
+            path_item->path = strdup(name);
+            path_item->data = zip;
+
+            if (list_push(&fs_path, path_item))
+                return 1;
+
+            free(path_item->path);
+            mz_zip_reader_end(zip);
+        }
+        else if (fs_logging)
+        {
+            mz_zip_error err = mz_zip_get_last_error(zip);
+            const char *str = mz_zip_get_error_string(err);
+            log_printf("FS: skipping \"%s\" (%s)\n", name, str);
+        }
+
+        free(zip);
+    }
+
+    free(path_item);
+
+    return 0;
+}
+
 void fs_remove_path(const char *path)
 {
     List l, p;

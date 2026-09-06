@@ -1,6 +1,8 @@
 #ifndef FS_H
 #define FS_H
 
+#include <stddef.h>
+
 typedef struct fs_file_s *fs_file;
 
 int fs_init(const char *argv0);
@@ -10,6 +12,7 @@ const char *fs_error(void);
 
 const char *fs_base_dir(void);
 int         fs_add_path(const char *);
+int         fs_add_path_mem(const char *, const void *, size_t);
 void        fs_remove_path(const char *);
 int         fs_add_path_with_archives(const char *);
 int         fs_set_write_dir(const char *);
@@ -56,5 +59,13 @@ void  fs_dir_free(Array);
 const char *fs_resolve(const char *);
 
 void fs_set_logging(int);
+
+#ifdef __ANDROID__
+
+/* Mount every ZIP in the APK's asset directory. See fs_android.c. */
+
+int fs_add_apk_assets(void);
+
+#endif
 
 #endif
