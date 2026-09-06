@@ -24,6 +24,7 @@ OUTPUT_DIR ?= $(shell pwd)/packages
 PACKAGE_EXCLUDE := \
 	'*.xcf' \
 	'*.wings' \
+	'*.map' \
 	'screenshot.png'
 
 LOCAL_PATHS := $(ASSET_PATHS:%=$(DATA_DIR)/%) # prefix with ./data/
