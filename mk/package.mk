@@ -48,10 +48,12 @@ package: output-dir
 		cd "$(PACKAGE_TMP)" && \
 		unzip -q $(OUTPUT_DIR)/$(PACKAGE_ZIP) && \
 		( \
-			find . -name '*.ogg' | while read ogg; do \
-				mp3=$$(echo $$ogg | sed 's/\.ogg/.mp3/'); \
-				ffmpeg -nostdin -y -loglevel error -i $$ogg -acodec libmp3lame $$mp3; \
-			done; \
+			if [ "$(SKIP_MP3)" != "1" ]; then \
+				find . -name '*.ogg' | while read ogg; do \
+					mp3=$$(echo $$ogg | sed 's/\.ogg/.mp3/'); \
+					ffmpeg -nostdin -y -loglevel error -i $$ogg -acodec libmp3lame $$mp3; \
+				done; \
+			fi; \
 		) && \
 		find . -execdir touch -t 200305010000 {} \; && \
 		rm $(OUTPUT_DIR)/$(PACKAGE_ZIP) && \
