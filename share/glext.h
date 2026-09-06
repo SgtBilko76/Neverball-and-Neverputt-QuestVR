@@ -29,7 +29,18 @@
 
 #else  /* ENABLE_OPENGLES */
 
-#ifdef __APPLE__
+#ifdef __ANDROID__
+
+/* On Android the GL 1.x renderer runs on top of gl4es, which presents a     */
+/* desktop GL 2.1 face over OpenGL ES. Its gl.h is GL 1.1-era and does not   */
+/* declare the GL 1.2+ entry points used here, so take the prototypes from   */
+/* its glext.h and link them natively.                                       */
+
+#define GL_GLEXT_PROTOTYPES
+#include <GL/gl.h>
+#include <GL/glext.h>
+
+#elif defined(__APPLE__)
 #include <OpenGL/gl.h>
 #else
 #include <GL/gl.h>
@@ -163,7 +174,7 @@ int glext_init(void);
 /* of the extensions we use. Otherwise, GetProc them regardless of whether   */
 /* they need it or not.                                                      */
 
-#if ENABLE_OPENGLES || defined(__EMSCRIPTEN__)
+#if ENABLE_OPENGLES || defined(__EMSCRIPTEN__) || defined(__ANDROID__)
 
 #define glClientActiveTexture_ glClientActiveTexture
 #define glActiveTexture_       glActiveTexture
@@ -176,7 +187,7 @@ int glext_init(void);
 #define glPointParameterfv_    glPointParameterfv
 #define glPointParameterf_     glPointParameterf
 
-#ifdef __EMSCRIPTEN__
+#if defined(__EMSCRIPTEN__) || defined(__ANDROID__)
 #define glOrtho_               glOrtho
 #else
 #define glOrtho_               glOrthof
@@ -291,7 +302,7 @@ extern PFNGLSTRINGMARKERGREMEDY_PROC glStringMarkerGREMEDY_;
         glStringMarkerGREMEDY_(0, (s))
 
 /*---------------------------------------------------------------------------*/
-#endif /* ENABLE_OPENGLES || defined(__EMSCRIPTEN__) */
+#endif /* ENABLE_OPENGLES || __EMSCRIPTEN__ || __ANDROID__ */
 
 void glClipPlane4f_(GLenum, GLfloat, GLfloat, GLfloat, GLfloat);
 void glBindTexture_(GLenum target, GLuint texture);

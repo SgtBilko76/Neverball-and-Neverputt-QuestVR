@@ -23,7 +23,7 @@ struct gl_info gli;
 
 /*---------------------------------------------------------------------------*/
 
-#if !ENABLE_OPENGLES && !defined(__EMSCRIPTEN__)
+#if !ENABLE_OPENGLES && !defined(__EMSCRIPTEN__) && !defined(__ANDROID__)
 
 PFNGLCLIENTACTIVETEXTURE_PROC    glClientActiveTexture_;
 PFNGLACTIVETEXTURE_PROC          glActiveTexture_;
@@ -141,7 +141,7 @@ int glext_init(void)
 
     /* Desktop init. */
 
-#if !ENABLE_OPENGLES && !defined(__EMSCRIPTEN__)
+#if !ENABLE_OPENGLES && !defined(__EMSCRIPTEN__) && !defined(__ANDROID__)
     void *ptr = 0;
 
     if (glext_assert("ARB_multitexture"))
