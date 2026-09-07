@@ -26,6 +26,7 @@
 #include "config.h"
 #include "gui.h"
 #include "hmd.h"
+#include "vr.h"
 #include "log.h"
 
 extern const char TITLE[];
@@ -441,6 +442,157 @@ int video_mode(int f, int w, int h)
     /* If THAT mode failed, punt. */
 
     return 0;
+}
+
+/*---------------------------------------------------------------------------*/
+
+/*
+ * A comfort vignette: a black ring that closes in from the edges of each eye
+ * while the camera is throwing the player around. Narrowing the field of
+ * view during motion is the one mitigation that reliably helps, and it works
+ * because the periphery is where the eye is most insistent that it is moving
+ * and the inner ear most insistent that it is not.
+ *
+ * The ring is drawn in normalized device coordinates, so it is fixed to the
+ * eye rather than to the world, and it is scaled to open and close.
+ */
+
+#define VIGNETTE_SEGS   48
+#define VIGNETTE_VERT   ((VIGNETTE_SEGS + 1) * 2)
+
+/* Radii of the ring in the unit space the scale factor is applied to. */
+
+#define VIGNETTE_R0     1.00f
+#define VIGNETTE_R1     1.40f
+#define VIGNETTE_R2     6.00f
+
+/* What that scale factor runs between. Fully open puts the inner edge past
+ * the corner of the image, at sqrt(2), so nothing of it is visible. */
+
+#define VIGNETTE_OPEN   1.60f
+#define VIGNETTE_CLOSE  0.45f
+
+static GLuint vignette_vbo;
+
+/* Three floats of position then four of colour, per vertex. */
+
+#define VIGNETTE_FLOATS 7
+
+static void vignette_vert(GLfloat *v, float c, float s, float r, float a)
+{
+    v[0] = c * r;
+    v[1] = s * r;
+    v[2] = 0.0f;
+
+    v[3] = 0.0f;
+    v[4] = 0.0f;
+    v[5] = 0.0f;
+    v[6] = a;
+}
+
+static void vignette_init(void)
+{
+    GLfloat data[VIGNETTE_VERT * 2 * VIGNETTE_FLOATS];
+    GLfloat *p = data;
+
+    int i;
+
+    /* The gradient from clear to black, then an opaque skirt beyond it to
+     * cover the corners once the ring has closed in. */
+
+    for (i = 0; i <= VIGNETTE_SEGS; i++)
+    {
+        const float t = 2.0f * V_PI * (float) i / (float) VIGNETTE_SEGS;
+        const float c = fcosf(t);
+        const float s = fsinf(t);
+
+        vignette_vert(p, c, s, VIGNETTE_R0, 0.0f);
+        p += VIGNETTE_FLOATS;
+        vignette_vert(p, c, s, VIGNETTE_R1, 1.0f);
+        p += VIGNETTE_FLOATS;
+    }
+
+    for (i = 0; i <= VIGNETTE_SEGS; i++)
+    {
+        const float t = 2.0f * V_PI * (float) i / (float) VIGNETTE_SEGS;
+        const float c = fcosf(t);
+        const float s = fsinf(t);
+
+        vignette_vert(p, c, s, VIGNETTE_R1, 1.0f);
+        p += VIGNETTE_FLOATS;
+        vignette_vert(p, c, s, VIGNETTE_R2, 1.0f);
+        p += VIGNETTE_FLOATS;
+    }
+
+    glGenBuffers_(1,              &vignette_vbo);
+    glBindBuffer_(GL_ARRAY_BUFFER, vignette_vbo);
+    glBufferData_(GL_ARRAY_BUFFER, sizeof (data), data, GL_STATIC_DRAW);
+    glBindBuffer_(GL_ARRAY_BUFFER, 0);
+}
+
+void video_vignette(void)
+{
+    const GLsizei stride = VIGNETTE_FLOATS * sizeof (GLfloat);
+
+    GLboolean lit;
+    float k, s;
+
+    if (!hmd_stat() || !config_get_d(CONFIG_VR_VIGNETTE))
+        return;
+
+    if ((k = vr_comfort_vignette()) <= 0.0f)
+        return;
+
+    if (!vignette_vbo)
+        vignette_init();
+
+    s = VIGNETTE_OPEN + (VIGNETTE_CLOSE - VIGNETTE_OPEN) * k;
+
+    /*
+     * The matrices are simply overwritten rather than pushed: everything
+     * that draws after this point loads its own, and the projection stack
+     * is only guaranteed two deep.
+     */
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glScalef(s, s, 1.0f);
+
+    lit = glIsEnabled(GL_LIGHTING);
+
+    glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_TEXTURE_2D);
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    glBindBuffer_(GL_ARRAY_BUFFER, vignette_vbo);
+
+    glEnableClientState(GL_COLOR_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    glEnableClientState(GL_VERTEX_ARRAY);
+
+    glVertexPointer(3, GL_FLOAT, stride, (GLvoid *) 0);
+    glColorPointer (4, GL_FLOAT, stride, (GLvoid *) (3 * sizeof (GLfloat)));
+
+    glDrawArrays(GL_TRIANGLE_STRIP, 0,             VIGNETTE_VERT);
+    glDrawArrays(GL_TRIANGLE_STRIP, VIGNETTE_VERT, VIGNETTE_VERT);
+
+    glDisableClientState(GL_COLOR_ARRAY);
+    glBindBuffer_(GL_ARRAY_BUFFER, 0);
+
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_DEPTH_TEST);
+
+    if (lit)
+        glEnable(GL_LIGHTING);
 }
 
 /*---------------------------------------------------------------------------*/

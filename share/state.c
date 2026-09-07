@@ -171,12 +171,14 @@ void st_paint(float t)
             state->paint(state->gui_id, t);
 
             transition_paint();
+            video_vignette();
 
             hmd_prep_right();
             video_clear();
             state->paint(state->gui_id, t);
 
             transition_paint();
+            video_vignette();
         }
         else
         {

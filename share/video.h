@@ -35,6 +35,7 @@ void video_quit(void);
 int  video_mode(int, int, int);
 
 void video_snap(const char *);
+void video_vignette(void);
 int  video_perf(void);
 void video_swap(void);
 

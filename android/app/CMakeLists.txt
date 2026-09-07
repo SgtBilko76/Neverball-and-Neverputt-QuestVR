@@ -95,7 +95,7 @@ set(BALL_SRCS
     share/queue.c share/solid_all.c share/solid_base.c share/solid_draw.c
     share/solid_sim_sol.c share/solid_vary.c share/st_common.c
     share/st_package.c share/state.c share/text.c share/theme.c
-    share/tilt_null.c share/transition.c share/vec3.c share/video.c)
+    share/tilt_null.c share/transition.c share/vec3.c share/video.c share/vr.c)
 
 list(TRANSFORM BALL_SRCS PREPEND "${NB}/")
 
