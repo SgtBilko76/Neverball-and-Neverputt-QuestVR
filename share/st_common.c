@@ -18,6 +18,7 @@
 #include "config.h"
 #include "audio.h"
 #include "video.h"
+#include "hmd.h"
 #include "geom.h"
 #include "lang.h"
 #include "gui.h"
@@ -257,7 +258,16 @@ enum
     VIDEO_SHADOW,
     VIDEO_VSYNC,
     VIDEO_HMD,
-    VIDEO_MULTISAMPLE
+    VIDEO_MULTISAMPLE,
+    VIDEO_VR
+};
+
+enum
+{
+    VR_TILT = GUI_LAST,
+    VR_VIGNETTE,
+    VR_SNAP,
+    VR_CONTROL
 };
 
 static struct state *video_back;
@@ -291,7 +301,17 @@ static int video_action(int tok, int val)
     case VIDEO_REFLECTION:
         goto_state(&st_null);
         config_set_d(CONFIG_REFLECTION, val);
-        r = video_mode(f, w, h);
+
+        /*
+         * Rebuilding the mode is how a stencil buffer is obtained from the
+         * window, and in a headset there is no window: the eye buffers are
+         * made with a stencil unconditionally. Going through video_mode()
+         * here would tear down the whole session for nothing.
+         */
+
+        if (!hmd_stat())
+            r = video_mode(f, w, h);
+
         goto_state(&st_video);
         break;
 
@@ -331,6 +351,10 @@ static int video_action(int tok, int val)
         r = video_mode(f, w, h);
         goto_state(&st_video);
         break;
+
+    case VIDEO_VR:
+        goto_state(&st_vr);
+        break;
     }
 
     return r;
@@ -360,43 +384,60 @@ static int video_gui(void)
 
         conf_header(id, _("Graphics"), GUI_BACK);
 
-        if ((jd = conf_state(id, _("Display"), "Longest Name", VIDEO_DISPLAY)))
+        /*
+         * A display, a window size and a swap interval are all properties of
+         * a window, and in a headset the compositor owns the display and the
+         * window is never presented to. Leaving these on screen to do
+         * nothing is worse than not offering them.
+         */
+
+        if (!hmd_stat())
         {
-            gui_set_trunc(jd, TRUNC_TAIL);
-            gui_set_label(jd, display);
-        }
-
-        conf_toggle(id, _("Fullscreen"),   VIDEO_FULLSCREEN,
-                    config_get_d(CONFIG_FULLSCREEN), _("On"), 1, _("Off"), 0);
-
-        if ((jd = conf_state (id, _("Resolution"), resolution,
-                              VIDEO_RESOLUTION)))
-        {
-            /*
-             * Because we always use the desktop display mode, disable
-             * display mode switching in fullscreen.
-             */
-
-            if (config_get_d(CONFIG_FULLSCREEN))
+            if ((jd = conf_state(id, _("Display"), "Longest Name",
+                                 VIDEO_DISPLAY)))
             {
-                gui_set_state(jd, GUI_NONE, 0);
-                gui_set_color(jd, gui_gry, gui_gry);
+                gui_set_trunc(jd, TRUNC_TAIL);
+                gui_set_label(jd, display);
             }
-        }
+
+            conf_toggle(id, _("Fullscreen"),   VIDEO_FULLSCREEN,
+                        config_get_d(CONFIG_FULLSCREEN),
+                        _("On"), 1, _("Off"), 0);
+
+            if ((jd = conf_state (id, _("Resolution"), resolution,
+                                  VIDEO_RESOLUTION)))
+            {
+                /*
+                 * Because we always use the desktop display mode, disable
+                 * display mode switching in fullscreen.
+                 */
+
+                if (config_get_d(CONFIG_FULLSCREEN))
+                {
+                    gui_set_state(jd, GUI_NONE, 0);
+                    gui_set_color(jd, gui_gry, gui_gry);
+                }
+            }
 #if ENABLE_HMD
-        conf_toggle(id, _("HMD"),          VIDEO_HMD,
-                    config_get_d(CONFIG_HMD),        _("On"), 1, _("Off"), 0);
+            conf_toggle(id, _("HMD"),      VIDEO_HMD,
+                        config_get_d(CONFIG_HMD),    _("On"), 1, _("Off"), 0);
 #endif
+            gui_space(id);
 
-        gui_space(id);
+            conf_toggle(id, _("V-Sync"),   VIDEO_VSYNC,
+                        config_get_d(CONFIG_VSYNC),  _("On"), 1, _("Off"), 0);
+            conf_select(id, _("Antialiasing"), VIDEO_MULTISAMPLE,
+                        config_get_d(CONFIG_MULTISAMPLE),
+                        multisample_opts, ARRAYSIZE(multisample_opts));
 
-        conf_toggle(id, _("V-Sync"),       VIDEO_VSYNC,
-                    config_get_d(CONFIG_VSYNC),      _("On"), 1, _("Off"), 0);
-        conf_select(id, _("Antialiasing"), VIDEO_MULTISAMPLE,
-                    config_get_d(CONFIG_MULTISAMPLE),
-                    multisample_opts, ARRAYSIZE(multisample_opts));
+            gui_space(id);
+        }
+        else
+        {
+            conf_state(id, _("VR Comfort"), _("Configure"), VIDEO_VR);
 
-        gui_space(id);
+            gui_space(id);
+        }
 
         conf_toggle(id, _("Reflection"),   VIDEO_REFLECTION,
                     config_get_d(CONFIG_REFLECTION), _("On"), 1, _("Off"), 0);
@@ -410,6 +451,106 @@ static int video_gui(void)
 
     return id;
 }
+
+/*---------------------------------------------------------------------------*/
+
+static struct state *vr_back;
+
+static int vr_gui(void)
+{
+    static const struct conf_option tilt_opts[] = {
+        { N_("Off"),   0 },
+        { N_("Least"), 15 },
+        { N_("Less"),  30 },
+        { N_("More"),  50 },
+        { N_("Full"),  100 },
+    };
+
+    static const struct conf_option snap_opts[] = {
+        { N_("Smooth"), 0 },
+        { "30",        30 },
+        { "45",        45 },
+        { "60",        60 },
+    };
+
+    int id;
+
+    if ((id = gui_vstack(0)))
+    {
+        conf_header(id, _("VR Comfort"), GUI_BACK);
+
+        conf_select(id, _("World Tilt"), VR_TILT,
+                    config_get_d(CONFIG_VR_TILT_VISUAL),
+                    tilt_opts, ARRAYSIZE(tilt_opts));
+
+        conf_toggle(id, _("Vignette"), VR_VIGNETTE,
+                    config_get_d(CONFIG_VR_VIGNETTE), _("On"), 1, _("Off"), 0);
+
+        conf_select(id, _("Turning"), VR_SNAP,
+                    config_get_d(CONFIG_VR_SNAP_TURN),
+                    snap_opts, ARRAYSIZE(snap_opts));
+
+        gui_space(id);
+
+        conf_toggle(id, _("Tilt With"), VR_CONTROL,
+                    config_get_d(CONFIG_VR_CONTROL),
+                    _("Wrist"), 1, _("Stick"), 0);
+
+        gui_layout(id, 0, 0);
+    }
+
+    return id;
+}
+
+static int vr_action(int tok, int val)
+{
+    audio_play(AUD_MENU, 1.0f);
+
+    switch (tok)
+    {
+    case GUI_BACK:
+        exit_state(vr_back);
+        vr_back = NULL;
+        break;
+
+    case VR_TILT:
+        goto_state(&st_null);
+        config_set_d(CONFIG_VR_TILT_VISUAL, val);
+        goto_state(&st_vr);
+        break;
+
+    case VR_VIGNETTE:
+        goto_state(&st_null);
+        config_set_d(CONFIG_VR_VIGNETTE, val);
+        goto_state(&st_vr);
+        break;
+
+    case VR_SNAP:
+        goto_state(&st_null);
+        config_set_d(CONFIG_VR_SNAP_TURN, val);
+        goto_state(&st_vr);
+        break;
+
+    case VR_CONTROL:
+        goto_state(&st_null);
+        config_set_d(CONFIG_VR_CONTROL, val);
+        goto_state(&st_vr);
+        break;
+    }
+
+    return 1;
+}
+
+static int vr_enter(struct state *st, struct state *prev, int intent)
+{
+    if (!vr_back)
+        vr_back = prev;
+
+    conf_common_init(vr_action);
+    return transition_slide(vr_gui(), 1, intent);
+}
+
+/*---------------------------------------------------------------------------*/
 
 static int video_enter(struct state *st, struct state *prev, int intent)
 {
@@ -1060,6 +1201,19 @@ static void loading_paint(int id, float t)
 
 struct state st_video = {
     video_enter,
+    conf_common_leave,
+    conf_common_paint,
+    common_timer,
+    common_point,
+    common_stick,
+    NULL,
+    common_click,
+    common_keybd,
+    common_buttn
+};
+
+struct state st_vr = {
+    vr_enter,
     conf_common_leave,
     conf_common_paint,
     common_timer,
