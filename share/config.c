@@ -47,6 +47,9 @@ int CONFIG_MOUSE_RESPONSE;
 int CONFIG_MOUSE_INVERT;
 int CONFIG_VSYNC;
 int CONFIG_HMD;
+int CONFIG_VR_TILT_VISUAL;
+int CONFIG_VR_VIGNETTE;
+int CONFIG_VR_SNAP_TURN;
 int CONFIG_HIGHDPI;
 int CONFIG_MOUSE_CAMERA_1;
 int CONFIG_MOUSE_CAMERA_2;
@@ -179,6 +182,12 @@ static struct
     { &CONFIG_HMD,          "hmd",          0 },
 #endif
     { &CONFIG_HIGHDPI,      "highdpi",      1 },
+
+    /* Percentage of the world roll to actually show in a headset. */
+    { &CONFIG_VR_TILT_VISUAL, "vr_tilt_visual", 30 },
+    { &CONFIG_VR_VIGNETTE,    "vr_vignette",     1 },
+    /* Degrees per step of manual camera rotation; 0 rotates smoothly. */
+    { &CONFIG_VR_SNAP_TURN,   "vr_snap_turn",   30 },
 
     { &CONFIG_MOUSE_CAMERA_1,      "mouse_camera_1",      0 },
     { &CONFIG_MOUSE_CAMERA_2,      "mouse_camera_2",      0 },
