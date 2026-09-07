@@ -1,7 +1,9 @@
 # Neverball for Meta Quest
 
-A standalone OpenXR build of Neverball for Meta Quest 3, packaged as an
-Android APK.
+Standalone OpenXR builds of Neverball and Neverputt for Meta Quest 3,
+packaged as two Android APKs. They are separate applications because the
+Horizon launcher lists applications and not the games inside them; the port
+itself is shared, and lives entirely in `share/`.
 
 The level is presented at life size -- one world unit is one metre, so the
 ball is a 50 cm sphere -- and you ride the game's own chase camera, floating
@@ -31,7 +33,7 @@ web build already proved works.
 | | |
 |---|---|
 | Left thumbstick | tilt the floor, and move the menu highlight |
-| Right thumbstick | turn the camera left or right, one step per push; up and down do nothing |
+| Right thumbstick | turn the camera left or right, one step per push; up and down do nothing (Neverball) |
 | Trigger | click what the ray is on, or take the highlight if it is on nothing |
 | A | take the highlight, wherever the ray is pointing |
 | B | back |
@@ -42,6 +44,11 @@ web build already proved works.
 Setting `vr_control` to 1 tilts the floor by turning the wrist that holds
 the right controller instead of with the thumbstick. The stick still moves
 the menu highlight either way.
+
+Neverputt aims and putts with the same buttons, and has no floor to tilt, so
+`vr_tilt_visual`, `vr_snap_turn` and `vr_control` do nothing there. Its
+camera turns with the aim, which is a shot being lined up rather than a
+comfort choice, so it is deliberately not stepped.
 
 Recentring is the system's own: hold the Meta button. The interface panel is
 placed relative to the reference space origin, so it follows.
@@ -102,10 +109,10 @@ level data.
     # Compile the 429 .map files to .sol using the host mapc.
     make -j sols
 
-    # Package the game data that ships inside the APK.
+    # Package the game data that ships inside the APKs.
     android/make-assets.sh
 
-    # Build the APK.
+    # Build both APKs.
     cd android && ./gradlew assembleDebug
 
 The `.sol` compilation must run on the host: `mapc` is a build tool, and the
