@@ -559,11 +559,36 @@ void beam_draw(struct s_rend *rend, const GLfloat *p,
     glPopMatrix();
 }
 
+/*
+ * The goal and jump beams are point sprites, and a point size is in pixels,
+ * which only means anything against a known field of view. The constants
+ * below come from a monitor showing about fifty degrees; a headset shows
+ * roughly twice that across the same buffer, so matching the fraction of the
+ * picture would leave the beams twice the angular size they should be.
+ * Match the angle instead.
+ */
+
+static GLfloat beam_point_size(GLfloat div)
+{
+    if (hmd_stat())
+    {
+        const float fov = hmd_fov();
+
+        if (fov > 0.0f)
+            return (GLfloat) video.device_h *
+                   (GLfloat) config_get_d(CONFIG_VIEW_FOV) / (fov * div);
+
+        /* An older backend that packs both eyes into the one window. */
+
+        return 0.3f * (GLfloat) video.device_h / div;
+    }
+
+    return (GLfloat) video.device_h / div;
+}
+
 void goal_draw(struct s_rend *rend, const GLfloat *p, GLfloat r, GLfloat h, GLfloat t)
 {
-    GLfloat height = (hmd_stat() ? 0.3f : 1.0f) * video.device_h;
-
-    glPointSize(height / 6);
+    glPointSize(beam_point_size(6.0f));
 
     glPushMatrix();
     {
@@ -576,9 +601,7 @@ void goal_draw(struct s_rend *rend, const GLfloat *p, GLfloat r, GLfloat h, GLfl
 
 void jump_draw(struct s_rend *rend, const GLfloat *p, GLfloat r, GLfloat h)
 {
-    GLfloat height = (hmd_stat() ? 0.3f : 1.0f) * video.device_h;
-
-    glPointSize(height / 12);
+    glPointSize(beam_point_size(12.0f));
 
     glPushMatrix();
     {
