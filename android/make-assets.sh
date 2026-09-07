@@ -16,7 +16,11 @@ ROOT=$(cd "$(dirname "$0")/.." && pwd)
 ASSETS_BALL="$ROOT/android/ball/src/main/assets"
 ASSETS_PUTT="$ROOT/android/putt/src/main/assets"
 
-SETS="easy medium hard misc"
+# Every set data/sets.txt names. Leaving any of them out is not free: the
+# game lists what it can load, so a missing one is silently absent from the
+# menu and noisy in the log.
+
+SETS="easy medium hard misc mym mym2 fwp tones"
 
 cd "$ROOT"
 
