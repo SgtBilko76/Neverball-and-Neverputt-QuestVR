@@ -3,9 +3,10 @@
 A standalone OpenXR build of Neverball for Meta Quest 3, packaged as an
 Android APK.
 
-The level is presented as a tabletop diorama: a miniature roughly a metre
-across, anchored in the room in front of you. Your viewpoint never moves on
-its own, which is what makes a tilt game comfortable in a headset.
+The level is presented at life size -- one world unit is one metre, so the
+ball is a 50 cm sphere -- and you ride the game's own chase camera, floating
+a couple of metres behind it. The comfort work that a moving viewpoint needs
+is a layer on top of that rather than a change of presentation.
 
 ## How it fits together
 
@@ -20,7 +21,19 @@ and projection and head pose have exactly one injection point each. The
 OpenXR backend slots in beside `hmd_null.c`.
 
 SDL2 supplies the Android lifecycle, JNI, audio and font handling. OpenXR
-owns the display; SDL's window exists but is never presented to.
+owns the display; SDL's window exists but is never presented to. The EGL
+display, config and context handed to `xrCreateSession` are recovered from
+the context SDL created, which is what keeps gl4es initialised the way the
+web build already proved works.
+
+## Known issues
+
+Screenshots come out black. `glReadPixels` on a framebuffer whose colour
+attachment is a swapchain image fails with `GL_INVALID_OPERATION` under
+gl4es, and its emulated `glBlitFramebuffer` reads the same image as empty.
+Rendering into those framebuffers is unaffected -- painting the scene into a
+gl4es-owned framebuffer instead and reading that back returns the frame
+correctly -- so this is a readback limitation, not a rendering one.
 
 ## Building
 
@@ -52,6 +65,17 @@ the web build (`.github/workflows/web-deploy.yml`).
     adb install -r android/app/build/outputs/apk/debug/app-debug.apk
     adb shell am start -n org.neverball/.NeverballActivity
     adb logcat -s Neverball:V NeverballSpike:V SDL:V
+
+The game also writes its own log to `files/neverball.log` in the app's
+private storage, which survives logcat's ring buffer rolling over:
+
+    adb shell "run-as org.neverball cat files/neverball.log"
+
+Horizon OS puts the headset to sleep when it is not being worn, and the
+session then leaves the rendering states, which is exactly when the game
+stops stepping. To exercise a build without wearing it:
+
+    adb shell am broadcast -a com.oculus.vrpowermanager.prox_close
 
 ## Layout
 
