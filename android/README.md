@@ -106,7 +106,7 @@ level data.
     android/make-assets.sh
 
     # Build the APK.
-    cd android && ./gradlew :app:assembleDebug
+    cd android && ./gradlew assembleDebug
 
 The `.sol` compilation must run on the host: `mapc` is a build tool, and the
 root Makefile has no host/target split. This mirrors what CI already does for
@@ -114,8 +114,11 @@ the web build (`.github/workflows/web-deploy.yml`).
 
 ## Installing
 
-    adb install -r android/app/build/outputs/apk/debug/app-debug.apk
+    adb install -r android/ball/build/outputs/apk/debug/ball-debug.apk
+    adb install -r android/putt/build/outputs/apk/debug/putt-debug.apk
+
     adb shell am start -n org.neverball/.NeverballActivity
+    adb shell am start -n org.neverputt/.NeverputtActivity
     adb logcat -s Neverball:V NeverballSpike:V SDL:V
 
 The game also writes its own log to `files/neverball.log` in the app's
@@ -141,6 +144,8 @@ than that, so those are simply not in the APK.
 
     deps/            fetch and build scripts for the third-party sources, all pinned
     make-assets.sh   packages the game data that ships in the APK
-    app/CMakeLists.txt   standalone build description, in the spirit of
-                         emscripten/ball.mk — it does not include the root Makefile
+    ball/, putt/     one Gradle module and one APK each; their
+                     CMakeLists.txt keep their own source lists, in the
+                     spirit of emscripten/ball.mk, rather than including
+                     the root Makefile
     spike/           throwaway M0 spike proving OpenXR + gl4es + SDL coexist

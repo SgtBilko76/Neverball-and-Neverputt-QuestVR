@@ -4,11 +4,14 @@ deps/build/
 deps/install/
 
 # Generated asset packages.
-app/src/main/assets/*.zip
+ball/src/main/assets/*.zip
+putt/src/main/assets/*.zip
 
 # Gradle.
 .gradle/
 build/
-app/build/
-app/.cxx/
+ball/build/
+ball/.cxx/
+putt/build/
+putt/.cxx/
 local.properties
