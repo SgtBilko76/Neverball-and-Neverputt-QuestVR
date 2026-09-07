@@ -32,8 +32,8 @@ web build already proved works.
 |---|---|
 | Left thumbstick | tilt the floor, and move the menu highlight |
 | Right thumbstick | turn the camera left or right, one step per push; up and down do nothing |
-| Point and trigger | click whatever the ray is on |
-| A | select |
+| Trigger | click what the ray is on, or take the highlight if it is on nothing |
+| A | take the highlight, wherever the ray is pointing |
 | B | back |
 | X | pause |
 | Y | options |
