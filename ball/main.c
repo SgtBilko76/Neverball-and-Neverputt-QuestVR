@@ -741,6 +741,24 @@ static void step(void *data)
 
     hmd_poll();
 
+    /*
+     * Losing focus in a headset means a system overlay has come up in front
+     * of the game, which is exactly the moment to stop the ball rolling.
+     * The window focus event this mirrors never arrives, because the window
+     * is never presented to.
+     */
+
+    {
+        static int focused = 1;
+
+        int now = hmd_focused();
+
+        if (focused && !now && video_get_grab())
+            goto_state(&st_pause);
+
+        focused = now;
+    }
+
     running = loop();
 
     if (running)
