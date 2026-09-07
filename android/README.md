@@ -48,8 +48,9 @@ placed relative to the reference space origin, so it follows.
 
 ## Comfort
 
-A chase camera at life size is the uncomfortable case, so the settings that
-matter are in `neverballrc` rather than compiled in:
+A chase camera at life size is the uncomfortable case, so these are settings
+rather than decisions. They are on the **VR Comfort** screen under Options,
+Graphics, and in `neverballrc` as:
 
     vr_tilt_visual   30   percent of the world roll to actually show
     vr_vignette       1   close a black ring in from the edges while moving
@@ -58,6 +59,10 @@ matter are in `neverballrc` rather than compiled in:
 `vr_tilt_visual` only changes the picture. `game_tilt_grav()` on the server
 is untouched, so the physics, the difficulty and the times are identical to
 the flat game at any setting.
+
+The graphics options that describe a window -- display, resolution,
+fullscreen, v-sync, antialiasing -- are hidden in a headset, where the
+compositor owns the display and the window is never presented to.
 
 ## gl4es and the swapchain images
 
@@ -121,6 +126,10 @@ stops stepping. To exercise a build without wearing it:
 Horizon OS also refuses to launch the app outright once the controllers have
 gone to sleep -- look for `RequiresControllersLaunchInterceptor` in logcat.
 Nothing over adb wakes them; press a controller button or pick one up.
+
+The log complains about `set-mym.txt` and a few others it cannot find.
+`make-assets.sh` packages four level sets and `data/sets.txt` lists more
+than that, so those are simply not in the APK.
 
 ## Layout
 
