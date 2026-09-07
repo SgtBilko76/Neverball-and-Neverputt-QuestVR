@@ -26,6 +26,19 @@ display, config and context handed to `xrCreateSession` are recovered from
 the context SDL created, which is what keeps gl4es initialised the way the
 web build already proved works.
 
+## Comfort
+
+A chase camera at life size is the uncomfortable case, so the settings that
+matter are in `neverballrc` rather than compiled in:
+
+    vr_tilt_visual   30   percent of the world roll to actually show
+    vr_vignette       1   close a black ring in from the edges while moving
+    vr_snap_turn     30   degrees per step of manual turning; 0 turns smoothly
+
+`vr_tilt_visual` only changes the picture. `game_tilt_grav()` on the server
+is untouched, so the physics, the difficulty and the times are identical to
+the flat game at any setting.
+
 ## Known issues
 
 Screenshots come out black. `glReadPixels` on a framebuffer whose colour
@@ -76,6 +89,10 @@ session then leaves the rendering states, which is exactly when the game
 stops stepping. To exercise a build without wearing it:
 
     adb shell am broadcast -a com.oculus.vrpowermanager.prox_close
+
+Horizon OS also refuses to launch the app outright once the controllers have
+gone to sleep -- look for `RequiresControllersLaunchInterceptor` in logcat.
+Nothing over adb wakes them; press a controller button or pick one up.
 
 ## Layout
 
