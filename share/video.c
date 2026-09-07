@@ -243,6 +243,17 @@ int video_mode(int f, int w, int h)
     int samples = config_get_d(CONFIG_MULTISAMPLE);
     int vsync   = config_get_d(CONFIG_VSYNC)       ? 1 : 0;
     int hmd     = config_get_d(CONFIG_HMD)         ? 1 : 0;
+
+#ifdef __ANDROID__
+    /*
+     * There is no flat-screen mode on this target: the app is launched into
+     * an immersive headset and the window is never presented to. Ignore a
+     * stored zero rather than leave the game rendering into nothing.
+     */
+
+    hmd = 1;
+    config_set_d(CONFIG_HMD, 1);
+#endif
     int highdpi = config_get_d(CONFIG_HIGHDPI)     ? 1 : 0;
 
     int dpy = config_get_d(CONFIG_DISPLAY);

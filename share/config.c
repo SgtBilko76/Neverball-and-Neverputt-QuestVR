@@ -172,7 +172,12 @@ static struct
     { &CONFIG_MOUSE_RESPONSE, "mouse_response", 50 },
     { &CONFIG_MOUSE_INVERT, "mouse_invert", 0 },
     { &CONFIG_VSYNC,        "vsync",        1 },
+#ifdef __ANDROID__
+    /* The Android target exists only to be an OpenXR headset app. */
+    { &CONFIG_HMD,          "hmd",          1 },
+#else
     { &CONFIG_HMD,          "hmd",          0 },
+#endif
     { &CONFIG_HIGHDPI,      "highdpi",      1 },
 
     { &CONFIG_MOUSE_CAMERA_1,      "mouse_camera_1",      0 },
