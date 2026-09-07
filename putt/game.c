@@ -23,6 +23,7 @@
 #include "hole.h"
 #include "hud.h"
 #include "hmd.h"
+#include "vr.h"
 #include "image.h"
 #include "audio.h"
 #include "config.h"
@@ -96,6 +97,10 @@ int game_init(const char *s)
     idle_t = 1.0f;
 
     view_init();
+
+    /* The camera has just jumped to a new hole; that is not motion. */
+
+    vr_comfort_reset();
 
     if (!(state = sol_load_full(&file, s, config_get_d(CONFIG_SHADOW))))
         return 0;
@@ -291,6 +296,25 @@ void game_draw(int pose, float t)
 
     if (!state)
         return;
+
+    /*
+     * Follow the camera for the comfort vignette. In a headset this runs
+     * once per eye with the same paint time, so only the first call of each
+     * frame advances anything. Neverputt has no view angle of its own to
+     * report, so the yaw comes out of the vector from the ball to the eye.
+     */
+
+    {
+        static float last_t = 0.0f;
+
+        if (t != last_t)
+        {
+            vr_comfort_step(t - last_t, view_p,
+                            V_DEG(fatan2f(view_p[0] - view_c[0],
+                                          view_p[2] - view_c[2])));
+            last_t = t;
+        }
+    }
 
     fp->shadow_ui = ball;
 
