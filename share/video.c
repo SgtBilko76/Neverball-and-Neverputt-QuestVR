@@ -449,14 +449,18 @@ void video_swap(void)
 {
     int dt;
 
-    if (hmd_stat())
-        hmd_swap();
-
-    /* Take a screenshot of the complete back buffer and swap it. */
+    /*
+     * Take a screenshot of the complete back buffer and swap it. In HMD mode
+     * this has to happen before hmd_swap() hands the frame over, since that
+     * is the point at which the eye's framebuffer stops being ours to read.
+     */
 
     snapshot_take();
 
-    SDL_GL_SwapWindow(window);
+    if (hmd_stat())
+        hmd_swap();
+    else
+        SDL_GL_SwapWindow(window);
 
     /* Accumulate time passed and frames rendered. */
 
