@@ -83,6 +83,12 @@ android {
                 storePassword keystoreProps['storePassword']
                 keyAlias keystoreProps['keyAlias']
                 keyPassword keystoreProps['keyPassword']
+
+                // Signature scheme v3 carries the key's rotation history,
+                // so this identity can be replaced later without orphaning
+                // installs. It supersedes v2 rather than accompanying it,
+                // and every device that meets minSdk understands it.
+                enableV3Signing true
             }
         }
     }
