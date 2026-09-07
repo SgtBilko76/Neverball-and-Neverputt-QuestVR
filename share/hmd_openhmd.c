@@ -71,6 +71,15 @@ void hmd_free()
     ctx = NULL;
 }
 
+void hmd_poll()
+{
+}
+
+int hmd_should_render()
+{
+    return 1;
+}
+
 void hmd_step()
 {
     if (ctx) ohmd_ctx_update(ctx);

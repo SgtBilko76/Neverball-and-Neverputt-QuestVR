@@ -21,8 +21,11 @@ int  hmd_stat(void);
 
 void hmd_init(void);
 void hmd_free(void);
+void hmd_poll(void);
 void hmd_step(void);
 void hmd_swap(void);
+
+int  hmd_should_render(void);
 
 void hmd_prep_left(void);
 void hmd_prep_right(void);

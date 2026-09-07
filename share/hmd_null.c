@@ -18,8 +18,11 @@ int  hmd_stat(void) { return 0; }
 
 void hmd_init(void) { }
 void hmd_free(void) { }
+void hmd_poll(void) { }
 void hmd_step(void) { }
 void hmd_swap(void) { }
+
+int  hmd_should_render(void) { return 1; }
 
 void hmd_prep_left(void)  { }
 void hmd_prep_right(void) { }

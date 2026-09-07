@@ -140,6 +140,15 @@ extern "C" void hmd_free()
     OVR::System::Destroy();
 }
 
+extern "C" void hmd_poll()
+{
+}
+
+extern "C" int hmd_should_render()
+{
+    return 1;
+}
+
 extern "C" void hmd_step()
 {
     /* LibOVR is threaded. No synchronous update is necessary. */

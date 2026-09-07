@@ -726,14 +726,30 @@ static void step(void *data)
 {
     struct main_loop *mainloop = (struct main_loop *) data;
 
-    int running = loop();
+    int running;
+
+    /*
+     * Begin the HMD frame first: loop() polls the tilt input and st_timer()
+     * steps the simulation immediately after, so both want this frame's
+     * head and controller poses, not the previous frame's.
+     */
+
+    hmd_poll();
+
+    running = loop();
 
     if (running)
     {
         Uint32 now = SDL_GetTicks();
         Uint32 dt = (now - mainloop->now);
 
-        if (0 < dt && dt < 1000)
+        /*
+         * With the headset off the face the runtime asks for no frames, and
+         * there is nothing to play to, so let the whole game idle rather
+         * than free-run the simulation into a flat battery.
+         */
+
+        if (0 < dt && dt < 1000 && hmd_should_render())
         {
             /* Step the game state. */
 
