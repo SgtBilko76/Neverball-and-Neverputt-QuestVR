@@ -51,6 +51,7 @@ int CONFIG_VR_TILT_VISUAL;
 int CONFIG_VR_VIGNETTE;
 int CONFIG_VR_SNAP_TURN;
 int CONFIG_VR_CONTROL;
+int CONFIG_VR_RENDER_SCALE;
 int CONFIG_HIGHDPI;
 int CONFIG_MOUSE_CAMERA_1;
 int CONFIG_MOUSE_CAMERA_2;
@@ -191,6 +192,8 @@ static struct
     { &CONFIG_VR_SNAP_TURN,   "vr_snap_turn",   45 },
     /* How the floor is tilted: 0 by thumbstick, 1 by turning the wrist. */
     { &CONFIG_VR_CONTROL,     "vr_control",      0 },
+    /* Percentage of the runtime's recommended per-eye resolution. */
+    { &CONFIG_VR_RENDER_SCALE, "vr_render_scale", 100 },
 
     { &CONFIG_MOUSE_CAMERA_1,      "mouse_camera_1",      0 },
     { &CONFIG_MOUSE_CAMERA_2,      "mouse_camera_2",      0 },

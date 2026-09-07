@@ -42,6 +42,7 @@ extern int CONFIG_VR_TILT_VISUAL;
 extern int CONFIG_VR_VIGNETTE;
 extern int CONFIG_VR_SNAP_TURN;
 extern int CONFIG_VR_CONTROL;
+extern int CONFIG_VR_RENDER_SCALE;
 extern int CONFIG_HIGHDPI;
 extern int CONFIG_MOUSE_CAMERA_1;
 extern int CONFIG_MOUSE_CAMERA_2;

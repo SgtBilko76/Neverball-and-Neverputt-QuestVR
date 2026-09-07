@@ -41,6 +41,7 @@
 #include "log.h"
 #include "video.h"
 #include "vr.h"
+#include "config.h"
 
 #include "hmd_openxr.h"
 
@@ -49,11 +50,6 @@
 /*---------------------------------------------------------------------------*/
 
 #define EYE_COUNT 2
-
-/* Fraction of the runtime's recommended per-eye resolution to render at. */
-
-#define EYE_SCALE_NUM 7
-#define EYE_SCALE_DEN 10
 
 /* Report an OpenXR failure and bail out of the calling function. */
 
@@ -426,6 +422,18 @@ static int xr_init_swapchains(void)
     int64_t *formats = NULL;
     int64_t  chosen  = 0;
 
+    /*
+     * The runtime's recommendation is what it thinks looks right on this
+     * headset, and this game has the pixel budget to take it. The dial is
+     * here for a level that turns out not to, and is read once, because
+     * changing it means rebuilding the swapchains.
+     */
+
+    int scale = config_get_d(CONFIG_VR_RENDER_SCALE);
+
+    if (scale <  50) scale =  50;
+    if (scale > 100) scale = 100;
+
     XR_TRY(xrEnumerateViewConfigurationViews(
                xr_instance, xr_system,
                XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO,
@@ -489,9 +497,9 @@ static int xr_init_swapchains(void)
         XrSwapchainCreateInfo info;
 
         e->w = (int32_t) (config_views[i].recommendedImageRectWidth *
-                          EYE_SCALE_NUM / EYE_SCALE_DEN);
+                          (uint32_t) scale / 100u);
         e->h = (int32_t) (config_views[i].recommendedImageRectHeight *
-                          EYE_SCALE_NUM / EYE_SCALE_DEN);
+                          (uint32_t) scale / 100u);
 
         memset(&info, 0, sizeof (info));
         info.type        = XR_TYPE_SWAPCHAIN_CREATE_INFO;

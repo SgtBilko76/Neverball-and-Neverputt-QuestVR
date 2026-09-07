@@ -55,10 +55,16 @@ Graphics, and in `neverballrc` as:
     vr_tilt_visual   30   percent of the world roll to actually show
     vr_vignette       1   close a black ring in from the edges while moving
     vr_snap_turn     45   degrees per step of manual turning; 0 turns smoothly
+    vr_render_scale 100   percent of the runtime's recommended per-eye size
 
 `vr_tilt_visual` only changes the picture. `game_tilt_grav()` on the server
 is untouched, so the physics, the difficulty and the times are identical to
 the flat game at any setting.
+
+`vr_render_scale` is read once, when the swapchains are built, so it only
+takes effect on a restart -- which is why it is not on the settings screen.
+The runtime recommends 2800x2933 per eye on a Quest 3 and the game has the
+budget to take it; the dial is there for a level that turns out to disagree.
 
 The graphics options that describe a window -- display, resolution,
 fullscreen, v-sync, antialiasing -- are hidden in a headset, where the
