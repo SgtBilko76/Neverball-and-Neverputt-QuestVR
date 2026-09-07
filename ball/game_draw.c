@@ -19,6 +19,7 @@
 #include "geom.h"
 #include "config.h"
 #include "video.h"
+#include "hmd.h"
 
 #include "solid_all.h"
 #include "solid_draw.h"
@@ -217,16 +218,38 @@ static void game_draw_jumps(struct s_rend *rend,
 
 /*---------------------------------------------------------------------------*/
 
+/*
+ * How much of the world roll to actually show.
+ *
+ * Neverball fakes a tilting floor by rolling the entire level about the ball
+ * by up to ANGLE_BOUND degrees. On a monitor that reads as the floor moving;
+ * in a headset it reads as the room moving, and it is the single strongest
+ * source of discomfort here, because the horizon leaves level while the
+ * player's inner ear insists it has not.
+ *
+ * Only the picture is attenuated. game_tilt_grav() on the server is left
+ * alone, so the physics, the difficulty, the times and the replays are all
+ * bit-identical to the flat game.
+ */
+static float game_tilt_scale(void)
+{
+    if (hmd_stat())
+        return (float) config_get_d(CONFIG_VR_TILT_VISUAL) / 100.0f;
+
+    return 1.0f;
+}
+
 static void game_draw_tilt(const struct game_draw *gd, int d)
 {
     const struct game_tilt *tilt = &gd->tilt;
     const float *ball_p = gd->vary.uv[0].p;
+    const float  k = game_tilt_scale();
 
     /* Rotate the environment about the position of the ball. */
 
     glTranslatef(+ball_p[0], +ball_p[1] * d, +ball_p[2]);
-    glRotatef(-tilt->rz * d, tilt->z[0], tilt->z[1], tilt->z[2]);
-    glRotatef(-tilt->rx * d, tilt->x[0], tilt->x[1], tilt->x[2]);
+    glRotatef(-tilt->rz * k * d, tilt->z[0], tilt->z[1], tilt->z[2]);
+    glRotatef(-tilt->rx * k * d, tilt->x[0], tilt->x[1], tilt->x[2]);
     glTranslatef(-ball_p[0], -ball_p[1] * d, -ball_p[2]);
 }
 
@@ -282,9 +305,14 @@ static void game_draw_back(struct s_rend *rend,
         if (d < 0)
         {
             const struct game_tilt *tilt = &gd->tilt;
+            const float k = game_tilt_scale();
 
-            glRotatef(tilt->rz * 2, tilt->z[0], tilt->z[1], tilt->z[2]);
-            glRotatef(tilt->rx * 2, tilt->x[0], tilt->x[1], tilt->x[2]);
+            /* These undo the roll the reflected pass has already applied
+             * twice over, so they follow the same attenuation; scaling one
+             * without the other detaches the reflection from the geometry. */
+
+            glRotatef(tilt->rz * k * 2, tilt->z[0], tilt->z[1], tilt->z[2]);
+            glRotatef(tilt->rx * k * 2, tilt->x[0], tilt->x[1], tilt->x[2]);
         }
 
         glTranslatef(view->p[0], view->p[1] * d, view->p[2]);
