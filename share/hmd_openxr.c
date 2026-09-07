@@ -27,6 +27,8 @@
 
 #include <EGL/egl.h>
 
+#include <dlfcn.h>
+
 #include <jni.h>
 
 #include <math.h>
@@ -65,6 +67,75 @@
             return 0;                                                   \
         }                                                               \
     } while (0)
+
+/*
+ * The swapchain images belong to the runtime, not to gl4es, and that
+ * distinction matters more than it looks.
+ *
+ * gl4es virtualizes texture names: gl4es_getTexture() looks a name up in its
+ * own table and, for one it did not create, quietly generates a fresh real
+ * texture and remaps to it. Handing it a swapchain image therefore produces
+ * a framebuffer that is complete, that clears and draws without error, and
+ * that the compositor never sees, because the colour attachment is a texture
+ * gl4es invented. The result is a black headset.
+ *
+ * Framebuffer names are not virtualized, so the way out is narrow: build the
+ * eye framebuffers with the driver's own entry points, and let gl4es do
+ * nothing but bind them by name and draw.
+ */
+
+static void (*gles_FramebufferTexture2D)(GLenum, GLenum, GLenum, GLuint, GLint);
+static void (*gles_FramebufferRenderbuffer)(GLenum, GLenum, GLenum, GLuint);
+static void (*gles_GenRenderbuffers)(GLsizei, GLuint *);
+static void (*gles_BindRenderbuffer)(GLenum, GLuint);
+static void (*gles_RenderbufferStorage)(GLenum, GLenum, GLsizei, GLsizei);
+static void (*gles_DeleteRenderbuffers)(GLsizei, const GLuint *);
+static GLenum (*gles_CheckFramebufferStatus)(GLenum);
+
+static int load_gles(void)
+{
+    static const char *names[] = { "libGLESv3.so", "libGLESv2.so", NULL };
+
+    void *lib = NULL;
+    int i;
+
+    if (gles_FramebufferTexture2D)
+        return 1;
+
+    for (i = 0; names[i] && !lib; i++)
+        lib = dlopen(names[i], RTLD_LAZY | RTLD_LOCAL);
+
+    if (!lib)
+    {
+        log_printf("HMD: cannot open the GLES driver (%s)\n", dlerror());
+        return 0;
+    }
+
+    *(void **) &gles_FramebufferTexture2D =
+        dlsym(lib, "glFramebufferTexture2D");
+    *(void **) &gles_FramebufferRenderbuffer =
+        dlsym(lib, "glFramebufferRenderbuffer");
+    *(void **) &gles_GenRenderbuffers    = dlsym(lib, "glGenRenderbuffers");
+    *(void **) &gles_BindRenderbuffer    = dlsym(lib, "glBindRenderbuffer");
+    *(void **) &gles_RenderbufferStorage = dlsym(lib, "glRenderbufferStorage");
+    *(void **) &gles_DeleteRenderbuffers = dlsym(lib, "glDeleteRenderbuffers");
+    *(void **) &gles_CheckFramebufferStatus =
+        dlsym(lib, "glCheckFramebufferStatus");
+
+    if (!gles_FramebufferTexture2D    || !gles_FramebufferRenderbuffer ||
+        !gles_GenRenderbuffers        || !gles_BindRenderbuffer        ||
+        !gles_RenderbufferStorage     || !gles_DeleteRenderbuffers     ||
+        !gles_CheckFramebufferStatus)
+    {
+        log_printf("HMD: the GLES driver is missing framebuffer entry "
+                   "points\n");
+
+        gles_FramebufferTexture2D = NULL;
+        return 0;
+    }
+
+    return 1;
+}
 
 struct eye_swapchain
 {
@@ -458,11 +529,15 @@ static int xr_init_swapchains(void)
          * it whenever CONFIG_REFLECTION is on.
          */
 
-        glGenRenderbuffers(1, &e->depth);
-        glBindRenderbuffer(GL_RENDERBUFFER, e->depth);
-        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8,
-                              e->w, e->h);
-        glBindRenderbuffer(GL_RENDERBUFFER, 0);
+        gles_GenRenderbuffers(1, &e->depth);
+        gles_BindRenderbuffer(GL_RENDERBUFFER, e->depth);
+        gles_RenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8,
+                                 e->w, e->h);
+        gles_BindRenderbuffer(GL_RENDERBUFFER, 0);
+
+        /* The framebuffer names themselves come from gl4es, which passes
+         * them straight through, so that binding one by name later leaves
+         * its state tracking telling the truth. */
 
         glGenFramebuffers(e->image_count, e->fbos);
 
@@ -471,14 +546,15 @@ static int xr_init_swapchains(void)
             GLenum status;
 
             glBindFramebuffer(GL_FRAMEBUFFER, e->fbos[j]);
-            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-                                   GL_TEXTURE_2D, e->images[j].image, 0);
-            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
-                                      GL_RENDERBUFFER, e->depth);
-            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT,
-                                      GL_RENDERBUFFER, e->depth);
 
-            status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+            gles_FramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                                      GL_TEXTURE_2D, e->images[j].image, 0);
+            gles_FramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
+                                         GL_RENDERBUFFER, e->depth);
+            gles_FramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT,
+                                         GL_RENDERBUFFER, e->depth);
+
+            status = gles_CheckFramebufferStatus(GL_FRAMEBUFFER);
 
             if (status != GL_FRAMEBUFFER_COMPLETE)
             {
@@ -515,6 +591,7 @@ int hmd_stat(void)
 
 void hmd_init(void)
 {
+    if (!load_gles())        { hmd_free(); return; }
     if (!xr_init_loader())   { hmd_free(); return; }
     if (!xr_init_instance()) { hmd_free(); return; }
     if (!xr_init_session())  { hmd_free(); return; }
@@ -551,7 +628,7 @@ void hmd_free(void)
         }
 
         if (e->depth)
-            glDeleteRenderbuffers(1, &e->depth);
+            gles_DeleteRenderbuffers(1, &e->depth);
 
         if (e->handle != XR_NULL_HANDLE)
             xrDestroySwapchain(e->handle);
