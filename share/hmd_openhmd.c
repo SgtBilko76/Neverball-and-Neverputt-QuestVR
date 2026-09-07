@@ -80,6 +80,16 @@ int hmd_should_render()
     return 1;
 }
 
+int hmd_focused()
+{
+    return 1;
+}
+
+float hmd_fov()
+{
+    return 0.0f;
+}
+
 void hmd_step()
 {
     if (ctx) ohmd_ctx_update(ctx);

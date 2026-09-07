@@ -850,6 +850,21 @@ int hmd_should_render(void)
     return !hmd_stat() || should_render;
 }
 
+int hmd_focused(void)
+{
+    return !hmd_stat() || xr_state == XR_SESSION_STATE_FOCUSED;
+}
+
+float hmd_fov(void)
+{
+    const XrFovf *f = &xr_views[cur_eye].fov;
+
+    if (!hmd_stat())
+        return 0.0f;
+
+    return (f->angleUp - f->angleDown) * 180.0f / 3.14159265358979323846f;
+}
+
 void hmd_step(void)
 {
 }

@@ -27,6 +27,18 @@ void hmd_swap(void);
 
 int  hmd_should_render(void);
 
+/* Is the player looking at the game, rather than at a system overlay? */
+
+int  hmd_focused(void);
+
+/*
+ * Vertical field of view of the eye being painted, in degrees. Zero when
+ * there is no headset, and also for the older backends that pack both eyes
+ * into one window and have no such thing.
+ */
+
+float hmd_fov(void);
+
 void hmd_prep_left(void);
 void hmd_prep_right(void);
 

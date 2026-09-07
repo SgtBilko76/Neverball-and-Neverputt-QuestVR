@@ -23,6 +23,8 @@ void hmd_step(void) { }
 void hmd_swap(void) { }
 
 int  hmd_should_render(void) { return 1; }
+int  hmd_focused(void)       { return 1; }
+float hmd_fov(void)          { return 0.0f; }
 
 void hmd_prep_left(void)  { }
 void hmd_prep_right(void) { }

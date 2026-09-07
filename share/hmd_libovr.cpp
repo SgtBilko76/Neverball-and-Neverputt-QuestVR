@@ -149,6 +149,16 @@ extern "C" int hmd_should_render()
     return 1;
 }
 
+extern "C" int hmd_focused()
+{
+    return 1;
+}
+
+extern "C" float hmd_fov()
+{
+    return 0.0f;
+}
+
 extern "C" void hmd_step()
 {
     /* LibOVR is threaded. No synchronous update is necessary. */
