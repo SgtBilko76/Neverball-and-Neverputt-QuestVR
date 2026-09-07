@@ -89,7 +89,7 @@ set(BALL_SRCS
     share/config.c share/dir.c share/ease.c share/fetch_null.c
     share/font.c share/fs_android.c share/fs_common.c share/fs_jpg.c
     share/fs_ov.c share/fs_png.c share/fs_stdio.c share/geom.c
-    share/glext.c share/gui.c share/hmd_math.c share/hmd_openxr.c share/image.c
+    share/glext.c share/gui.c share/hmd_math.c share/hmd_openxr.c share/vr_input_openxr.c share/image.c
     share/joy.c share/lang.c share/list.c share/log.c share/mapclib.c
     share/miniz.c share/mtrl.c share/package.c share/part.c
     share/queue.c share/solid_all.c share/solid_base.c share/solid_draw.c

@@ -34,6 +34,7 @@
 #include "gui.h"
 #include "set.h"
 #include "tilt.h"
+#include "vr_input.h"
 #include "hmd.h"
 #include "fs.h"
 #include "common.h"
@@ -584,6 +585,10 @@ static int loop(void)
             break;
         }
     }
+
+    /* Read the motion controllers, if there are any. */
+
+    vr_input_poll();
 
     /* Process events via the tilt sensor API. */
 

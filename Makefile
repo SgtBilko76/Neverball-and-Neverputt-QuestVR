@@ -450,13 +450,18 @@ BALL_OBJS += share/hmd_libovr.o share/hmd_common.o
 PUTT_OBJS += share/hmd_libovr.o share/hmd_common.o
 else
 ifeq ($(ENABLE_HMD),openxr)
-BALL_OBJS += share/hmd_openxr.o share/hmd_math.o
-PUTT_OBJS += share/hmd_openxr.o share/hmd_math.o
+BALL_OBJS += share/hmd_openxr.o share/hmd_math.o share/vr_input_openxr.o
+PUTT_OBJS += share/hmd_openxr.o share/hmd_math.o share/vr_input_openxr.o
 else
 BALL_OBJS += share/hmd_null.o
 PUTT_OBJS += share/hmd_null.o
 endif
 endif
+endif
+
+ifneq ($(ENABLE_HMD),openxr)
+BALL_OBJS += share/vr_input_null.o
+PUTT_OBJS += share/vr_input_null.o
 endif
 
 ifeq ($(PLATFORM),mingw)
@@ -555,6 +560,7 @@ TEST_SRCS := \
 	tests/test_solid.c \
 	tests/test_hmd_math.c \
 	tests/test_vr_comfort.c \
+	tests/test_vr_pointer.c \
 	share/array.c \
 	share/common.c \
 	share/queue.c \
