@@ -455,35 +455,52 @@ void audio_music_fade_in(float t)
 
 void audio_music_fade_to(float t, const char *filename)
 {
-    if (music)
+    /*
+     * The mixer callback frees the current track and promotes the queued one
+     * in its place whenever a fade completes, so reading music, music->name
+     * and queue without the lock is a use-after-free waiting for the wrong
+     * moment. It is only ever the wrong moment on hardware with a weaker
+     * memory model than x86, which is to say on the machines this now runs
+     * on.
+     *
+     * Everything called from here takes the lock again; SDL's mutexes are
+     * reentrant, and audio_music_play() already loads a file while holding
+     * it, so nesting costs nothing new.
+     */
+
+    SDL_LockAudio();
     {
-        if (!music->name || strcmp(filename, music->name) != 0)
+        if (music)
         {
-            audio_music_fade_out(t);
-            audio_music_queue(filename, t);
+            if (!music->name || strcmp(filename, music->name) != 0)
+            {
+                audio_music_fade_out(t);
+                audio_music_queue(filename, t);
+            }
+            else
+            {
+                /*
+                 * We're fading to the current track.  Chances are,
+                 * whatever track is still in the queue, we don't want to
+                 * hear it anymore.
+                 */
+
+                if (queue)
+                {
+                    voice_free(queue);
+                    queue = NULL;
+                }
+
+                audio_music_fade_in(t);
+            }
         }
         else
         {
-            /*
-             * We're fading to the current track.  Chances are,
-             * whatever track is still in the queue, we don't want to
-             * hear it anymore.
-             */
-
-            if (queue)
-            {
-                voice_free(queue);
-                queue = NULL;
-            }
-
+            audio_music_play(filename);
             audio_music_fade_in(t);
         }
     }
-    else
-    {
-        audio_music_play(filename);
-        audio_music_fade_in(t);
-    }
+    SDL_UnlockAudio();
 }
 
 /*
