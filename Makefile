@@ -556,7 +556,7 @@ TEST_SRCS := \
 	ball/level.c
 
 $(TEST_TARG) : $(TEST_SRCS)
-	$(CC) $(ALL_CFLAGS) -Ishare -Iball -UNDEBUG -o $@ $^ $(LDFLAGS)
+	$(CC) $(ALL_CFLAGS) -Ishare -Iball -UNDEBUG -o $@ $^ $(LDFLAGS) -lm
 
 test : $(TEST_TARG)
 	./$(TEST_TARG)

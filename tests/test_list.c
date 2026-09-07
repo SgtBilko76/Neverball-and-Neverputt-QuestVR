@@ -7,6 +7,10 @@
 #include "test.h"
 #include "list.h"
 
+/* For strdup, which the project routes through dupe_string: the build is
+ * -std=c99 -pedantic, where the POSIX one is not declared. */
+#include "common.h"
+
 static void test_list_null(void)
 {
     if (list_rest(NULL) != NULL)
