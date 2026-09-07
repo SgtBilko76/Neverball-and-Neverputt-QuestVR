@@ -22,6 +22,8 @@ int main(void)
         pass = 0;
     if (!test_solid_all())
         pass = 0;
+    if (!test_hmd_math_all())
+        pass = 0;
 
     return pass ? 0 : 1;
 }

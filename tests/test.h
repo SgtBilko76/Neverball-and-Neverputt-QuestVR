@@ -72,5 +72,6 @@ int test_queue_all(void);
 int test_common_all(void);
 int test_level_all(void);
 int test_solid_all(void);
+int test_hmd_math_all(void);
 
 #endif
