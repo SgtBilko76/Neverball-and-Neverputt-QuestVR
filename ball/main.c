@@ -588,7 +588,8 @@ static int loop(void)
 
     /* Read the motion controllers, if there are any. */
 
-    vr_input_poll();
+    if (!vr_input_poll())
+        return 0;
 
     /* Process events via the tilt sensor API. */
 

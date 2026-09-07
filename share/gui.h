@@ -151,6 +151,7 @@ int  gui_click(int, int);
 void gui_focus(int);
 
 int  gui_active(void);
+int  gui_hovered(void);
 int  gui_token(int);
 int  gui_value(int);
 void gui_toggle(int);

@@ -27,6 +27,7 @@
 #include "config.h"
 #include "state.h"
 #include "video.h"
+#include "gui.h"
 #include "log.h"
 
 /*---------------------------------------------------------------------------*/
@@ -42,6 +43,7 @@ static XrAction act_look;               /* right thumbstick, Vector2f */
 static XrAction act_aim [HANDS];        /* pointing pose              */
 static XrAction act_grip;               /* right grip pose, for tilt  */
 static XrAction act_select;             /* trigger                    */
+static XrAction act_confirm;            /* A                          */
 static XrAction act_back;               /* B                          */
 static XrAction act_start;              /* X                          */
 static XrAction act_option;             /* Y                          */
@@ -146,6 +148,7 @@ static int init_actions(void)
         !make_action(&act_aim[HAND_R], XR_ACTION_TYPE_POSE_INPUT, "aim_right", "Point (right)") ||
         !make_action(&act_grip,   XR_ACTION_TYPE_POSE_INPUT,     "wrist",  "Tilt by wrist")    ||
         !make_action(&act_select, XR_ACTION_TYPE_BOOLEAN_INPUT,  "select", "Select")           ||
+        !make_action(&act_confirm, XR_ACTION_TYPE_BOOLEAN_INPUT, "confirm", "Confirm")         ||
         !make_action(&act_back,   XR_ACTION_TYPE_BOOLEAN_INPUT,  "back",   "Back")             ||
         !make_action(&act_start,  XR_ACTION_TYPE_BOOLEAN_INPUT,  "start",  "Pause")            ||
         !make_action(&act_option, XR_ACTION_TYPE_BOOLEAN_INPUT,  "option", "Options")          ||
@@ -162,7 +165,7 @@ static int init_actions(void)
             { act_grip,   path("/user/hand/right/input/grip/pose")     },
             { act_select, path("/user/hand/right/input/trigger/value") },
             { act_select, path("/user/hand/left/input/trigger/value")  },
-            { act_select, path("/user/hand/right/input/a/click")       },
+            { act_confirm, path("/user/hand/right/input/a/click")      },
             { act_back,   path("/user/hand/right/input/b/click")       },
             { act_start,  path("/user/hand/left/input/x/click")        },
             { act_option, path("/user/hand/left/input/y/click")        },
@@ -176,6 +179,7 @@ static int init_actions(void)
             { act_grip,   path("/user/hand/right/input/grip/pose")     },
             { act_select, path("/user/hand/right/input/select/click")  },
             { act_select, path("/user/hand/left/input/select/click")   },
+            { act_confirm, path("/user/hand/right/input/menu/click")   },
             { act_back,   path("/user/hand/right/input/menu/click")    },
             { act_start,  path("/user/hand/left/input/menu/click")     },
         };
@@ -366,7 +370,7 @@ static void poll_sticks(void)
     }
 }
 
-static void poll_buttons(void)
+static int poll_buttons(void)
 {
     static const struct
     {
@@ -380,21 +384,42 @@ static void poll_buttons(void)
         { &act_cam[HAND_R], &CONFIG_JOYSTICK_BUTTON_R1     },
     };
 
+    static int as_click;
+
     size_t i;
     int down;
+    int run = 1;
 
     /*
-     * The trigger is both a click on whatever the pointer is over and the
-     * A button, which is what makes a menu usable either by pointing at it
-     * or by moving a highlight with the stick.
+     * Pointing at a small target at arm's length is not always easy, so the
+     * trigger does whichever of the two things makes sense: it clicks what
+     * the ray is actually over, and otherwise it activates whatever the
+     * stick has left highlighted. Which of the two is decided when the
+     * trigger goes down and held until it comes up, so that a press and its
+     * release cannot disagree.
      */
 
     if (get_edge(act_select, &down))
-        st_click(SDL_BUTTON_LEFT, down);
+    {
+        if (down)
+            as_click = gui_hovered() != 0;
+
+        if (as_click)
+            run = st_click(SDL_BUTTON_LEFT, down) && run;
+        else if (down)
+            run = st_buttn(config_get_d(CONFIG_JOYSTICK_BUTTON_A), 1) && run;
+    }
+
+    /* A always takes the highlight, whatever the ray is doing. */
+
+    if (get_edge(act_confirm, &down))
+        run = st_buttn(config_get_d(CONFIG_JOYSTICK_BUTTON_A), down) && run;
 
     for (i = 0; i < sizeof (map) / sizeof (map[0]); i++)
         if (get_edge(*map[i].action, &down))
-            st_buttn(config_get_d(*map[i].button), down);
+            run = st_buttn(config_get_d(*map[i].button), down) && run;
+
+    return run;
 }
 
 static void poll_pointer(void)
@@ -469,13 +494,13 @@ void vr_input_free(void)
     failed  = 0;
 }
 
-void vr_input_poll(void)
+int vr_input_poll(void)
 {
     XrActiveActionSet active;
     XrActionsSyncInfo sync;
 
     if (failed || !hmd_stat() || !hmd_xr_time())
-        return;
+        return 1;
 
     if (!ready)
     {
@@ -483,7 +508,7 @@ void vr_input_poll(void)
         {
             log_printf("VR input: giving up on the controllers\n");
             failed = 1;
-            return;
+            return 1;
         }
     }
 
@@ -500,12 +525,16 @@ void vr_input_poll(void)
      * so there is nothing to special-case here. */
 
     if (XR_FAILED(xrSyncActions(hmd_xr_session(), &sync)))
-        return;
+        return 1;
 
     poll_sticks();
-    poll_buttons();
+
+    /* Before the buttons, which ask where the ray is. */
+
     poll_pointer();
     poll_wrist();
+
+    return poll_buttons();
 }
 
 /*---------------------------------------------------------------------------*/

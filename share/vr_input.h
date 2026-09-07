@@ -15,9 +15,12 @@
 void vr_input_init(void);
 void vr_input_free(void);
 
-/* Read the controllers once, at the top of a frame. */
+/*
+ * Read the controllers once, at the top of a frame. Returns zero when the
+ * player has asked to quit, the same way the event loop's own handlers do.
+ */
 
-void vr_input_poll(void);
+int vr_input_poll(void);
 
 /*---------------------------------------------------------------------------*/
 

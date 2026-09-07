@@ -2728,6 +2728,13 @@ int gui_stick(int id, int a, float v, int bump)
         return active = jd;
 }
 
+/* The widget the pointer is over, if any, as opposed to the highlighted one. */
+
+int gui_hovered(void)
+{
+    return hovered;
+}
+
 int gui_click(int b, int d)
 {
     if (b == SDL_BUTTON_LEFT)

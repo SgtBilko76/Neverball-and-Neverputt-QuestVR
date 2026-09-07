@@ -6,6 +6,6 @@
 
 void vr_input_init(void) { }
 void vr_input_free(void) { }
-void vr_input_poll(void) { }
+int  vr_input_poll(void) { return 1; }
 
 /*---------------------------------------------------------------------------*/
