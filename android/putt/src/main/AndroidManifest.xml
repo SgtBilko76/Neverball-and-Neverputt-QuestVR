@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Immersive VR only: the app has no meaningful 2D panel mode. -->
+    <uses-feature android:name="android.hardware.vr.headtracking"
+                  android:required="true"
+                  android:version="1" />
+
+    <application
+        android:label="Neverputt"
+        android:allowBackup="false"
+        android:hasCode="true"
+        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+
+        <meta-data android:name="com.oculus.supportedDevices"
+                   android:value="quest2|quest3|questpro" />
+        <meta-data android:name="com.oculus.intent.category.VR"
+                   android:value="vr_only" />
+
+        <activity
+            android:name=".NeverputtActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:resizeableActivity="false"
+            android:excludeFromRecents="false"
+            android:exported="true"
+            android:configChanges="screenSize|screenLayout|orientation|keyboardHidden|keyboard|navigation|uiMode|density">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- Tells the OpenXR runtime broker this is an immersive app. -->
+                <category android:name="org.khronos.openxr.intent.category.IMMERSIVE_HMD" />
+                <!-- Keeps the Horizon launcher out of 2D panel mode. -->
+                <category android:name="com.oculus.intent.category.VR" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
