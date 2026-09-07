@@ -26,6 +26,8 @@ int main(void)
         pass = 0;
     if (!test_vr_comfort_all())
         pass = 0;
+    if (!test_vr_pointer_all())
+        pass = 0;
 
     return pass ? 0 : 1;
 }
