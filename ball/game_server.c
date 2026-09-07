@@ -22,6 +22,7 @@
 #include "binary.h"
 #include "common.h"
 #include "ease.h"
+#include "hmd.h"
 
 #include "solid_sim.h"
 #include "solid_all.h"
@@ -526,7 +527,16 @@ static void game_update_view(float dt)
 
     float dc = view.dc * (jump_b > 0 ? 2.0f * fabsf(jump_dt - 0.5f) : 1.0f);
     float ball_spd = v_len(vary.uv->v);
-    float rot_mult = torque ? CLAMP(1.0f, 1.0f + ball_spd / 24.0f, rotate_max) : 1.0f;
+    /*
+     * Scaling the rotation rate with the ball's speed whips the view round
+     * exactly when a player in a headset is least able to take it, and it
+     * makes a stepped turn land on an unpredictable angle. This and the
+     * velocity dolly below are the two comfort measures here; both move only
+     * where the camera sits, and neither touches the simulation.
+     */
+
+    float rot_mult = (torque && !hmd_stat()) ?
+        CLAMP(1.0f, 1.0f + ball_spd / 24.0f, rotate_max) : 1.0f;
     float da = 90.0f * input_get_r() * rot_mult * dt;
     float dx = (!velocity_xz && spd >= 0.0f) ? (input_get_r() * rot_mult * dt * 5.0f) : 0.0f;
     float k;
@@ -639,7 +649,10 @@ static void game_update_view(float dt)
 
     /* Compute the new view position. */
 
-    k = 1.0f + v_dot(view.e[2], view_v) / 10.0f;
+    /* The velocity dolly slides the camera in and out along the view axis,
+     * which in a headset reads as the world breathing toward you. */
+
+    k = hmd_stat() ? 1.0f : 1.0f + v_dot(view.e[2], view_v) / 10.0f;
 
     view_k = view_k + (k - view_k) * dt;
 
