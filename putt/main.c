@@ -34,6 +34,7 @@
 #include "game.h"
 #include "gui.h"
 #include "hmd.h"
+#include "vr_input.h"
 #include "fs.h"
 #include "joy.h"
 #include "log.h"
@@ -87,6 +88,11 @@ static int loop(void)
     int c;
 
     int ax, ay, dx, dy;
+
+    /* Read the motion controllers, if there are any. */
+
+    if (!vr_input_poll())
+        return 0;
 
     while (d && SDL_PollEvent(&e))
     {
@@ -373,19 +379,57 @@ int main(int argc, char *argv[])
             else
                 goto_state(&st_title);
 
-            while (loop())
+            for (;;)
+            {
+                /*
+                 * Begin the headset frame first: loop() reads the
+                 * controllers and st_timer() steps the game straight after,
+                 * so both want this frame's poses rather than the last.
+                 */
+
+                hmd_poll();
+
+                /*
+                 * Losing focus means a system overlay has come up in front
+                 * of the game. The window focus event this mirrors never
+                 * arrives, because the window is never presented to.
+                 */
+
+                {
+                    static int focused = 1;
+
+                    int now = hmd_focused();
+
+                    if (focused && !now && video_get_grab())
+                        goto_pause(&st_over);
+
+                    focused = now;
+                }
+
+                if (!loop())
+                    break;
+
                 if ((t1 = SDL_GetTicks()) > t0)
                 {
-                    st_timer((t1 - t0) / 1000.f);
-                    hmd_step();
-                    st_paint(0.001f * t1);
-                    video_swap();
+                    /*
+                     * With the headset off the face the runtime asks for no
+                     * frames, and there is nobody to play to.
+                     */
+
+                    if (hmd_should_render())
+                    {
+                        st_timer((t1 - t0) / 1000.f);
+                        hmd_step();
+                        st_paint(0.001f * t1);
+                        video_swap();
+                    }
 
                     t0 = t1;
 
                     if (config_get_d(CONFIG_NICE))
                         SDL_Delay(1);
                 }
+            }
 
             mtrl_quit();
         }
