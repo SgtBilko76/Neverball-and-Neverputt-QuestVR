@@ -102,23 +102,40 @@ full JDK (not just a JRE -- the Android Gradle plugin needs jlink). A host
 toolchain with libpng, libjpeg and zip is needed to compile and package the
 level data.
 
-    # One-time: fetch and build third-party sources.
-    android/deps/fetch-deps.sh
+    android/build.sh
+
+That fetches and builds the third-party sources, compiles the `.map` files
+to `.sol`, packages the game data and builds both APKs. Each step is skipped
+if it has already been done, so it is also the quick way to rebuild after
+editing the game. The steps by hand, if you would rather:
+
+    android/deps/fetch-deps.sh      # pinned third-party sources
     android/deps/build-gl4es.sh
     android/deps/build-deps.sh
-
-    # Compile the 429 .map files to .sol using the host mapc.
-    make -j sols
-
-    # Package the game data that ships inside the APKs.
-    android/make-assets.sh
-
-    # Build both APKs.
+    make -j sols                    # 429 .map files, on the host
+    android/make-assets.sh          # the data that ships in the APKs
     cd android && ./gradlew assembleDebug
 
 The `.sol` compilation must run on the host: `mapc` is a build tool, and the
 root Makefile has no host/target split. This mirrors what CI already does for
 the web build (`.github/workflows/web-deploy.yml`).
+
+## Releases
+
+    android/make-keystore.sh        # once, then keep the key
+    android/build.sh release
+
+Android will not install an unsigned APK, so a release build needs a signing
+key even to be sideloaded. `make-keystore.sh` creates one and writes
+`keystore.properties` beside it; both are ignored by git, because a signing
+key is a credential. Keep them somewhere safe -- losing the key means the
+next release cannot be installed as an update over this one.
+
+Without a key, `assembleRelease` still runs and leaves an unsigned APK,
+which is useful for inspecting a build but cannot be installed.
+
+The version comes from `scripts/version.sh`, so a build cannot claim to be
+something it is not.
 
 ## Installing
 
@@ -144,14 +161,13 @@ Horizon OS also refuses to launch the app outright once the controllers have
 gone to sleep -- look for `RequiresControllersLaunchInterceptor` in logcat.
 Nothing over adb wakes them; press a controller button or pick one up.
 
-The log complains about `set-mym.txt` and a few others it cannot find.
-`make-assets.sh` packages four level sets and `data/sets.txt` lists more
-than that, so those are simply not in the APK.
 
 ## Layout
 
+    build.sh         one command, from a clean checkout to two APKs
+    make-keystore.sh creates the release signing key, once
     deps/            fetch and build scripts for the third-party sources, all pinned
-    make-assets.sh   packages the game data that ships in the APK
+    make-assets.sh   packages the game data that ships in the APKs
     ball/, putt/     one Gradle module and one APK each; their
                      CMakeLists.txt keep their own source lists, in the
                      spirit of emscripten/ball.mk, rather than including
