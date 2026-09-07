@@ -447,8 +447,13 @@ ifeq ($(ENABLE_HMD),libovr)
 BALL_OBJS += share/hmd_libovr.o share/hmd_common.o
 PUTT_OBJS += share/hmd_libovr.o share/hmd_common.o
 else
+ifeq ($(ENABLE_HMD),openxr)
+BALL_OBJS += share/hmd_openxr.o share/hmd_math.o
+PUTT_OBJS += share/hmd_openxr.o share/hmd_math.o
+else
 BALL_OBJS += share/hmd_null.o
 PUTT_OBJS += share/hmd_null.o
+endif
 endif
 endif
 
