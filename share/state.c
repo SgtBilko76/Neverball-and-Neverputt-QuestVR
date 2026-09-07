@@ -220,12 +220,7 @@ void st_timer(float dt)
 void st_point(int x, int y, int dx, int dy)
 {
     if (state && state->point)
-    {
-        if (hmd_stat())
-            state->point(state->gui_id, x * 2, y, dx, dy);
-        else
-            state->point(state->gui_id, x,     y, dx, dy);
-    }
+        state->point(state->gui_id, x, y, dx, dy);
 }
 
 void st_stick(int a, float v)
