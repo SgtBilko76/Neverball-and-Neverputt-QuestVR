@@ -31,7 +31,7 @@ web build already proved works.
 | | |
 |---|---|
 | Left thumbstick | tilt the floor, and move the menu highlight |
-| Right thumbstick | turn the camera, in steps |
+| Right thumbstick | turn the camera left or right, one step per push; up and down do nothing |
 | Point and trigger | click whatever the ray is on |
 | A | select |
 | B | back |
@@ -53,7 +53,7 @@ matter are in `neverballrc` rather than compiled in:
 
     vr_tilt_visual   30   percent of the world roll to actually show
     vr_vignette       1   close a black ring in from the edges while moving
-    vr_snap_turn     30   degrees per step of manual turning; 0 turns smoothly
+    vr_snap_turn     45   degrees per step of manual turning; 0 turns smoothly
 
 `vr_tilt_visual` only changes the picture. `game_tilt_grav()` on the server
 is untouched, so the physics, the difficulty and the times are identical to

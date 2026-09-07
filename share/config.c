@@ -188,7 +188,7 @@ static struct
     { &CONFIG_VR_TILT_VISUAL, "vr_tilt_visual", 30 },
     { &CONFIG_VR_VIGNETTE,    "vr_vignette",     1 },
     /* Degrees per step of manual camera rotation; 0 rotates smoothly. */
-    { &CONFIG_VR_SNAP_TURN,   "vr_snap_turn",   30 },
+    { &CONFIG_VR_SNAP_TURN,   "vr_snap_turn",   45 },
     /* How the floor is tilted: 0 by thumbstick, 1 by turning the wrist. */
     { &CONFIG_VR_CONTROL,     "vr_control",      0 },
 

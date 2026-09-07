@@ -321,6 +321,7 @@ static void push_stick(int axis, float v, float *last)
 static void poll_sticks(void)
 {
     static float last_x0 = 0.0f, last_y0 = 0.0f, last_x1 = 0.0f;
+    static int   turning = 0;
 
     float x, y;
 
@@ -339,8 +340,30 @@ static void poll_sticks(void)
         push_stick(config_get_d(CONFIG_JOYSTICK_AXIS_Y0), -y, &last_y0);
     }
 
+    /*
+     * The right stick is a two-way switch rather than an axis: pushing it
+     * left or right asks for one step of camera rotation, and there is
+     * nothing up or down -- a vertical camera swing in a headset is both
+     * unpleasant and, with the chase camera already level, pointless.
+     *
+     * The two thresholds are deliberately apart. A stick resting near one
+     * of them would otherwise chatter out a step every few frames, which
+     * with a stepped turn is a spinning room rather than a small wobble.
+     */
+
     if (get_vec2(act_look, &x, &y))
-        push_stick(config_get_d(CONFIG_JOYSTICK_AXIS_X1), x, &last_x1);
+    {
+        if (turning == 0)
+        {
+            if (x > +0.6f) turning = +1;
+            if (x < -0.6f) turning = -1;
+        }
+        else if (fabsf(x) < 0.4f)
+            turning = 0;
+
+        push_stick(config_get_d(CONFIG_JOYSTICK_AXIS_X1),
+                   (float) turning, &last_x1);
+    }
 }
 
 static void poll_buttons(void)
