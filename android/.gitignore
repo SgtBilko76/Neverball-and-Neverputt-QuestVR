@@ -15,3 +15,5 @@ ball/.cxx/
 putt/build/
 putt/.cxx/
 local.properties
+keystore.properties
+*.keystore

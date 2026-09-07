@@ -21,6 +21,16 @@ def gameVersion = {
     out.toString().trim().replaceAll(/\s*\(.*\)$/, '')
 }()
 
+// Release signing, if a key has been set up. See deps/../make-keystore.sh.
+// Nothing here is ever committed: keystore.properties is in .gitignore, and
+// without it a release build is simply left unsigned.
+def keystoreProps = new Properties()
+def keystoreFile = file("${rootDir}/keystore.properties")
+
+if (keystoreFile.exists()) {
+    keystoreFile.withInputStream { keystoreProps.load(it) }
+}
+
 android {
     namespace 'org.neverputt'
     compileSdk 34
@@ -66,6 +76,17 @@ android {
     }
 
 
+    signingConfigs {
+        if (keystoreProps['storeFile']) {
+            release {
+                storeFile file(keystoreProps['storeFile'])
+                storePassword keystoreProps['storePassword']
+                keyAlias keystoreProps['keyAlias']
+                keyPassword keystoreProps['keyPassword']
+            }
+        }
+    }
+
     buildTypes {
         debug {
             debuggable true
@@ -73,6 +94,10 @@ android {
         }
         release {
             minifyEnabled false
+
+            if (signingConfigs.findByName('release')) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 
