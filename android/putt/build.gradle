@@ -7,6 +7,20 @@ plugins {
 // the SDK's older CMake to configure at all.
 def gl4esLib = file("${rootDir}/deps/src/gl4es/lib/libGL.a")
 
+// The version is the repository's own, so a build cannot claim to be
+// something it is not. scripts/version.sh prints "1.7.0-alpha.3 (abcd1234)";
+// the commit belongs in the log rather than in a version name, and the
+// script writes share/version.h as a side effect either way.
+def gameVersion = {
+    def out = new ByteArrayOutputStream()
+    exec {
+        commandLine 'sh', 'scripts/version.sh'
+        workingDir file("${rootDir}/..")
+        standardOutput = out
+    }
+    out.toString().trim().replaceAll(/\s*\(.*\)$/, '')
+}()
+
 android {
     namespace 'org.neverputt'
     compileSdk 34
@@ -20,7 +34,7 @@ android {
         targetSdk 34
 
         versionCode 1
-        versionName '1.6.0'
+        versionName gameVersion
 
         ndk {
             abiFilters 'arm64-v8a'
@@ -50,6 +64,7 @@ android {
     androidResources {
         noCompress += ['zip']
     }
+
 
     buildTypes {
         debug {
