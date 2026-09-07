@@ -121,3 +121,33 @@ float vr_comfort_vignette(void)
 }
 
 /*---------------------------------------------------------------------------*/
+
+int vr_panel_hit(const float o[3], const float d[3], int w, int h,
+                 int *x, int *y)
+{
+    /* The panel lies in the plane z = -VR_PANEL_DIST, facing +Z. */
+
+    const float s = VR_PANEL_SPAN / (float) h;
+
+    float t, hx, hy;
+
+    if (!(d[2] < 0.0f))
+        return 0;
+
+    t = (-VR_PANEL_DIST - o[2]) / d[2];
+
+    if (!(t > 0.0f))
+        return 0;
+
+    hx = o[0] + d[0] * t;
+    hy = o[1] + d[1] * t;
+
+    /* Undo the placement hmd_ortho() applies to the pixel-space interface. */
+
+    *x = (int) (hx / s + 0.5f * (float) w);
+    *y = (int) ((hy - VR_PANEL_HEIGHT) / s + 0.5f * (float) h);
+
+    return 1;
+}
+
+/*---------------------------------------------------------------------------*/

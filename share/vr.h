@@ -36,4 +36,33 @@ float vr_comfort_vignette(void);
 
 /*---------------------------------------------------------------------------*/
 
+/*
+ * Where the pixel-space interface hangs in the world, in metres: a panel
+ * VR_PANEL_DIST in front of the reference space origin and VR_PANEL_HEIGHT
+ * above the floor, VR_PANEL_SPAN tall, facing back down +Z.
+ *
+ * A world-locked panel is far more comfortable to read than a head-locked
+ * one, and it can be looked away from.
+ */
+
+#define VR_PANEL_DIST   2.00f
+#define VR_PANEL_HEIGHT 1.50f
+#define VR_PANEL_SPAN   1.60f
+
+/*
+ * Intersect a pointer ray with that panel and return where it lands, in the
+ * interface's own pixel coordinates for a w by h layout, with the origin at
+ * the bottom left as the rest of the code expects.
+ *
+ * Returns zero when the ray misses the plane or crosses it behind the
+ * pointer; a hit outside the panel's own rectangle still returns its
+ * coordinates, since the caller may want to know which way the player is
+ * pointing rather than only whether they are on target.
+ */
+
+int vr_panel_hit(const float o[3], const float d[3], int w, int h,
+                 int *x, int *y);
+
+/*---------------------------------------------------------------------------*/
+
 #endif

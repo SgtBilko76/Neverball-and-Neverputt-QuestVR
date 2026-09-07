@@ -40,10 +40,10 @@
 #include "hmd_math.h"
 #include "log.h"
 #include "video.h"
+#include "vr.h"
 
-#define XR_USE_PLATFORM_ANDROID
-#define XR_USE_GRAPHICS_API_OPENGL_ES
-#include <openxr/openxr.h>
+#include "hmd_openxr.h"
+
 #include <openxr/openxr_platform.h>
 
 /*---------------------------------------------------------------------------*/
@@ -589,6 +589,11 @@ int hmd_stat(void)
     return xr_session != XR_NULL_HANDLE;
 }
 
+XrInstance hmd_xr_instance(void) { return xr_instance; }
+XrSession  hmd_xr_session (void) { return xr_session;  }
+XrSpace    hmd_xr_space   (void) { return xr_space;    }
+XrTime     hmd_xr_time    (void) { return xr_display_time; }
+
 void hmd_init(void)
 {
     if (!load_gles())        { hmd_free(); return; }
@@ -978,15 +983,11 @@ void hmd_persp(float n, float f)
 
 void hmd_ortho(void)
 {
-    const float dist   = 2.00f;   /* metres in front of the origin */
-    const float height = 1.50f;   /* metres above the floor        */
-    const float span   = 1.60f;   /* metres the GUI height spans   */
-
-    const float s = span / (float) video.device_h;
+    const float s = VR_PANEL_SPAN / (float) video.device_h;
 
     hmd_persp(0.1f, 100.0f);
 
-    glTranslatef(0.0f, height, -dist);
+    glTranslatef(0.0f, VR_PANEL_HEIGHT, -VR_PANEL_DIST);
     glScalef(s, s, s);
     glTranslatef(-0.5f * (float) video.device_w,
                  -0.5f * (float) video.device_h, 0.0f);
