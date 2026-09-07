@@ -26,6 +26,26 @@ display, config and context handed to `xrCreateSession` are recovered from
 the context SDL created, which is what keeps gl4es initialised the way the
 web build already proved works.
 
+## Controls
+
+| | |
+|---|---|
+| Left thumbstick | tilt the floor, and move the menu highlight |
+| Right thumbstick | turn the camera, in steps |
+| Point and trigger | click whatever the ray is on |
+| A | select |
+| B | back |
+| X | pause |
+| Y | options |
+| Grip | turn the camera left or right |
+
+Setting `vr_control` to 1 tilts the floor by turning the wrist that holds
+the right controller instead of with the thumbstick. The stick still moves
+the menu highlight either way.
+
+Recentring is the system's own: hold the Meta button. The interface panel is
+placed relative to the reference space origin, so it follows.
+
 ## Comfort
 
 A chase camera at life size is the uncomfortable case, so the settings that
@@ -39,14 +59,22 @@ matter are in `neverballrc` rather than compiled in:
 is untouched, so the physics, the difficulty and the times are identical to
 the flat game at any setting.
 
-## Known issues
+## gl4es and the swapchain images
 
-Screenshots come out black. `glReadPixels` on a framebuffer whose colour
-attachment is a swapchain image fails with `GL_INVALID_OPERATION` under
-gl4es, and its emulated `glBlitFramebuffer` reads the same image as empty.
-Rendering into those framebuffers is unaffected -- painting the scene into a
-gl4es-owned framebuffer instead and reading that back returns the frame
-correctly -- so this is a readback limitation, not a rendering one.
+gl4es virtualizes texture names. `gl4es_getTexture()` looks a name up in its
+own table and, for one it did not create, quietly generates a fresh real
+texture and remaps to it. Handing it an OpenXR swapchain image therefore
+produces a framebuffer that reports itself complete, that clears and draws
+without raising an error, and that the compositor never sees -- a black
+headset with a healthy-looking frame rate.
+
+Framebuffer names are not virtualized, so `share/hmd_openxr.c` builds the
+eye framebuffers with the driver's own entry points, taken by `dlsym` since
+gl4es owns the ones the game links against. gl4es then does nothing with
+them but bind them by name and draw.
+
+Anything else that hands gl4es an object it did not create will need the
+same treatment.
 
 ## Building
 
