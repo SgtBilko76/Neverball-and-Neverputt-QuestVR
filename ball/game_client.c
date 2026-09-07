@@ -30,6 +30,7 @@
 #include "solid_all.h"
 
 #include "game_client.h"
+#include "vr.h"
 #include "game_common.h"
 #include "game_proxy.h"
 #include "game_draw.h"
@@ -367,6 +368,10 @@ int  game_client_init(const char *file_name)
     game_tilt_init(&gd.tilt);
     game_view_init(&gd.view);
 
+    /* The camera has just jumped to a new level; do not read that as motion. */
+
+    vr_comfort_reset();
+
     gd.jump_e  = 1;
     gd.jump_b  = 0;
     gd.jump_dt = 0.0f;
@@ -489,6 +494,23 @@ void game_client_draw(int pose, float t)
     if (gd.state)
     {
         game_lerp_apply(&gl, &gd);
+
+        /*
+         * Follow the camera for the comfort vignette. In a headset this runs
+         * once per eye with the same paint time, so only the first call of
+         * each frame advances anything.
+         */
+
+        {
+            static float last_t = 0.0f;
+
+            if (t != last_t)
+            {
+                vr_comfort_step(t - last_t, gd.view.p, gd.view.a);
+                last_t = t;
+            }
+        }
+
         game_draw(&gd, pose, t);
     }
 }
