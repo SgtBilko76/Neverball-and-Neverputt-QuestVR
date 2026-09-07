@@ -552,6 +552,7 @@ TEST_SRCS := \
 	tests/test_level.c \
 	tests/test_solid.c \
 	tests/test_hmd_math.c \
+	tests/test_vr_comfort.c \
 	share/array.c \
 	share/common.c \
 	share/queue.c \
@@ -560,6 +561,7 @@ TEST_SRCS := \
 	share/solid_all.c \
 	share/solid_vary.c \
 	share/hmd_math.c \
+	share/vr.c \
 	ball/level.c
 
 $(TEST_TARG) : $(TEST_SRCS)
