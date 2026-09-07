@@ -12,6 +12,8 @@
  * General Public License for more details.
  */
 
+#include <math.h>
+
 #include "gui.h"
 #include "transition.h"
 #include "hud.h"
@@ -20,6 +22,7 @@
 #include "audio.h"
 #include "config.h"
 #include "video.h"
+#include "hmd.h"
 #include "cmd.h"
 #include "key.h"
 
@@ -302,10 +305,94 @@ enum
 static int   rot_dir;
 static float rot_val;
 
+/*
+ * Turning the camera smoothly is one of the more reliable ways to make
+ * someone ill in a headset, because the whole world sweeps past while the
+ * player's head has not moved. So in VR the manual rotation is taken in
+ * discrete steps instead: each fresh push turns by a fixed angle about as
+ * fast as the server will allow, and holding the input repeats it.
+ */
+
+#define SNAP_REPEAT_TIME 0.35f
+
+static float snap_pending;              /* degrees still owed to a step      */
+static float snap_repeat;               /* time until a held input repeats   */
+static int   snap_dir;                  /* direction of the input being held */
+
 static void rot_init(void)
 {
     rot_val = 0.0f;
     rot_dir = 0;
+
+    snap_pending = 0.0f;
+    snap_repeat  = 0.0f;
+    snap_dir     = 0;
+}
+
+/*
+ * Convert a continuous rotation rate into the stepped one, if this build is
+ * looking through a headset and the player has not asked for smooth turning.
+ * The server integrates da = 90 * r * dt with rot_mult pinned to one in VR,
+ * so the debt can be paid off exactly.
+ */
+
+static float rot_snap(float r, float dt)
+{
+    const int step = config_get_d(CONFIG_VR_SNAP_TURN);
+
+    float rate;
+
+    if (!hmd_stat() || step <= 0)
+    {
+        snap_pending = 0.0f;
+        snap_dir     = 0;
+
+        return r;
+    }
+
+    if (r == 0.0f)
+    {
+        snap_dir    = 0;
+        snap_repeat = 0.0f;
+    }
+    else
+    {
+        const int dir = r > 0.0f ? 1 : -1;
+
+        if (dir != snap_dir)
+        {
+            snap_dir     = dir;
+            snap_pending = (float) (dir * step);
+            snap_repeat  = SNAP_REPEAT_TIME;
+        }
+        else if (snap_pending == 0.0f)
+        {
+            snap_repeat -= dt;
+
+            if (snap_repeat <= 0.0f)
+            {
+                snap_pending = (float) (dir * step);
+                snap_repeat  = SNAP_REPEAT_TIME;
+            }
+        }
+    }
+
+    if (snap_pending == 0.0f || !(dt > 0.0f))
+        return 0.0f;
+
+    rate = snap_pending / (90.0f * dt);
+
+    if (rate >  VIEWR_BOUND) rate =  VIEWR_BOUND;
+    if (rate < -VIEWR_BOUND) rate = -VIEWR_BOUND;
+
+    snap_pending -= 90.0f * rate * dt;
+
+    /* Do not leave a sliver of a degree behind to be paid next frame. */
+
+    if (fabsf(snap_pending) < 0.01f)
+        snap_pending = 0.0f;
+
+    return rate;
 }
 
 static void rot_set(int dir, float value, int exclusive)
@@ -438,7 +525,7 @@ static void play_loop_timer(int id, float dt)
 
     case ROT_ROTATE:
     case ROT_NONE:
-        game_set_rot(r * k);
+        game_set_rot(rot_snap(r * k, dt));
         game_set_cam(config_get_d(CONFIG_CAMERA));
         break;
     }
