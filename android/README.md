@@ -45,10 +45,11 @@ Setting `vr_control` to 1 tilts the floor by turning the wrist that holds
 the right controller instead of with the thumbstick. The stick still moves
 the menu highlight either way.
 
-Neverputt aims and putts with the same buttons, and has no floor to tilt, so
-`vr_tilt_visual`, `vr_snap_turn` and `vr_control` do nothing there. Its
-camera turns with the aim, which is a shot being lined up rather than a
-comfort choice, so it is deliberately not stepped.
+Neverputt aims and putts with the same buttons and has no floor to tilt, so
+`vr_tilt_visual` and `vr_control` do nothing there. It has no camera
+separate from the aim either, so the right stick steps the whole view round
+by `vr_snap_turn` degrees while a stroke is being lined up, and the fine
+aiming a shot actually needs stays on the left stick.
 
 Recentring is the system's own: hold the Meta button. The interface panel is
 placed relative to the reference space origin, so it follows.

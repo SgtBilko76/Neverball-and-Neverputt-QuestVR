@@ -615,6 +615,17 @@ void game_set_rot(int d)
     view_a += (float) (30.f * d) / config_get_d(CONFIG_MOUSE_SENSE);
 }
 
+/*
+ * Turn the view by a fixed angle, rather than by a pointer delta. While a
+ * stroke is being lined up the camera basis is derived from view_a and
+ * follows it immediately, so this lands as a step and not a sweep.
+ */
+
+void game_turn(float a)
+{
+    view_a = fmodf(view_a + a, 360.f);
+}
+
 void game_clr_mag(void)
 {
     view_m = 1.f;

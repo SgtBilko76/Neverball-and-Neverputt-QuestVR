@@ -24,6 +24,7 @@
 #include "audio.h"
 #include "course.h"
 #include "config.h"
+#include "hmd.h"
 #include "video.h"
 #include "version.h"
 #include "lang.h"
@@ -967,12 +968,39 @@ static int stroke_rotate = 0;
 static int stroke_rotate_alt = 0;
 static int stroke_mag = 0;
 
+/*
+ * Stepped turning on the right stick.
+ *
+ * Neverputt has no camera separate from the aim, so this is a coarse aim
+ * adjustment as much as a view control. In a headset that is the point: the
+ * world turns in fixed increments instead of sweeping past, and the fine
+ * aiming that a shot actually needs stays on the left stick where it was.
+ */
+
+#define STROKE_SNAP_REPEAT 0.35f
+
+static int   stroke_snap_dir;
+static float stroke_snap_wait;
+
+static void stroke_snap(int dir)
+{
+    const int deg = config_get_d(CONFIG_VR_SNAP_TURN);
+
+    /* Zero means smooth turning, which here is the left stick already. */
+
+    if (deg > 0)
+        game_turn((float) (dir * deg));
+}
+
 static int stroke_enter(struct state *st, struct state *prev, int intent)
 {
     hud_init();
     game_clr_mag();
     config_set_d(CONFIG_CAMERA, 2);
     video_set_grab(1);
+
+    stroke_snap_dir  = 0;
+    stroke_snap_wait = 0.0f;
 
     if (paused)
         paused = 0;
@@ -987,6 +1015,7 @@ static int stroke_leave(struct state *st, struct state *next, int id, int intent
     config_set_d(CONFIG_CAMERA, 0);
     stroke_rotate = 0.0f;
     stroke_mag = 0.0f;
+    stroke_snap_dir = 0;
     return 0;
 }
 
@@ -1010,6 +1039,19 @@ static void stroke_timer(int id, float dt)
     game_set_rot(stroke_rotate * k);
     game_set_mag(stroke_mag * k);
 
+    /* Holding the stick over repeats the step. */
+
+    if (stroke_snap_dir)
+    {
+        stroke_snap_wait -= dt;
+
+        if (stroke_snap_wait <= 0.0f)
+        {
+            stroke_snap(stroke_snap_dir);
+            stroke_snap_wait = STROKE_SNAP_REPEAT;
+        }
+    }
+
     game_update_view(dt);
     game_step(g, dt);
 }
@@ -1026,6 +1068,16 @@ static void stroke_stick(int id, int a, float v, int bump)
         stroke_rotate = 6 * v;
     else if (config_tst_d(CONFIG_JOYSTICK_AXIS_Y0, a))
         stroke_mag = -6 * v;
+    else if (config_tst_d(CONFIG_JOYSTICK_AXIS_X1, a) && hmd_stat())
+    {
+        const int dir = v > 0.5f ? +1 : (v < -0.5f ? -1 : 0);
+
+        if (dir && dir != stroke_snap_dir)
+            stroke_snap(dir);
+
+        stroke_snap_dir  = dir;
+        stroke_snap_wait = STROKE_SNAP_REPEAT;
+    }
 }
 
 static int stroke_click(int b, int d)
