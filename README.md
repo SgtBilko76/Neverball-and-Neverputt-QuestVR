@@ -1,5 +1,8 @@
 # Neverball
 
+[![Sponsor](https://img.shields.io/badge/Sponsor-SgtBilko76-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/SgtBilko76)
+
+
 ![Neverball](https://neverball.org/images/shots/01-neverball-easy/easy-07-01.jpg)
 
 Tilt the  floor to roll a  ball through an obstacle  course within the
