@@ -95,6 +95,14 @@ them but bind them by name and draw.
 Anything else that hands gl4es an object it did not create will need the
 same treatment.
 
+## Pico
+
+The same games build for Pico headsets. Each APK comes in a `quest` and a
+`pico` flavour, which differ only in the manifest keys the two launchers
+read; the code is the same, and binds the Pico controllers through
+`XR_BD_controller_interaction` when the runtime offers it. `build.sh` builds
+both flavours, and `./gradlew assemblePicoRelease` builds only the Pico ones.
+
 ## Building
 
 Prerequisites: Android SDK with NDK 27.2, platform 34 and CMake 3.22.1; a
@@ -139,8 +147,11 @@ something it is not.
 
 ## Installing
 
-    adb install -r android/ball/build/outputs/apk/debug/ball-debug.apk
-    adb install -r android/putt/build/outputs/apk/debug/putt-debug.apk
+    adb install -r android/ball/build/outputs/apk/quest/debug/ball-quest-debug.apk
+    adb install -r android/putt/build/outputs/apk/quest/debug/putt-quest-debug.apk
+
+On a Pico, install the `pico` APKs from the matching `pico` directories
+instead.
 
     adb shell am start -n org.neverball/.NeverballActivity
     adb shell am start -n org.neverputt/.NeverputtActivity

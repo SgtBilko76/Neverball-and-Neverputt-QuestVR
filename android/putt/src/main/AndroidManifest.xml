@@ -18,11 +18,6 @@
         android:hasCode="true"
         android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
 
-        <meta-data android:name="com.oculus.supportedDevices"
-                   android:value="quest2|quest3|questpro" />
-        <meta-data android:name="com.oculus.intent.category.VR"
-                   android:value="vr_only" />
-
         <activity
             android:name=".NeverputtActivity"
             android:launchMode="singleTask"

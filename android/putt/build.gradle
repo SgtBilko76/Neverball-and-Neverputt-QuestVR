@@ -93,6 +93,19 @@ android {
         }
     }
 
+    // One APK per headset family. They differ only in the manifest keys
+    // each vendor's launcher reads; see src/quest and src/pico.
+    flavorDimensions = ['headset']
+
+    productFlavors {
+        quest {
+            dimension 'headset'
+        }
+        pico {
+            dimension 'headset'
+        }
+    }
+
     buildTypes {
         debug {
             debuggable true
