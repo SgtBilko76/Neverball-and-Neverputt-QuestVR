@@ -110,8 +110,8 @@ static int make_pose_space(XrSpace *s, XrAction a)
 /*
  * Suggest one interaction profile's worth of bindings. A runtime is free to
  * reject a profile it does not know, which is why the result is not fatal:
- * the Touch bindings are what a Quest will use, and the simple controller is
- * a fallback that costs nothing to offer.
+ * the Touch bindings are what a Quest will use, the ByteDance ones a Pico,
+ * and the simple controller is a fallback that costs nothing to offer.
  */
 
 static void suggest(const char *profile,
@@ -185,6 +185,15 @@ static int init_actions(void)
         };
 
         suggest("/interaction_profiles/oculus/touch_controller",
+                touch, (int) (sizeof (touch) / sizeof (touch[0])));
+
+        /* Pico controllers have the same buttons under the same names. */
+
+        suggest("/interaction_profiles/bytedance/pico4_controller",
+                touch, (int) (sizeof (touch) / sizeof (touch[0])));
+        suggest("/interaction_profiles/bytedance/pico4s_controller",
+                touch, (int) (sizeof (touch) / sizeof (touch[0])));
+        suggest("/interaction_profiles/bytedance/pico_neo3_controller",
                 touch, (int) (sizeof (touch) / sizeof (touch[0])));
         suggest("/interaction_profiles/khr/simple_controller",
                 simple, (int) (sizeof (simple) / sizeof (simple[0])));

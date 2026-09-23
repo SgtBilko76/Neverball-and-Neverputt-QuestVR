@@ -264,6 +264,11 @@ static int xr_init_instance(void)
         xr_local_floor = 1;
     }
 
+    /* Pico controllers are only reachable through their own profiles. */
+
+    if (xr_has_extension(props, count, XR_BD_CONTROLLER_INTERACTION_EXTENSION_NAME))
+        enabled[enabled_count++] = XR_BD_CONTROLLER_INTERACTION_EXTENSION_NAME;
+
     free(props);
 
     memset(&android, 0, sizeof (android));
